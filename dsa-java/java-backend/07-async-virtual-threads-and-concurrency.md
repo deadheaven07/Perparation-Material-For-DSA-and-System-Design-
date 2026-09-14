@@ -8,12 +8,14 @@ Welcome to Page 7 of the Java Backend Engineering series. In high-scale web appl
 
 In a standard synchronous backend:
 
-```
-Synchronous Request Flow (Blocks Worker Thread for 500ms):
-Client ---> [ Tomcat Worker-1 Thread ] ---> [ Calls Weather API (300ms) ]
-                                      |---> [ Queries DB (150ms) ]
-                                      |---> [ Sends Email (50ms) ]
-Total Response Time: 500ms (Thread 1 is locked and idle during network wait!)
+```mermaid
+flowchart LR
+    Client(["📱 Client"]) --> Worker["🧵 Tomcat Worker-1 Thread<br/><sub>Locked for 500ms during network I/O</sub>"]
+    Worker --> API["🌐 Weather API (300ms)"]
+    Worker --> DB[("💾 Query DB (150ms)")]
+    Worker --> Email["📧 Send Email (50ms)"]
+    API & DB & Email --> Worker
+    Worker --> ClientRes(["Response Delivered (500ms total)"])
 ```
 
 If 200 users hit this endpoint concurrently, all 200 Tomcat worker threads become blocked waiting for I/O. The $201^{\text{st}}$ user is stalled or rejected with a timeout!
@@ -79,14 +81,14 @@ public class NotificationService {
 
 When an API must query multiple independent microservices in parallel and combine their results, **`CompletableFuture`** provides high-throughput concurrent execution:
 
-```
-                +---> Fetch User Details (30ms) --------+
-                |                                       |
-Incoming ---> Parallel                               Combines in 40ms total
-Request         |                                    (instead of 90ms!)
-                +---> Fetch Credit Score (40ms) --------+       |
-                |                                       v
-                +---> Fetch Recent Transactions (20ms) -+---> Return Response DTO
+```mermaid
+flowchart TD
+    Req(["Incoming Request"]) --> Fork{"⚡ CompletableFuture<br/>Async Execution"}
+    Fork --> U["Fetch User Details<br/><sub>(30ms)</sub>"]
+    Fork --> C["Fetch Credit Score<br/><sub>(40ms)</sub>"]
+    Fork --> T["Fetch Transactions<br/><sub>(20ms)</sub>"]
+    U & C & T --> Join{"CompletableFuture.allOf().join()"}
+    Join --> Res(["Return Combined Dashboard DTO<br/><sub>Total Time: 40ms (instead of 90ms!)</sub>"])
 ```
 
 ### Parallel Aggregator Implementation:
@@ -142,12 +144,25 @@ Until Java 21, every Java thread mapped directly to an operating system (OS) pla
 
 **Virtual Threads (Project Loom)** are lightweight user-mode threads managed by the JVM. They consume only **a few kilobytes** of memory.
 
-```
-Model: 100,000s of Virtual Threads (Cheap, KB memory)
-                 \ | /
-           [ JVM Scheduler ]
-                 / | \
-Small Pool of OS Carrier Threads (Equal to number of CPU Cores)
+```mermaid
+flowchart TD
+    subgraph VirtualPool["🚀 100,000s of Virtual Threads (KB memory)"]
+        V1["Virtual Thread V1"]
+        V2["Virtual Thread V2"]
+        V3["Virtual Thread V3"]
+    end
+
+    subgraph JVM["⚙️ JVM Scheduler (Project Loom)"]
+        Scheduler["Carrier Thread Scheduling & Unmounting"]
+    end
+
+    subgraph OSThreads["🧵 Small Pool of OS Carrier Threads (= CPU Cores)"]
+        C1["Carrier Thread 1"]
+        C2["Carrier Thread 2"]
+    end
+
+    VirtualPool --> Scheduler
+    Scheduler --> OSThreads
 ```
 
 ### How Carrier Thread Unmounting Works:

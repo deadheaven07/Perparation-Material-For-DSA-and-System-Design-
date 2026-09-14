@@ -16,21 +16,21 @@ Java is known for **WORA (Write Once, Run Anywhere)**. This platform independenc
 
 ### The Java Ecosystem Triangle: JDK vs. JRE vs. JVM
 
-```
-+-----------------------------------------------------------+
-| JDK (Java Development Kit)                                |
-|   Tools: javac, jdb, jar, javadoc                         |
-|  +-----------------------------------------------------+  |
-|  | JRE (Java Runtime Environment)                      |  |
-|  |   Core Libraries (java.lang, java.util, etc.)       |  |
-|  |  +-----------------------------------------------+  |  |
-|  |  | JVM (Java Virtual Machine)                    |  |  |
-|  |  |   - ClassLoader Subsystem                     |  |  |
-|  |  |   - Execution Engine (JIT + Interpreter + GC) |  |  |
-|  |  |   - Runtime Data Areas (Heap, Stack, etc.)    |  |  |
-|  |  +-----------------------------------------------+  |  |
-|  +-----------------------------------------------------+  |
-+-----------------------------------------------------------+
+```text
+╭─────────────────────────────────────────────────────────────────────────╮
+│                      JDK (Java Development Kit)                         │
+│   Development Tools: javac, jdb, jar, javadoc, jshell                   │
+│  ╭───────────────────────────────────────────────────────────────────╮  │
+│  │                   JRE (Java Runtime Environment)                  │  │
+│  │   Standard Class Libraries (java.base, java.util, java.net)       │  │
+│  │  ╭─────────────────────────────────────────────────────────────╮  │  │
+│  │  │                  JVM (Java Virtual Machine)                 │  │  │
+│  │  │   • ClassLoader Subsystem (Loading, Linking, Initialization)│  │  │
+│  │  │   • Runtime Data Areas (Method Area, Heap, JVM Stacks)      │  │  │
+│  │  │   • Execution Engine (JIT Compiler, Interpreter, GC)        │  │  │
+│  │  ╰─────────────────────────────────────────────────────────────╯  │  │
+│  ╰───────────────────────────────────────────────────────────────────╯  │
+╰─────────────────────────────────────────────────────────────────────────╯
 ```
 
 1. **JVM (Java Virtual Machine)**: The abstract computing machine that executes bytecode. It contains:

@@ -61,12 +61,12 @@ Supplier<List<Integer>> listSupplier = ArrayList::new;
 
 A **Stream** is a sequence of elements supporting sequential and parallel aggregate operations. It does **not** store data (it is not a data structure); instead, it conveys elements from a source through a pipeline of computational steps.
 
-```
-+------------+      +--------------+      +--------------+      +--------------------+
-|   Source   | ---> | Intermediate | ---> | Intermediate | ---> | Terminal Operation |
-| Collection |      |   .filter()  |      |    .map()    |      |     .collect()     |
-+------------+      +--------------+      +--------------+      +--------------------+
-                           (Lazy Operations)                       (Executes Pipeline)
+```mermaid
+flowchart LR
+    Source["📦 Source<br/><sub>Collection / Array</sub>"] --> Filter["🔍 Intermediate (Lazy)<br/><sub>.filter(Predicate)</sub>"]
+    Filter --> Map["🔄 Intermediate (Lazy)<br/><sub>.map(Function)</sub>"]
+    Map --> Sorted["⚡ Intermediate (Lazy)<br/><sub>.sorted()</sub>"]
+    Sorted --> Terminal["🎯 Terminal Operation<br/><sub>.collect(toList())</sub>"]
 ```
 
 ### 1. Intermediate Operations (Lazy)

@@ -6,54 +6,40 @@ Welcome to the comprehensive, enterprise-grade guide to **Java Backend Developme
 
 ## 🗺️ Master Visual Learning Roadmap
 
-```
-====================================================================================================
-                              JAVA BACKEND DEVELOPER: MASTER ROADMAP
-====================================================================================================
+```mermaid
+flowchart TD
+    subgraph S1["🌱 STAGE 1: The Foundations"]
+        P00["Page 00: Master Roadmap & Mental Model<br/><sub>Client ➔ Controller ➔ Service ➔ DB</sub>"]
+        P01["Page 01: Web & HTTP Protocols<br/><sub>Request/Response, Methods, Status Codes, REST</sub>"]
+    end
 
- [ STAGE 1: THE FOUNDATIONS ]
-       |
-       +---> [Page 00] Master Roadmap & Backend Mental Model (Client -> Controller -> Service -> DB)
-       |
-       +---> [Page 01] Web & HTTP Protocols (Request/Response, Methods, Status Codes, REST Constraints)
-       |
-       v
- [ STAGE 2: THE JAVA WEB ENGINE ]
-       |
-       +---> [Page 02] Servlets & Spring MVC (Tomcat, DispatcherServlet, Filters vs Interceptors)
-       |
-       +---> [Page 03] Spring Framework & Boot Core (IoC, Dependency Injection, Beans, Auto-Configuration)
-       |
-       v
- [ STAGE 3: DATA PERSISTENCE & BUSINESS LOGIC ]
-       |
-       +---> [Page 04] REST APIs & Validation (DTO Pattern, Jakarta Validation, @RestControllerAdvice)
-       |
-       +---> [Page 05] Database Persistence (Spring Data JPA, Hibernate ORM, N+1 Query Fixes)
-       |
-       +---> [Page 06] Transactions & Locking (@Transactional, Propagation, Optimistic vs Pessimistic)
-       |
-       v
- [ STAGE 4: PERFORMANCE & ASYNC PROCESSING ]
-       |
-       +---> [Page 07] Async & Virtual Threads (CompletableFuture, Java 21 Virtual Threads, ScopedValue)
-       |
-       +---> [Page 08] Caching with Redis (Spring Cache, RedisTemplate, Cache-Aside, Stampede & Bloom)
-       |
-       v
- [ STAGE 5: DISTRIBUTED & EVENT-DRIVEN SYSTEMS ]
-       |
-       +---> [Page 09] Messaging with Apache Kafka (Event-driven backends, KafkaTemplate, Offsets, DLQ)
-       |
-       +---> [Page 10] Microservices with Spring Cloud (API Gateway, Eureka Discovery, OpenFeign Clients)
-       |
-       v
- [ STAGE 6: ENTERPRISE SECURITY & RESILIENCE ]
-       |
-       +---> [Page 11] Backend Security with JWT (SecurityFilterChain, Stateless Auth Filter, RBAC, BCrypt)
-       |
-       +---> [Page 12] Production Observability & Resilience (Actuator, Prometheus, Tracing, Resilience4j)
-====================================================================================================
+    subgraph S2["⚙️ STAGE 2: The Java Web Engine"]
+        P02["Page 02: Servlets & Spring MVC<br/><sub>Tomcat, DispatcherServlet, Filters vs Interceptors</sub>"]
+        P03["Page 03: Spring Framework & Boot Core<br/><sub>IoC, Dependency Injection, Beans, Auto-Configuration</sub>"]
+    end
+
+    subgraph S3["💾 STAGE 3: Data Persistence & Business Logic"]
+        P04["Page 04: REST APIs & Validation<br/><sub>DTO Pattern, Jakarta Validation, @RestControllerAdvice</sub>"]
+        P05["Page 05: Database Persistence<br/><sub>Spring Data JPA, Hibernate ORM, N+1 Query Fixes</sub>"]
+        P06["Page 06: Transactions & Locking<br/><sub>@Transactional, Propagation, Optimistic vs Pessimistic</sub>"]
+    end
+
+    subgraph S4["⚡ STAGE 4: Performance & Async Processing"]
+        P07["Page 07: Async & Virtual Threads<br/><sub>CompletableFuture, Java 21 Loom, ScopedValue</sub>"]
+        P08["Page 08: Caching with Redis<br/><sub>Spring Cache, RedisTemplate, Cache-Aside, Stampede</sub>"]
+    end
+
+    subgraph S5["📡 STAGE 5: Distributed & Event-Driven Systems"]
+        P09["Page 09: Messaging with Apache Kafka<br/><sub>Event-Driven, KafkaTemplate, Offsets, DLQ</sub>"]
+        P10["Page 10: Microservices with Spring Cloud<br/><sub>API Gateway, Eureka Discovery, OpenFeign</sub>"]
+    end
+
+    subgraph S6["🛡️ STAGE 6: Enterprise Security & Resilience"]
+        P11["Page 11: Backend Security with JWT<br/><sub>SecurityFilterChain, Stateless Auth Filter, RBAC</sub>"]
+        P12["Page 12: Production Observability & Resilience<br/><sub>Actuator, Prometheus, Distributed Tracing, Resilience4j</sub>"]
+    end
+
+    S1 --> S2 --> S3 --> S4 --> S5 --> S6
 ```
 
 ---

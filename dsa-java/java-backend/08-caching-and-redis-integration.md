@@ -8,24 +8,27 @@ Welcome to Page 8 of the Java Backend Engineering series. The fastest database q
 
 In 90% of web backends, the **Cache-Aside (Lazy Loading)** pattern is the industry standard:
 
-```
-[ Client Request: GET /products/42 ]
-                 |
-                 v
-       [ Check Redis Cache ]
-                 |
-        +--------+--------+
-        |                 |
-     (Hit)              (Miss)
-        |                 |
-  Return Cached           v
-   Product JSON      [ Query Database (PostgreSQL) ]
-  (< 1ms latency)         |
-                          v
-                    [ Store in Redis with TTL ]
-                          |
-                          v
-                    Return Product JSON
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Client as 📱 Client Request
+    participant App as ☕ Spring Boot (@Cacheable)
+    participant Redis as ⚡ Redis Cache Cluster
+    participant DB as 💾 Database (PostgreSQL)
+
+    Client->>App: GET /api/v1/products/42
+    App->>Redis: Check cache key: "products:42"
+    
+    alt Cache Hit (< 1ms)
+        Redis-->>App: Return cached product JSON
+        App-->>Client: 200 OK + Product JSON
+    else Cache Miss
+        Redis-->>App: null (Key not found)
+        App->>DB: Query DB: SELECT * FROM products WHERE id = 42
+        DB-->>App: Product row from disk
+        App->>Redis: Store in Redis (Key: "products:42", TTL: 3600s)
+        App-->>Client: 200 OK + Product JSON
+    end
 ```
 
 ---
@@ -146,13 +149,23 @@ public class RedisConfig {
 
 ## 4. Advanced Production Cache Traps & Solutions
 
-```
-Trap 1: Cache Avalanche               Trap 2: Cache Stampede (Thundering Herd)
-10,000 keys expire simultaneously      A single hot key ("BlackFridayDeal") expires
-              |                                        |
-All requests hit DB at once            10,000 concurrent threads query DB at once
-              v                                        v
-         [ DB CRASH ]                             [ DB CRASH ]
+```text
+╭─────────────────────────────────────────────────────────────────────────────╮
+│                   Cache Avalanche vs. Cache Stampede                        │
+├──────────────────────────────────────────────┬──────────────────────────────┤
+│ 🏔️ Cache Avalanche                          │ 🦬 Cache Stampede (Herd)     │
+├──────────────────────────────────────────────┼──────────────────────────────┤
+│ 10,000 keys expire at the exact same second  │ A single hot key ("DealOfDay") expires│
+│                     │                        │ during high traffic peak     │
+│                     ▼                        │                     │        │
+│ All 10,000 requests hit DB at once           │                     ▼        │
+│                     │                        │ 10,000 threads query DB at   │
+│                     ▼                        │ once for the same row        │
+│                [ DB CRASH ]                  │                     │        │
+│ 🛡️ Fix: Add randomized TTL jitter            │                     ▼        │
+│   (TTL = 3600 + Random(-300, 300) seconds)   │                [ DB CRASH ]  │
+│                                              │ 🛡️ Fix: Redisson Mutex Lock │
+╰──────────────────────────────────────────────┴──────────────────────────────╯
 ```
 
 ### 1. Cache Avalanche

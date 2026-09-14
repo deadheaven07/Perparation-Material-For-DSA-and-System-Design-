@@ -8,30 +8,28 @@ Welcome to Page 2 of the Java Backend Engineering series. Every Java web applica
 
 A **Servlet** is a Java class that runs inside a web server, listening for incoming HTTP requests and generating responses.
 
-```
-Incoming HTTP Bytes ---> [ Servlet Container (Apache Tomcat) ]
-                                      |
-                                      v Parses bytes into
-                             HttpServletRequest
-                                      |
-                                      v Passed into
-                         MyCustomServlet.service()
-                                      |
-                                      v Writes into
-                             HttpServletResponse
-                                      |
-                                      v Transmits bytes out
-Outgoing HTTP Bytes <--- [ Servlet Container ]
+```mermaid
+flowchart LR
+    In["Incoming HTTP Bytes"] --> Container["⚙️ Servlet Container<br/>(Apache Tomcat)"]
+    Container --> Req["📄 Parses bytes into<br/>HttpServletRequest"]
+    Req --> Service["☕ MyCustomServlet.service()"]
+    Service --> Res["📄 Writes response into<br/>HttpServletResponse"]
+    Res --> ContainerOut["⚙️ Servlet Container"]
+    ContainerOut --> Out["Outgoing HTTP Bytes"]
 ```
 
 ### The Servlet Lifecycle (Managed by the Container)
 
 A Servlet undergoes three lifecycle phases:
 
-```
-[ Class Loading ] ---> [ init(ServletConfig) ] ---> [ service(req, res) ] ---> [ destroy() ]
-                            (Runs ONCE on              (Runs on EVERY              (Runs ONCE
-                              startup)                   HTTP request)             on shutdown)
+```mermaid
+stateDiagram-v2
+    [*] --> ClassLoading : Server Startup
+    ClassLoading --> Initialized : init(ServletConfig) [Runs ONCE]
+    Initialized --> Servicing : HTTP Request Arrives
+    Servicing --> Servicing : service(req, res) [On EVERY request]
+    Servicing --> Destroyed : Container Shutdown
+    Destroyed --> [*] : destroy() [Runs ONCE to release resources]
 ```
 
 1. **`init()`**: Executed exactly once when the servlet is first instantiated. Used for one-time initialization (e.g., loading config).
@@ -44,21 +42,13 @@ A Servlet undergoes three lifecycle phases:
 
 When you run a Spring Boot application (`@SpringBootApplication`), it embeds an **Apache Tomcat** web server by default on port `8080`.
 
-```
-                    Tomcat Connector (Port 8080)
-                                 |
-                          [ Acceptor Thread ]
-                      (Accepts incoming TCP sockets)
-                                 |
-                                 v Hands socket to
-                      [ Worker Thread Pool ]
-                 (Default: min=10, max=200 threads)
-                                 |
-               +-----------------+-----------------+
-               |                 |                 |
-               v                 v                 v
-           Worker-1          Worker-2          Worker-3
-        (Executing req 1) (Executing req 2) (Executing req 3)
+```mermaid
+flowchart TD
+    Connector["🌐 Tomcat Connector (Port 8080)"] --> Acceptor["⚡ Acceptor Thread<br/><sub>Accepts incoming TCP sockets</sub>"]
+    Acceptor --> Pool["🧵 Worker Thread Pool<br/><sub>Default: min=10, max=200</sub>"]
+    Pool --> W1["Worker-1<br/><sub>(Executes Req 1)</sub>"]
+    Pool --> W2["Worker-2<br/><sub>(Executes Req 2)</sub>"]
+    Pool --> W3["Worker-3<br/><sub>(Executes Req 3)</sub>"]
 ```
 
 ### Key Tomcat Performance Properties in Spring Boot:
@@ -79,25 +69,26 @@ In early Java web development, you had to write a separate Servlet class for eve
 
 Spring solves this with the **Front Controller Pattern** via a single master servlet: **`DispatcherServlet`**.
 
-```
-[ HTTP Request ]
-       |
-       v
-+-----------------------------------------------------------------------------+
-|                            DispatcherServlet                                |
-|                                                                             |
-|  1. Queries HandlerMapping: "Who handles POST /api/v1/users?"               |
-|     Result: UserController.createUser()                                     |
-|                                                                             |
-|  2. Invokes HandlerAdapter: Prepares parameters & invokes method            |
-|                                                                             |
-|  3. Interceptor preHandle() -> UserController executes -> postHandle()      |
-|                                                                             |
-|  4. HttpMessageConverter (Jackson): Serializes returned Java DTO to JSON    |
-+-----------------------------------------------------------------------------+
-       |
-       v
-[ HTTP Response (JSON) ]
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Client as 🌐 HTTP Request
+    participant DS as 🔀 DispatcherServlet
+    participant HM as 🗺️ HandlerMapping
+    participant HA as ⚙️ HandlerAdapter
+    participant C as 🎯 @RestController
+    participant Conv as 🔄 HttpMessageConverter (Jackson)
+
+    Client->>DS: 1. POST /api/v1/users
+    DS->>HM: 2. Who handles POST /api/v1/users?
+    HM-->>DS: Returns HandlerMethod (UserController.createUser)
+    DS->>HA: 3. Execute handler method
+    HA->>C: 4. Invoke createUser(CreateUserDTO)
+    C-->>HA: 5. Returns UserResponseDTO
+    HA-->>DS: 6. Returns execution result
+    DS->>Conv: 7. Serialize UserResponseDTO ➔ JSON
+    Conv-->>DS: 8. JSON byte payload
+    DS-->>Client: 9. HTTP/1.1 201 Created + JSON Body
 ```
 
 ---
@@ -106,23 +97,15 @@ Spring solves this with the **Front Controller Pattern** via a single master ser
 
 When an HTTP request enters your application, it passes through two layers of interception:
 
-```
-[ Client Request ]
-       |
-       v
-  [ Servlet Filter 1 (Logging) ]       <-- Part of Servlet Spec (Runs before Spring)
-       |
-       v
-  [ Servlet Filter 2 (Security) ]
-       |
-       v
-  [ DispatcherServlet ]
-       |
-       v
-  [ Spring HandlerInterceptor ]         <-- Part of Spring MVC (Has access to Controller info)
-       |
-       v
-  [ @RestController Method ]
+```mermaid
+flowchart TD
+    Client(["📱 Client Request"]) --> F1["🛡️ Servlet Filter 1 (Logging)<br/><sub>Runs in Servlet container before Spring</sub>"]
+    F1 --> F2["🛡️ Servlet Filter 2 (Security / CORS)"]
+    F2 --> DS["🔀 DispatcherServlet"]
+    DS --> I["🔍 Spring HandlerInterceptor<br/><sub>preHandle() ➔ Has access to HandlerMethod</sub>"]
+    I --> Controller["🎯 @RestController Method"]
+    Controller --> IPost["🔍 HandlerInterceptor<br/><sub>postHandle() & afterCompletion()</sub>"]
+    IPost --> Response(["Client Response"])
 ```
 
 ### Detailed Comparison:

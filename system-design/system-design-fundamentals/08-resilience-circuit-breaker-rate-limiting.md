@@ -9,16 +9,18 @@ Welcome to Page 8 of the System Design Fundamentals series. In distributed syste
 Consider three microservices:
 $$\text{Frontend API} \longrightarrow \text{Order Service} \longrightarrow \text{Payment Gateway}$$
 
-```
-Normal Flow:
-Order Service sends payment request (takes 50ms) ---> Returns Success.
+```mermaid
+flowchart TD
+    subgraph Normal["Normal Flow (< 50ms)"]
+        F1["Frontend API"] --> O1["Order Service"] --> P1["Payment Gateway"]
+        P1 -- "200 OK (50ms)" --> O1 -- "Order Confirmed" --> F1
+    end
 
-Cascading Outage:
-1. Payment Gateway slows down to 15 seconds per request.
-2. Order Service thread pool (200 threads) blocks waiting for Payment Gateway.
-3. Within 10 seconds, all 200 threads in Order Service are exhausted (Thread Starvation).
-4. Frontend API calls to Order Service timeout; Frontend thread pool exhausts.
-5. ENTIRE SYSTEM CRASHES!
+    subgraph Outage["Cascading Outage (Without Circuit Breaker)"]
+        F2["Frontend API"] --> O2["Order Service<br/><sub>All 200 threads blocked!</sub>"]
+        O2 -- "Stalled (15s latency)" --> P2["Payment Gateway<br/><sub>Struggling / Outage</sub>"]
+        NoteOutage["Thread pool exhaustion cascades upstream and CRASHES entire application!"]
+    end
 ```
 
 ---
@@ -80,16 +82,21 @@ public class PaymentClient {
 
 Rate limiting throttles incoming requests to defend against DDoS attacks, brute-force login attempts, and API quota abuse.
 
-```
-Algorithm 1: Token Bucket (Allows Bursts)       Algorithm 2: Leaky Bucket (Smooth Flow)
-Tokens drop in at fixed rate (e.g., 5/sec)       Incoming requests fill bucket queue
-       \  |  /                                          \  |  /
-      +-------+                                        +-------+
-      | o o o | Max Capacity = 10                      | = = = | Requests queue up
-      +-------+                                        +-------+
-          |                                                |
-    Consume token                                     Drips at constant rate
-    per request                                       (e.g., exactly 2 req/sec)
+```text
+╭─────────────────────────────────────────────────────────────────────────────╮
+│                 Token Bucket vs. Leaky Bucket Rate Limiting                 │
+├──────────────────────────────────────────────┬──────────────────────────────┤
+│ 🪙 Token Bucket (Allows Bursts)              │ 💧 Leaky Bucket (Smooth Flow)│
+├──────────────────────────────────────────────┼──────────────────────────────┤
+│ Tokens added at fixed rate (e.g. 5/sec)      │ Incoming requests fill bucket queue  │
+│        \  |  /                               │        \  |  /                       │
+│       ╭───────╮                              │       ╭───────╮                      │
+│       │ • • • │ Max Capacity = 10 tokens     │       │ = = = │ Requests buffer      │
+│       ╰───────╯                              │       ╰───────╯                      │
+│           │                                  │           │                          │
+│     Consumes 1 token per request             │     Drips at constant, smooth rate   │
+│     Burst up to capacity allowed!            │     (e.g., exactly 2 req/sec)        │
+╰──────────────────────────────────────────────┴──────────────────────────────╯
 ```
 
 | Algorithm | How it Works | Pros & Cons |

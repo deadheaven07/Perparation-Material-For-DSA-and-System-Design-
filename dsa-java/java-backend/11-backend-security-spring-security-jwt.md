@@ -6,19 +6,13 @@ Welcome to Page 11 of the Java Backend Engineering series. Security is not an af
 
 ## 1. Authentication vs. Authorization
 
-```
-[ Client Request ]
-       |
-       v
-[ Authentication (AuthN): "Who are you?" ]
-  - Verifies username & password or validates JWT signature.
-  - Sets authenticated Principal in SecurityContextHolder.
-       | (Success)
-       v
-[ Authorization (AuthZ): "What are you permitted to do?" ]
-  - Checks if authenticated user has required Role/Authority (e.g., 'ROLE_ADMIN').
-  - If allowed: Controller executes.
-  - If denied: Throws 403 Forbidden!
+```mermaid
+flowchart TD
+    Req(["📱 Client Request"]) --> AuthN{"🔑 Authentication (AuthN)<br/>'Who are you?'"}
+    AuthN -- "Valid Credentials / JWT" --> AuthZ{"🛡️ Authorization (AuthZ)<br/>'What can you do?'"}
+    AuthN -- "Missing or Invalid Token" --> Err401["❌ 401 Unauthorized<br/>(Please authenticate)"]
+    AuthZ -- "Has Required Role (e.g. ROLE_ADMIN)" --> Controller["✅ 200 OK<br/>Execute Controller Method"]
+    AuthZ -- "Insufficient Privileges" --> Err403["❌ 403 Forbidden<br/>(Access denied)"]
 ```
 
 ---
@@ -27,19 +21,14 @@ Welcome to Page 11 of the Java Backend Engineering series. Security is not an af
 
 In modern Spring Boot 3, configuration is 100% component-based using the **`SecurityFilterChain`** bean (the legacy `WebSecurityConfigurerAdapter` is completely removed).
 
-```
-Client Request
-      |
-      v
-[ Spring Security Filter Chain ]
-  ├── 1. CorsFilter (Validates Origin)
-  ├── 2. CsrfFilter
-  ├── 3. Custom JwtAuthenticationFilter (Extracts & Validates Token)
-  ├── 4. UsernamePasswordAuthenticationFilter
-  └── 5. AuthorizationFilter (Enforces path & role rules)
-      |
-      v
-[ DispatcherServlet -> @RestController ]
+```mermaid
+flowchart TD
+    Req(["Client Request"]) --> F1["1. CorsFilter<br/><sub>Validates Origin & preflight OPTIONS</sub>"]
+    F1 --> F2["2. CsrfFilter<br/><sub>Disabled for stateless REST JWT APIs</sub>"]
+    F2 --> F3["3. Custom JwtAuthenticationFilter<br/><sub>Extracts Bearer token & populates SecurityContext</sub>"]
+    F3 --> F4["4. UsernamePasswordAuthenticationFilter<br/><sub>Used during login endpoint</sub>"]
+    F4 --> F5["5. AuthorizationFilter<br/><sub>Enforces URL patterns & @PreAuthorize roles</sub>"]
+    F5 --> Controller["🎯 DispatcherServlet ➔ @RestController"]
 ```
 
 ---

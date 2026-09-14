@@ -6,13 +6,18 @@ Welcome to Page 12 of the Java Backend Engineering series. Anyone can write code
 
 ## 1. The 3 Pillars of Backend Observability
 
-```
-                             OBSERVABILITY
-             +---------------------+---------------------+
-             |                     |                     |
-          Metrics                 Logs                Traces
-   "Is the system healthy?"    "What happened?"     "Where is the bottleneck?"
-    (Prometheus, Grafana)      (Logback, ELK Stack)   (Micrometer, Zipkin)
+```text
+╭─────────────────────────────────────────────────────────────────────────────╮
+│                         The 3 Pillars of Observability                      │
+├──────────────────────────────┬──────────────────────────────┬───────────────┤
+│          📊 Metrics          │           📝 Logs            │   🔍 Traces   │
+├──────────────────────────────┼──────────────────────────────┼───────────────┤
+│ "Is the system healthy?"     │ "What happened specifically?"│ "Where is the │
+│                              │                              │  bottleneck?" │
+│ Aggregated numbers over time │ Discrete timestamped events  │ End-to-end    │
+│ (JVM Heap, QPS, p99 latency) │ (Logback, ELK Stack, Loki)   │ request path  │
+│ (Prometheus, Micrometer)     │                              │ (Zipkin/Tempo)│
+╰──────────────────────────────┴──────────────────────────────┴───────────────╯
 ```
 
 1. **Metrics**: Aggregated numerical data over time (e.g., JVM Heap usage, HTTP request rate, $p99$ latency).
@@ -113,14 +118,20 @@ public class OrderProcessingService {
 
 In a microservices ecosystem, a single user request can trigger calls across 5 services. How do you trace where the latency occurred?
 
-```
-Client Request (Trace ID: 7f3b89a1)
-       |
-       +---> [API Gateway]      (Span ID: 1, Trace ID: 7f3b89a1)
-                  |
-                  +---> [Order Svc]    (Span ID: 2, Parent Span: 1, Trace ID: 7f3b89a1)
-                             |
-                             +---> [Payment Svc]  (Span ID: 3, Parent Span: 2, Trace ID: 7f3b89a1)
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Client as 📱 Client Request (Trace ID: 7f3b89a1)
+    participant GW as 🛡️ API Gateway<br/>(Span ID: 1)
+    participant Order as 📦 Order Service<br/>(Span ID: 2, Parent: 1)
+    participant Pay as 💳 Payment Service<br/>(Span ID: 3, Parent: 2)
+
+    Client->>GW: GET /api/v1/orders/10 (Trace: 7f3b89a1)
+    GW->>Order: Forward Request (Trace: 7f3b89a1, Parent Span: 1)
+    Order->>Pay: Process Payment (Trace: 7f3b89a1, Parent Span: 2)
+    Pay-->>Order: Payment Confirmed (Span 3 finished in 25ms)
+    Order-->>GW: Order Processed (Span 2 finished in 55ms)
+    GW-->>Client: 200 OK (Total Trace 7f3b89a1 finished in 65ms)
 ```
 
 With **Micrometer Tracing**, Spring automatically generates a **Trace ID** and injects it into every log line:

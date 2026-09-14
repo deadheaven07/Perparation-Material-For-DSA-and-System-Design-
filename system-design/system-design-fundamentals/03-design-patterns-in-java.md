@@ -6,15 +6,18 @@ Welcome to Page 3 of the System Design Fundamentals series. Design patterns are 
 
 ## 1. Pattern Classification Matrix
 
-```
-                          GoF Design Patterns
-             +---------------------+---------------------+
-             |                     |                     |
-        Creational            Structural             Behavioral
-      (Object Creation)     (Class/Object Layout)   (Object Interaction)
-      - Singleton           - Adapter               - Strategy
-      - Factory             - Decorator             - Observer
-      - Builder             - Facade                - Chain of Resp.
+```text
+╭─────────────────────────────────────────────────────────────────────────────╮
+│                        GoF Design Patterns for Java                         │
+├──────────────────────┬──────────────────────┬───────────────────────────────┤
+│    🔨 Creational     │    🏛️ Structural     │         🔄 Behavioral         │
+│  (Object Creation)   │ (Class/Object Layout)│      (Object Interactions)    │
+├──────────────────────┼──────────────────────┼───────────────────────────────┤
+│ • Singleton          │ • Adapter            │ • Strategy                    │
+│ • Factory Method     │ • Decorator          │ • Observer                    │
+│ • Builder            │ • Facade             │ • Chain of Responsibility     │
+│ • Prototype          │ • Proxy              │ • Command                     │
+╰──────────────────────┴──────────────────────┴───────────────────────────────╯
 ```
 
 ---

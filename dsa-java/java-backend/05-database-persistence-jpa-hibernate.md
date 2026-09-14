@@ -8,23 +8,13 @@ Welcome to Page 5 of the Java Backend Engineering series. In enterprise software
 
 Understanding the separation between specifications and implementations is essential:
 
-```
-[ Your Java Code (Spring Service) ]
-                |
-                v Uses high-level repositories (findByName, save)
-  [ Spring Data JPA ]  (Spring abstraction library)
-                |
-                v Adheres to standard interfaces (EntityManager)
-  [ JPA (Jakarta Persistence API) ]  (The official Java specification)
-                |
-                v Implements the JPA spec & generates SQL
-  [ Hibernate ORM ]  (The engine: Session, Dirty Checking, Cache)
-                |
-                v Manages TCP sockets & SQL execution
-  [ JDBC Driver ]  (PostgreSQL / MySQL driver)
-                |
-                v
-  [ Database (PostgreSQL / MySQL) ]
+```mermaid
+flowchart TD
+    App["☕ Spring Service / Business Logic"] --> SData["🍃 Spring Data JPA<br/><sub>JpaRepository interfaces & derived queries</sub>"]
+    SData --> JPA["📜 JPA Specification<br/><sub>Jakarta Persistence API (Interfaces & Annotations)</sub>"]
+    JPA --> Hib["⚙️ Hibernate ORM<br/><sub>Session, Dirty Checking, First-Level Cache, SQL Generation</sub>"]
+    Hib --> JDBC["🔌 JDBC Driver<br/><sub>TCP Socket management & raw SQL execution</sub>"]
+    JDBC --> DB[("💾 Database<br/><sub>PostgreSQL / MySQL</sub>")]
 ```
 
 - **JPA**: The specification (interfaces, annotations like `@Entity`, `@Id`, `@ManyToOne`).
@@ -79,11 +69,18 @@ public class User {
 
 In relational databases, relationships are formed by **Foreign Keys (FK)**. In Java, relationships are formed by **Object References**.
 
-```
-Database Schema (Foreign Key is on the 'books' table):
-[ authors ]                    [ books ]
-  id (PK) <--------------------- author_id (FK), id (PK), title
-(Inverse Side)                 (Owning Side - holds the FK!)
+```mermaid
+erDiagram
+    AUTHORS ||--o{ BOOKS : "writes (author_id)"
+    AUTHORS {
+        bigint id PK
+        varchar name
+    }
+    BOOKS {
+        bigint id PK
+        bigint author_id FK
+        varchar title
+    }
 ```
 
 ### 1. The Golden Rule: `@ManyToOne` is Always the Owning Side
@@ -194,30 +191,14 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
 ## 5. Hibernate Caching: First-Level vs. Second-Level
 
-```
-[ Client Request ]
-       |
-       v
-[ Spring @Transactional Service Method ]
-       |
-       v
-+-------------------------------------------------------------+
-|               1st-Level Cache (Hibernate Session)           |
-| - Scope: Bound to the CURRENT transaction/thread.           |
-| - Behavior: If you call findById(42) three times within one |
-|   transaction, Hibernate runs SQL ONCE and caches in RAM!   |
-+-------------------------------------------------------------+
-       | (Cache Miss)
-       v
-+-------------------------------------------------------------+
-|               2nd-Level Cache (Redis / Ehcache)             |
-| - Scope: Shared across ALL transactions and ALL users.      |
-| - Configured explicitly for read-heavy, rarely changed data |
-|   (e.g., Country codes, system permissions).                |
-+-------------------------------------------------------------+
-       | (Cache Miss)
-       v
-[ Database (PostgreSQL / MySQL) ]
+```mermaid
+flowchart TD
+    ClientReq(["📱 Spring @Transactional Method"]) --> L1["⚡ 1st-Level Cache (Hibernate Session)<br/><sub>Bound to CURRENT transaction/thread. findById() cached in RAM</sub>"]
+    L1 -- "Cache Hit" --> Return["Return Entity Instance"]
+    L1 -- "Cache Miss" --> L2["🌐 2nd-Level Cache (Redis / Ehcache)<br/><sub>Shared across ALL transactions & users for read-heavy reference data</sub>"]
+    L2 -- "Cache Hit" --> Return
+    L2 -- "Cache Miss" --> DB[("💾 Database (PostgreSQL / MySQL)")]
+    DB --> PopulateL2["Populate 2nd-Level Cache"] --> PopulateL1["Populate 1st-Level Cache"] --> Return
 ```
 
 ---

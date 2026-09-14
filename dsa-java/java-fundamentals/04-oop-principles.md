@@ -6,12 +6,16 @@ Welcome to Page 4 of the Java Fundamentals series. Object-Oriented Programming (
 
 ## 1. The 4 Pillars of OOP
 
-```
-                           The 4 Pillars of OOP
-             +---------------+---------------+---------------+
-             |               |               |               |
-       Encapsulation    Abstraction     Inheritance    Polymorphism
-      (Data Hiding)   (Hiding Details) (Code Reuse)  (Multiple Forms)
+```text
+╭─────────────────────────────────────────────────────────────────────────────╮
+│                             The 4 Pillars of OOP                            │
+├──────────────────┬──────────────────┬──────────────────┬────────────────────┤
+│ 🔒 Encapsulation │ 🎭 Abstraction   │ 🧬 Inheritance   │ 🔄 Polymorphism    │
+├──────────────────┼──────────────────┼──────────────────┼────────────────────┤
+│ Data Hiding &    │ Hiding internal  │ Code Reuse &     │ Multiple Forms     │
+│ Validation       │ implementation   │ IS-A hierarchy   │ (Overloading &     │
+│ (private fields) │ (interfaces)     │ (extends/implements) Overriding)      │
+╰──────────────────┴──────────────────┴──────────────────┴────────────────────╯
 ```
 
 ### 1. Encapsulation (Data Hiding & Protection)
@@ -142,24 +146,16 @@ obj.show(); // Prints "Child" at runtime!
 
 This is one of the most important concepts for DSA and Java interviews. `HashSet` and `HashMap` rely on this contract to identify unique keys:
 
-```
-                  Key Insertion into HashMap
-                             |
-                   Compute hashCode(key)
-                             |
-                  Find Bucket in Hash Table
-                             |
-                     Is Bucket Occupied?
-                     /                 \
-                  (No)                (Yes)
-                   |                    |
-             Insert Entry        Traverse Bucket LinkedList/Tree
-                                        |
-                            Does existing.key.equals(newKey)?
-                            /                              \
-                         (Yes)                            (No)
-                           |                                |
-                     Update Value                     Append New Entry
+```mermaid
+flowchart TD
+    Start(["Key Insertion into HashMap"]) --> Hash["1. Compute hashCode(key)"]
+    Hash --> Index["2. Calculate Bucket Index: hash & (n - 1)"]
+    Index --> CheckBucket{"Is Bucket Occupied?"}
+    CheckBucket -- "No" --> InsertNew["Insert Entry as Bucket Head"]
+    CheckBucket -- "Yes" --> LoopBucket["Traverse Bucket (LinkedList / Red-Black Tree)"]
+    LoopBucket --> CheckEquals{"Does existing.key.equals(newKey)?"}
+    CheckEquals -- "Yes (Same Key)" --> Update["Update Existing Value"]
+    CheckEquals -- "No (Hash Collision)" --> Append["Append New Entry to Chain / Tree"]
 ```
 
 ### The Rules of the Contract:

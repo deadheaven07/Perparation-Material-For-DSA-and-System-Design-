@@ -6,12 +6,16 @@ Welcome to Page 10 of the System Design Fundamentals series. Knowing architectur
 
 ## 1. The 45-Minute Interview Timeline
 
-```
-[00:00 - 05:00]  Step 1: Understand Scope & Clarify Requirements
-[05:00 - 12:00]  Step 2: Capacity Estimation & Back-of-the-Envelope Math
-[12:00 - 25:00]  Step 3: High-Level Architecture & API/Schema Design
-[25:00 - 42:00]  Step 4: Deep Dive, Scale Bottlenecks & Edge Cases
-[42:00 - 45:00]  Wrap Up & Questions
+```text
+╭─────────────────────────────────────────────────────────────────────────────╮
+│                 The 45-Minute System Design Interview Timeline              │
+├─────────────────┬───────────────────────────────────────────────────────────┤
+│ [00:00 - 05:00] │ 🎯 Step 1: Clarify Requirements & Scope (Functional & NFR)│
+│ [05:00 - 12:00] │ 🧮 Step 2: Capacity Estimation (QPS, Storage, Bandwidth)  │
+│ [12:00 - 25:00] │ 🏛️ Step 3: High-Level Architecture & Core API Design      │
+│ [25:00 - 42:00] │ 🔍 Step 4: Deep Dive Bottlenecks, Caches, DB Sharding, GC │
+│ [42:00 - 45:00] │ 🏁 Wrap Up & Candidate Questions                          │
+╰─────────────────┴───────────────────────────────────────────────────────────╯
 ```
 
 ---

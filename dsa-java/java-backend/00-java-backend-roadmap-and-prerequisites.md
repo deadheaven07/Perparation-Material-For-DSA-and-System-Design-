@@ -15,20 +15,28 @@ When you order food on an app:
 
 **That is the Backend (Server).**
 
-```
-+-----------------------------------------------------------------------------+
-|                               THE FULL PICTURE                              |
-|                                                                             |
-|  [ FRONTEND (Client) ]                     [ BACKEND (Server) ]             |
-|   - Mobile App (Android/iOS)               - Business Logic & Rules         |
-|   - Web Browser (React/Vue/HTML)           - Authentication & Security      |
-|           |                                - Database Queries & ACID        |
-|           | HTTP / JSON Request            - Asynchronous Event Streams     |
-|           v                                        |                        |
-|   "POST /api/v1/orders"                            v                        |
-|                                        [ DATABASE & CACHE ]                 |
-|                                        - PostgreSQL, MySQL, Redis           |
-+-----------------------------------------------------------------------------+
+```mermaid
+flowchart LR
+    subgraph Client["📱 Frontend (Client)"]
+        Mobile["Mobile App<br/><sub>Android / iOS</sub>"]
+        Browser["Web Browser<br/><sub>React / Vue / HTML</sub>"]
+    end
+
+    subgraph Server["☕ Backend (Server)"]
+        direction TB
+        Logic["Business Logic & Domain Rules"]
+        Auth["Authentication & Security (JWT / RBAC)"]
+        Engine["Data Processing & Event Streams"]
+    end
+
+    subgraph Storage["💾 Persistence & Caching"]
+        DB[("Database<br/><sub>PostgreSQL / MySQL</sub>")]
+        Cache[("In-Memory Cache<br/><sub>Redis</sub>")]
+    end
+
+    Client -- "HTTP / REST JSON<br/>(POST /api/v1/orders)" --> Server
+    Server --> DB
+    Server --> Cache
 ```
 
 The backend is responsible for:
@@ -43,42 +51,26 @@ The backend is responsible for:
 
 Every enterprise Java application—whether a simple CRUD app or a billion-dollar fintech engine—is structured into **three distinct layers**:
 
-```
-[ Client (Browser / Mobile) ]
-             |
-             | (1) HTTP Request: POST /users { "name": "Alice", "email": "a@test.com" }
-             v
-+-----------------------------------------------------------------------------+
-|                               CONTROLLER LAYER                              |
-| - Class: UserController.java                                                |
-| - Role: The Receptionist. Listens for HTTP requests, validates incoming     |
-|         input (@Valid, @NotNull), unpacks DTOs, and calls the Service layer.|
-+-----------------------------------------------------------------------------+
-             |
-             | (2) Passes Validated Java DTO
-             v
-+-----------------------------------------------------------------------------+
-|                                SERVICE LAYER                                |
-| - Class: UserService.java                                                   |
-| - Role: The Brain. Contains business logic, validates if email is taken,   |
-|         encrypts password with BCrypt, manages transactions (@Transactional)|
-+-----------------------------------------------------------------------------+
-             |
-             | (3) Passes Domain Entity to save
-             v
-+-----------------------------------------------------------------------------+
-|                              REPOSITORY LAYER                               |
-| - Interface: UserRepository.java (extends JpaRepository)                    |
-| - Role: The Librarian. Communicates with the database using Hibernate/JPA,  |
-|         executes SQL INSERT, UPDATE, SELECT, DELETE.                        |
-+-----------------------------------------------------------------------------+
-             |
-             | (4) Executes SQL: INSERT INTO users ...
-             v
-+-----------------------------------------------------------------------------+
-|                           DATABASE / PERSISTENCE                            |
-| - PostgreSQL, MySQL, Redis Cache                                            |
-+-----------------------------------------------------------------------------+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Client as 📱 Client (Browser/Mobile)
+    participant C as 🎯 Controller Layer<br/>(UserController)
+    participant S as 🧠 Service Layer<br/>(UserService)
+    participant R as 📚 Repository Layer<br/>(UserRepository)
+    participant DB as 💾 Database<br/>(PostgreSQL / Redis)
+
+    Client->>C: 1. HTTP POST /users { name: "Alice", email: "a@test.com" }
+    Note over C: The Receptionist: Validates DTO (@Valid, @NotNull)
+    C->>S: 2. Passes validated UserDTO
+    Note over S: The Brain: Business rules, BCrypt hashing, @Transactional
+    S->>R: 3. Passes Domain Entity (User)
+    Note over R: The Librarian: Generates SQL queries via Hibernate/JPA
+    R->>DB: 4. Executes SQL: INSERT INTO users ...
+    DB-->>R: 5. Returns saved row with generated ID
+    R-->>S: 6. Returns managed User Entity
+    S-->>C: 7. Maps Entity to UserResponseDTO
+    C-->>Client: 8. HTTP/1.1 201 Created + JSON Body
 ```
 
 > [!IMPORTANT]
@@ -93,54 +85,40 @@ Every enterprise Java application—whether a simple CRUD app or a billion-dolla
 
 To become a high-impact Java Backend Engineer, you must master the stack in progressive, logical stages:
 
-```
-====================================================================================================
-                              JAVA BACKEND DEVELOPER: MASTER ROADMAP
-====================================================================================================
+```mermaid
+flowchart TD
+    subgraph S1["🌱 STAGE 1: The Foundations"]
+        P00["Page 00: Master Roadmap & Mental Model<br/><sub>Client ➔ Controller ➔ Service ➔ DB</sub>"]
+        P01["Page 01: Web & HTTP Protocols<br/><sub>Request/Response, Methods, Status Codes, REST</sub>"]
+    end
 
- [ STAGE 1: THE FOUNDATIONS ]
-       |
-       +---> [00] Master Roadmap & Backend Mental Model (Client -> Controller -> Service -> DB)
-       |
-       +---> [01] Web & HTTP Protocols (Request/Response, Methods, Status Codes, REST Constraints)
-       |
-       v
- [ STAGE 2: THE JAVA WEB ENGINE ]
-       |
-       +---> [02] Servlets & Spring MVC (Tomcat, DispatcherServlet, Filters vs Interceptors)
-       |
-       +---> [03] Spring Framework & Boot Core (IoC, Dependency Injection, Beans, Auto-Configuration)
-       |
-       v
- [ STAGE 3: DATA PERSISTENCE & BUSINESS LOGIC ]
-       |
-       +---> [04] REST APIs & Validation (DTO Pattern, Jakarta Validation, @RestControllerAdvice)
-       |
-       +---> [05] Database Persistence (Spring Data JPA, Hibernate ORM, N+1 Query Fixes)
-       |
-       +---> [06] Transactions & Locking (@Transactional, Propagation, Optimistic vs Pessimistic)
-       |
-       v
- [ STAGE 4: PERFORMANCE & ASYNC PROCESSING ]
-       |
-       +---> [07] Async & Virtual Threads (CompletableFuture, Java 21 Virtual Threads, ScopedValue)
-       |
-       +---> [08] Caching with Redis (Spring Cache, RedisTemplate, Cache-Aside, Stampede & Bloom)
-       |
-       v
- [ STAGE 5: DISTRIBUTED & EVENT-DRIVEN SYSTEMS ]
-       |
-       +---> [09] Messaging with Apache Kafka (Event-driven backends, KafkaTemplate, Offsets, DLQ)
-       |
-       +---> [10] Microservices with Spring Cloud (API Gateway, Eureka Discovery, OpenFeign Clients)
-       |
-       v
- [ STAGE 6: ENTERPRISE SECURITY & RESILIENCE ]
-       |
-       +---> [11] Backend Security with JWT (SecurityFilterChain, Stateless Auth Filter, RBAC, BCrypt)
-       |
-       +---> [12] Production Observability & Resilience (Actuator, Prometheus, Tracing, Resilience4j)
-====================================================================================================
+    subgraph S2["⚙️ STAGE 2: The Java Web Engine"]
+        P02["Page 02: Servlets & Spring MVC<br/><sub>Tomcat, DispatcherServlet, Filters vs Interceptors</sub>"]
+        P03["Page 03: Spring Framework & Boot Core<br/><sub>IoC, Dependency Injection, Beans, Auto-Configuration</sub>"]
+    end
+
+    subgraph S3["💾 STAGE 3: Data Persistence & Business Logic"]
+        P04["Page 04: REST APIs & Validation<br/><sub>DTO Pattern, Jakarta Validation, @RestControllerAdvice</sub>"]
+        P05["Page 05: Database Persistence<br/><sub>Spring Data JPA, Hibernate ORM, N+1 Query Fixes</sub>"]
+        P06["Page 06: Transactions & Locking<br/><sub>@Transactional, Propagation, Optimistic vs Pessimistic</sub>"]
+    end
+
+    subgraph S4["⚡ STAGE 4: Performance & Async Processing"]
+        P07["Page 07: Async & Virtual Threads<br/><sub>CompletableFuture, Java 21 Loom, ScopedValue</sub>"]
+        P08["Page 08: Caching with Redis<br/><sub>Spring Cache, RedisTemplate, Cache-Aside, Stampede</sub>"]
+    end
+
+    subgraph S5["📡 STAGE 5: Distributed & Event-Driven Systems"]
+        P09["Page 09: Messaging with Apache Kafka<br/><sub>Event-Driven, KafkaTemplate, Offsets, DLQ</sub>"]
+        P10["Page 10: Microservices with Spring Cloud<br/><sub>API Gateway, Eureka Discovery, OpenFeign</sub>"]
+    end
+
+    subgraph S6["🛡️ STAGE 6: Enterprise Security & Resilience"]
+        P11["Page 11: Backend Security with JWT<br/><sub>SecurityFilterChain, Stateless Auth Filter, RBAC</sub>"]
+        P12["Page 12: Production Observability & Resilience<br/><sub>Actuator, Prometheus, Distributed Tracing, Resilience4j</sub>"]
+    end
+
+    S1 --> S2 --> S3 --> S4 --> S5 --> S6
 ```
 
 ---

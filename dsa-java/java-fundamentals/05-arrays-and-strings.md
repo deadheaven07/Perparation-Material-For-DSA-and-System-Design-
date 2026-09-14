@@ -8,14 +8,17 @@ Welcome to Page 5 of the Java Fundamentals series. Arrays and Strings account fo
 
 In Java, arrays are **first-class objects** stored in the Heap. The variable name in the Stack holds a reference to the array object.
 
-```
-Stack Memory                              Heap Memory
-+-----------------------+                 +--------------------------------------+
-| int[] nums ---------> | --------------> | Array Object:                        |
-|                       |                 | [Header: length=4]                   |
-|                       |                 | Index:  [ 0 |  1 |  2 |  3 ]         |
-|                       |                 | Value:  [10 | 20 | 30 | 40 ]         |
-+-----------------------+                 +--------------------------------------+
+```text
+╭─────────────────────────────────────────────────────────────────────────────╮
+│                         1D Array Memory Allocation                          │
+├──────────────────────────────┬──────────────────────────────────────────────┤
+│ 🧵 Stack Memory (Reference)  │ 🌐 Heap Memory (Contiguous Array Object)     │
+├──────────────────────────────┼──────────────────────────────────────────────┤
+│ int[] nums ──────────────────┼─▶ [ Object Header: mark word + klass word ]  │
+│                              │   [ Array Length: 4 ]                        │
+│                              │   Index: [  0  │  1  │  2  │  3  ]           │
+│                              │   Value: [ 10  │ 20  │ 30  │ 40  ]           │
+╰──────────────────────────────┴──────────────────────────────────────────────╯
 ```
 
 ### 1D Array Initialization
@@ -91,16 +94,19 @@ Strings in Java are objects of class `java.lang.String`.
 
 ### `==` vs. `.equals()`: The String Pool Trap
 
-```
-Stack                                 Heap Memory
-+---------------+                     +---------------------------------------+
-| s1 ---------> | ------------------> | String Constant Pool (SCP)            |
-|               |                     |    "hello" <---+                      |
-| s2 ---------> | --------------------+                |                      |
-|               |                                      |                      |
-| s3 ---------> | -------> [ New Object "hello" ] -----(intern reference)     |
-+---------------+          (Outside Pool)                                     |
-                                      +---------------------------------------+
+```text
+╭─────────────────────────────────────────────────────────────────────────────╮
+│                    String Constant Pool (SCP) vs. Heap                      │
+├──────────────────────────────┬──────────────────────────────────────────────┤
+│ 🧵 Stack (References)        │ 🌐 Heap Memory Area                          │
+├──────────────────────────────┼──────────────────────────────────────────────┤
+│ String s1 ───────────────────┼──▶ ╭──────────────────────────────────────╮  │
+│                              │    │ String Constant Pool (SCP)           │  │
+│ String s2 ───────────────────┼──▶ │  "hello" (Address: 0x55)             │  │
+│                              │    ╰──────────────────▲───────────────────╯  │
+│ String s3 ───────────────────┼──▶ [ New Object "hello" (Heap: 0x99) ]       │
+│                              │      └─ Interned literal pointer ─────┘      │
+╰──────────────────────────────┴──────────────────────────────────────────────╯
 ```
 
 ```java

@@ -6,11 +6,17 @@ Welcome to Page 6 of the System Design Fundamentals series. Caching is the most 
 
 ## 1. Memory Access Hierarchy & The 80/20 Rule
 
-```
-[ L1 / L2 / L3 CPU Cache ]  ---> < 1 - 10 nanoseconds
-[ Main Memory (RAM / Heap) ]---> ~ 100 nanoseconds        <-- In-Memory Java Cache (Caffeine)
-[ Redis over Network ]     ---> ~ 1 - 2 milliseconds     <-- Distributed Cache
-[ SSD / Relational DB ]     ---> ~ 10 - 50 milliseconds   <-- Database Layer
+```text
+╭─────────────────────────────────────────────────────────────────────────────╮
+│                        Storage Hierarchy Latency Numbers                    │
+├──────────────────────────────────────────────┬──────────────────────────────┤
+│ Layer & Technology                           │ Approximate Latency          │
+├──────────────────────────────────────────────┼──────────────────────────────┤
+│ ⚡ L1 / L2 / L3 CPU Caches                   │ 0.5 – 10 nanoseconds         │
+│ 🧠 Main Memory (RAM / Local Heap - Caffeine) │ ~ 100 nanoseconds            │
+│ 🌐 Remote Distributed Cache (Redis over LAN) │ ~ 1 – 2 milliseconds         │
+│ 💾 Solid State Drive (SSD / Relational DB)   │ ~ 10 – 50 milliseconds       │
+╰──────────────────────────────────────────────┴──────────────────────────────╯
 ```
 
 The **Pareto Principle (80/20 Rule)** states that $80\%$ of application traffic typically requests only $20\%$ of the data (the "hot" working set). Caching this $20\%$ in RAM yields massive performance gains.
@@ -19,20 +25,23 @@ The **Pareto Principle (80/20 Rule)** states that $80\%$ of application traffic 
 
 ## 2. Caching Patterns
 
-```
-1. Cache-Aside (Lazy Loading)           2. Write-Through
-   App ---> Cache (Miss)                   App ---> Cache (Sync Write)
-    |         |                             |          |
-    +---> DB (Read)                         +---> DB (Sync Write)
-    |
-    +---> Cache (Store)
+```mermaid
+flowchart TD
+    subgraph Pattern1["1. Cache-Aside (Lazy Loading - Most Popular)"]
+        A1["Application"] -- "1. Read Key" --> C1[("Cache")]
+        A1 -- "2. On Miss: Read DB" --> D1[("Database")]
+        A1 -- "3. Store Value" --> C1
+    end
 
-3. Write-Behind (Write-Back)            4. Refresh-Ahead
-   App ---> Cache (Fast Sync Write)        Cache monitors TTL; automatically
-             |                              fetches fresh data from DB before
-            (Async Batch Write)             expiration occurs!
-             v
-            DB
+    subgraph Pattern2["2. Write-Through (Consistent)"]
+        A2["Application"] -- "1. Write Data" --> C2[("Cache")]
+        C2 -- "2. Sync Write" --> D2[("Database")]
+    end
+
+    subgraph Pattern3["3. Write-Behind (High Write Throughput)"]
+        A3["Application"] -- "1. Fast Write" --> C3[("Cache")]
+        C3 -. "2. Async Batch Flush" .-> D3[("Database")]
+    end
 ```
 
 ### 1. Cache-Aside (Most Common in Web Apps)
@@ -105,18 +114,22 @@ public class LRUCache<K, V> extends LinkedHashMap<K, V> {
 
 ## 5. Cache Traps & Distributed System Mitigations
 
-```
-1. Cache Avalanche                      2. Thundering Herd (Cache Stampede)
-   10,000 keys expire at 12:00:00 AM       Hot Key ("WorldCupFinal") expires
-             |                                       |
-    All queries hit DB simultaneously      10,000 concurrent threads query DB
-             v                                       v
-        [ DB CRASH ]                            [ DB CRASH ]
-
-3. Cache Penetration
-   Attacker queries ID = -999999 (Does not exist in DB or Cache)
-             |
-   Every request bypasses cache and hits DB!
+```text
+╭─────────────────────────────────────────────────────────────────────────────╮
+│                    Common Production Cache Failure Patterns                 │
+├──────────────────────────────┬──────────────────────────────┬───────────────┤
+│ 🏔️ Cache Avalanche          │ 🦬 Thundering Herd / Stampede│ 🕳️ Penetration │
+├──────────────────────────────┼──────────────────────────────┼───────────────┤
+│ 10,000 keys expire at the    │ A single viral key expires   │ Attacker sends│
+│ exact same second.           │ during peak traffic.         │ ID = -99999   │
+│             │                │              │               │ (Invalid key) │
+│             ▼                │              ▼               │       │       │
+│ All requests hit DB at once! │ 10,000 threads query DB!     │ Bypasses cache│
+│             │                │              │               │ and hits DB!  │
+│             ▼                │              ▼               │       │       │
+│        [ DB CRASH ]          │         [ DB CRASH ]         │       ▼       │
+│ 🛡️ Fix: Add TTL jitter       │ 🛡️ Fix: Mutex lock (Redisson)│ 🛡️ Bloom filter│
+╰──────────────────────────────┴──────────────────────────────┴───────────────╯
 ```
 
 ### 1. Cache Avalanche

@@ -8,27 +8,24 @@ Welcome to Page 3 of the Java Fundamentals series. Understanding how Java manage
 
 When a Java program runs, the JVM divides the operating system memory into distinct logical regions:
 
-```
-+-------------------------------------------------------------+
-|                          JVM Memory                         |
-|                                                             |
-|  +--------------------------+   +------------------------+  |
-|  |       Stack Memory       |   |       Heap Memory      |  |
-|  |   (Thread-Isolated)      |   |   (Shared Across       |  |
-|  |                          |   |    All Threads)        |  |
-|  | [Frame: main()]          |   |                        |  |
-|  |  - primitive: int a = 10 |   |  +-------------------+ |  |
-|  |  - ref: Node head ------>|---|->| Node object (Heap)| |  |
-|  |                          |   |  | val: 5, next: null| |  |
-|  | [Frame: dfs(node)]       |   |  +-------------------+ |  |
-|  |  - int depth = 1         |   |                        |  |
-|  |  - ref: curr ----------->|---|->| int[] array [1,2] | |  |
-|  +--------------------------+   +------------------------+  |
-|                                                             |
-|  +-------------------------------------------------------+  |
-|  |        Metaspace (Class definitions, static vars)      |  |
-|  +-------------------------------------------------------+  |
-+-------------------------------------------------------------+
+```text
+╭─────────────────────────────────────────────────────────────────────────────╮
+│                             JVM Runtime Memory                              │
+├──────────────────────────────┬──────────────────────────────────────────────┤
+│ 🧵 Stack Memory              │ 🌐 Heap Memory                               │
+│    (Thread-Isolated)         │    (Shared Across All Threads)               │
+├──────────────────────────────┼──────────────────────────────────────────────┤
+│ [Frame: main()]              │                                              │
+│  - primitive: int a = 10     │ ╭──────────────────────────────────────────╮ │
+│  - ref: Node head ───────────┼─▶│ Node Object (Heap address: 0x4A)        │ │
+│                              │  │  - val: 5, next: null                   │ │
+│ [Frame: dfs(node)]           │ ╰──────────────────────────────────────────╯ │
+│  - primitive: int depth = 1  │ ╭──────────────────────────────────────────╮ │
+│  - ref: curr ────────────────┼─▶│ int[] array [1, 2] (Address: 0x8C)      │ │
+│                              │ ╰──────────────────────────────────────────╯ │
+├──────────────────────────────┴──────────────────────────────────────────────┤
+│ 📚 Metaspace: Class Bytecode definitions, Method tables, static variables   │
+╰─────────────────────────────────────────────────────────────────────────────╯
 ```
 
 ### 1. Stack Memory
@@ -159,12 +156,15 @@ public static int factorial(int n) {
 }
 ```
 
-```
-Call Stack Progression for factorial(3):
-[factorial(1)] -> returns 1, frame popped
-[factorial(2)] -> waits for factorial(1), returns 2, frame popped
-[factorial(3)] -> waits for factorial(2), returns 6, frame popped
-[main()]       -> receives 6
+```text
+╭─────────────────────────────────────────────────────────────────────────────╮
+│                 Call Stack Progression for factorial(3)                     │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ 4. [factorial(1)] ➔ returns 1 (Base Case reached) ➔ Frame Popped            │
+│ 3. [factorial(2)] ➔ waits for factorial(1), returns 2 ➔ Frame Popped        │
+│ 2. [factorial(3)] ➔ waits for factorial(2), returns 6 ➔ Frame Popped        │
+│ 1. [main()]       ➔ receives 6, continues execution                         │
+╰─────────────────────────────────────────────────────────────────────────────╯
 ```
 
 ### Stack Memory & Space Complexity Analysis

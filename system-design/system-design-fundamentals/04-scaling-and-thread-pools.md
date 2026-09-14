@@ -6,14 +6,20 @@ Welcome to Page 4 of the System Design Fundamentals series. When scaling a distr
 
 ## 1. System Scaling: Vertical vs. Horizontal
 
-```
-          Vertical Scaling (Scale-Up)               Horizontal Scaling (Scale-Out)
-                +-------------+                   +-------+   +-------+   +-------+
-                | 64-Core CPU |                   | 4-Core|   | 4-Core|   | 4-Core|
-                | 256 GB RAM  |                   | 16 GB |   | 16 GB |   | 16 GB |
-                +-------------+                   +-------+   +-------+   +-------+
-                                                         \        |        /
-                                                      [ Load Balancer (Nginx) ]
+```text
+╭─────────────────────────────────────────────────────────────────────────────╮
+│                Vertical Scaling vs. Horizontal Scaling                      │
+├──────────────────────────────┬──────────────────────────────────────────────┤
+│ 🚀 Vertical Scaling (Scale-Up)│ 🌐 Horizontal Scaling (Scale-Out)            │
+├──────────────────────────────┼──────────────────────────────────────────────┤
+│ ╭──────────────────────────╮ │ ╭──────────╮   ╭──────────╮   ╭──────────╮   │
+│ │ Single Giant Server      │ │ │ Node 1   │   │ Node 2   │   │ Node 3   │   │
+│ │ 64-Core CPU, 256GB RAM   │ │ │ 4-Core   │   │ 4-Core   │   │ 4-Core   │   │
+│ ╰──────────────────────────╯ │ ╰────┬─────╯   ╰────┬─────╯   ╰────┬─────╯   │
+│ ⚠️ Hardware ceiling & SPOF   │      ╰──────────────┼──────────────╯         │
+│                              │          [ Load Balancer (Nginx / ALB) ]     │
+│                              │ ✨ Resilient, linear scaling with zero downtime│
+╰──────────────────────────────┴──────────────────────────────────────────────╯
 ```
 
 | Dimension | Vertical Scaling (Scale-Up) | Horizontal Scaling (Scale-Out) |
@@ -47,23 +53,15 @@ ThreadPoolExecutor executor = new ThreadPoolExecutor(
 
 ### The Exact Task Submission Lifecycle:
 
-```
-                  New Task Arrives
-                         |
-           Are active threads < corePoolSize?
-                 /               \
-              (Yes)              (No)
-               |                   |
-        Spawn New Worker    Is workQueue Full?
-        Thread to Execute         /          \
-                                (No)        (Yes)
-                                 |            |
-                           Enqueue Task  Are active threads < maxPoolSize?
-                                               /                  \
-                                            (Yes)                 (No)
-                                             |                     |
-                                      Spawn Worker        Trigger Rejection Policy
-                                      Thread to Execute   (e.g., CallerRunsPolicy)
+```mermaid
+flowchart TD
+    Task(["New Task Arrives"]) --> CheckCore{"Active Threads < corePoolSize?"}
+    CheckCore -- "Yes" --> SpawnCore["Spawn New Worker Thread<br/>to execute task immediately"]
+    CheckCore -- "No" --> CheckQueue{"Is workQueue Full?"}
+    CheckQueue -- "No" --> Enqueue["Enqueue Task in BlockingQueue<br/>(Waits for idle worker thread)"]
+    CheckQueue -- "Yes" --> CheckMax{"Active Threads < maximumPoolSize?"}
+    CheckMax -- "Yes" --> SpawnMax["Spawn Temporary Worker Thread<br/>to execute task"]
+    CheckMax -- "No" --> Reject["Trigger RejectedExecutionHandler<br/>(e.g., CallerRunsPolicy / AbortPolicy)"]
 ```
 
 ### Rejection Policies Under Heavy Load:
@@ -101,9 +99,15 @@ On an 8-core machine: $8 \times 10 = 80\text{ threads}$.
 
 A common cause of sudden latency spikes ($p99$ spikes) in Java systems is **Garbage Collection Stop-The-World (STW) Pauses**:
 
-```
-Application Thread: ---[Active]---[Active]-----[STW PAUSE]-----[Active]--->
-GC Thread:          ---------------------------[Collecting]---------------->
+```text
+╭─────────────────────────────────────────────────────────────────────────────╮
+│                 Garbage Collection Stop-The-World (STW) Pause               │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ App Thread:  ───[Active]───[Active]───────[🚨 STW PAUSE]───────[Active]──▶   │
+│ GC Thread:   ────────────────────────────[🧹 Collecting]─────────────────▶   │
+│ Impact:      All business logic is frozen while the JVM cleans the heap!    │
+│ Modern Fix:  Use Java 21 ZGC (`-XX:+UseZGC`) for sub-millisecond pauses!   │
+╰─────────────────────────────────────────────────────────────────────────────╯
 ```
 
 ### Choosing the Right Garbage Collector:

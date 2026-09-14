@@ -8,31 +8,28 @@ Welcome to Page 1 of the System Design Fundamentals series. When interviewers as
 
 A modern scalable Java web architecture typically follows this request pipeline:
 
-```
-[Browser / Mobile Client]
-           |
-           v (HTTPS / DNS Route)
-   [Cloudflare / CDN] (Static Assets: HTML, Images, JS)
-           |
-           v (Dynamic API Traffic)
- [Load Balancer / Nginx] (SSL Termination, Health Checks, Reverse Proxy)
-           |
-           +-----------------------+-----------------------+
-           |                       |                       |
-           v                       v                       v
-    [Java Pod 1]            [Java Pod 2]            [Java Pod 3]
-  (Spring Boot /          (Spring Boot /          (Spring Boot /
-   Tomcat / JVM)           Tomcat / JVM)           Tomcat / JVM)
-           |                       |                       |
-           +-----------------------+-----------------------+
-                                   |
-                  +----------------+----------------+
-                  |                                 |
-                  v                                 v
-          [Redis Cache Cluster]           [PostgreSQL DB Primary]
-             (Sub-millisecond)                      | (Replication)
-                                                    v
-                                          [PostgreSQL DB Replicas]
+```mermaid
+flowchart TD
+    Client(["📱 Browser / Mobile App"]) --> Cloudflare["☁️ Cloudflare / Edge CDN<br/><sub>Static Assets & DDoS Mitigation</sub>"]
+    Cloudflare --> LB["🛡️ Load Balancer / Nginx<br/><sub>SSL Termination, Health Checks, Reverse Proxy</sub>"]
+    
+    subgraph JavaCluster["☕ Java Application Pods (Spring Boot / Tomcat on JVM)"]
+        Pod1["Pod 1 (:8080)"]
+        Pod2["Pod 2 (:8080)"]
+        Pod3["Pod 3 (:8080)"]
+    end
+
+    LB --> Pod1 & Pod2 & Pod3
+
+    subgraph DataLayer["💾 Caching & Database Persistence"]
+        Redis[("⚡ Redis Cache Cluster<br/><sub>Sub-millisecond Latency</sub>")]
+        DBPrimary[("🗄️ PostgreSQL Primary<br/><sub>ACID Writes & Master State</sub>")]
+        DBReplica[("📑 PostgreSQL Read Replicas<br/><sub>Horizontal Read Scaling</sub>")]
+    end
+
+    Pod1 & Pod2 & Pod3 --> Redis
+    Pod1 & Pod2 & Pod3 --> DBPrimary
+    DBPrimary -. "Streaming Replication" .-> DBReplica
 ```
 
 1. **DNS & CDN**: Resolves domain to IP; caches static assets at edge servers near the user.
@@ -46,24 +43,25 @@ A modern scalable Java web architecture typically follows this request pipeline:
 
 Understanding how Java processes incoming HTTP connections is a classic system design interview topic.
 
-```
-Model 1: Thread-Per-Request (Tomcat / Traditional Servlet)
-Client 1 ---> [ OS Thread 1 (Stack 1MB) ] ---> Blocks on Database (Waiting...)
-Client 2 ---> [ OS Thread 2 (Stack 1MB) ] ---> Blocks on 3rd-Party API
-* Limit: ~200 - 500 threads per JVM instance before memory & context-switch exhaustion!
-
-Model 2: Event-Driven / Reactive (Netty / Spring WebFlux)
-Clients ---> [ Event Loop Thread ] ---> Dispatches non-blocking async events
-* Advantage: Millions of idle connections with few threads.
-* Drawback: Callback hell, steep learning curve, non-blocking DB drivers required.
-
-Model 3: Virtual Threads (Java 21 / Project Loom)
-100,000s of Virtual Threads (Cheap, KB memory) 
-        \ | /
-      [ Mount ]
-        / | \
-Small pool of Carrier OS Threads (Equal to CPU Cores)
-* When Virtual Thread blocks on I/O, JVM unmounts it and executes another!
+```text
+╭─────────────────────────────────────────────────────────────────────────────╮
+│                     The 3 Java Concurrency Thread Models                    │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ 🧵 Model 1: Thread-Per-Request (Traditional Tomcat)                         │
+│    Client 1 ──▶ [ OS Thread 1 (1MB Stack) ] ──▶ Blocks on DB query (Waiting)│
+│    Client 2 ──▶ [ OS Thread 2 (1MB Stack) ] ──▶ Blocks on REST API (Waiting)│
+│    ⚠️ Limit: 200 - 500 threads per JVM before RAM / context-switch failure  │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ ⚡ Model 2: Event-Driven / Reactive (Netty / Spring WebFlux)                │
+│    10,000 Clients ──▶ [ Single Event Loop Thread ] ──▶ Non-blocking sockets │
+│    ⚠️ Drawback: Callback hell, steep learning curve, breaks ThreadLocal     │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ 🚀 Model 3: Virtual Threads (Java 21 Project Loom — Modern Standard)        │
+│    100,000s of Virtual Threads (Cheap KB memory) ──▶ [ JVM Scheduler ]       │
+│                                                            │                │
+│             Pool of Carrier OS Threads (Equal to CPU Cores)                 │
+│    ✨ Advantage: Write simple synchronous code with massive reactive scale! │
+╰─────────────────────────────────────────────────────────────────────────────╯
 ```
 
 ### 1. Traditional Servlet Model (Thread-Per-Request)

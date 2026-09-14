@@ -6,13 +6,21 @@ Welcome to Page 7 of the System Design Fundamentals series. In distributed archi
 
 ## 1. Synchronous vs. Asynchronous Communication
 
-```
-Synchronous (REST / gRPC)                   Asynchronous (Message Broker / Kafka)
-Client ---> [Service A] ---> [Service B]    Client ---> [Service A] ---> [Message Queue]
-             (Waits...)       (Waits...)                 (Acks immediately)       |
-                                                                                  v
-                                                                             [Service B]
-                                                                          (Processes at own pace)
+```mermaid
+flowchart TD
+    subgraph Sync["❌ Synchronous (REST / gRPC) — Tightly Coupled"]
+        C1["Client"] -- "Request" --> S1["Service A"]
+        S1 -- "Wait..." --> S2["Service B"]
+        Note1["Total Latency = Time(A) + Time(B). If B fails, A fails!"]
+    end
+
+    subgraph Async["✅ Asynchronous (Kafka / Event Streaming) — Decoupled"]
+        C2["Client"] -- "Request" --> S3["Service A"]
+        S3 -- "Publish Event" --> Q[("📡 Message Broker / Kafka")]
+        S3 -- "Immediate Ack" --> C2
+        Q --> S4["Service B"]
+        Note2["Service A returns immediately. Service B consumes at its own pace!"]
+    end
 ```
 
 | Dimension | Synchronous (REST / gRPC) | Asynchronous (Kafka / RabbitMQ) |
@@ -26,17 +34,19 @@ Client ---> [Service A] ---> [Service B]    Client ---> [Service A] ---> [Messag
 
 ## 2. Message Queues (RabbitMQ) vs. Event Streams (Kafka)
 
-```
-RabbitMQ (Smart Broker, Dumb Consumer)
-Producer ---> [ Queue ] ---> Consumer 1 (Worker receives message)
-                         \-> Consumer 2
-* Messages are DELETED once acknowledged.
-
-Apache Kafka (Dumb Broker, Smart Consumer)
-Producer ---> [ Partition Log: 0 | 1 | 2 | 3 | 4 | 5 ] (Append-Only Disk Log)
-                              ^                   ^
-                        Consumer Group B     Consumer Group A
-* Messages are IMMUTABLE & PERSISTENT. Multiple consumer groups read at different offsets!
+```text
+╭─────────────────────────────────────────────────────────────────────────────╮
+│                   Message Queue (RabbitMQ) vs. Event Stream (Kafka)         │
+├──────────────────────────────────────────────┬──────────────────────────────┤
+│ 🐇 RabbitMQ (Smart Broker, Dumb Consumer)    │ ⚡ Apache Kafka (Append-Only Log)    │
+├──────────────────────────────────────────────┼──────────────────────────────┤
+│ Producer ──▶ [ Queue ] ──┬──▶ Worker 1       │ Producer ──▶ [ 0 │ 1 │ 2 │ 3 │ 4 │ 5 ]│
+│                          └──▶ Worker 2       │                     ▲           ▲    │
+│ 💡 Messages DELETED after consumer ACK       │                     │           │    │
+│ 💡 Suitable for discrete worker task dispatch│               Group B     Group A    │
+│                                              │ 💡 Messages IMMUTABLE & PERSISTENT   │
+│                                              │ 💡 Consumers replay historical data  │
+╰──────────────────────────────────────────────┴──────────────────────────────╯
 ```
 
 | Feature | Message Queue (RabbitMQ, AWS SQS) | Event Stream (Apache Kafka) |

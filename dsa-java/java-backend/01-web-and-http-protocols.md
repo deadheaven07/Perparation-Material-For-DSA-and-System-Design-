@@ -8,25 +8,33 @@ Welcome to Page 1 of the Java Backend Engineering series. Before writing a singl
 
 When a client (browser or mobile app) sends an HTTP request to `https://api.example.com/users/42`, the following sequence takes place over the network:
 
-```
-[ Browser / Mobile Client ]
-            |
-            | 1. DNS Lookup (Finds IP address: 198.51.100.1)
-            v
-       [ DNS Server ]
-            |
-            | 2. TCP 3-Way Handshake (SYN -> SYN-ACK -> ACK)
-            | 3. TLS / SSL Negotiation (Encrypts socket connection)
-            v
-  [ Reverse Proxy / Load Balancer (Nginx / ALB) ]
-            |
-            | 4. Forwards raw HTTP byte stream
-            v
-  [ Java Backend (Tomcat / Spring Boot on port 8080) ]
-            |
-            | 5. Deserializes HTTP bytes -> HttpServletRequest object
-            v
-  [ UserController.java ]
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Client as 📱 Browser / Mobile Client
+    participant DNS as 🌐 DNS Server
+    participant LB as 🛡️ Reverse Proxy / Load Balancer (Nginx/ALB)
+    participant Tomcat as ⚙️ Java Backend (Tomcat :8080)
+    participant Controller as 🎯 UserController.java
+
+    Client->>DNS: 1. DNS Lookup (api.example.com)
+    DNS-->>Client: Return IP: 198.51.100.1
+    
+    rect rgb(240, 248, 255)
+        Note over Client,LB: TCP 3-Way Handshake & TLS Encryption
+        Client->>LB: SYN
+        LB-->>Client: SYN-ACK
+        Client->>LB: ACK
+        Client->>LB: TLS Client Hello & Cipher Handshake
+    end
+
+    Client->>LB: 2. HTTPS GET /api/v1/users/42
+    LB->>Tomcat: 3. Forwards raw HTTP byte stream (internal VPC)
+    Tomcat->>Tomcat: 4. Deserializes HTTP bytes ➔ HttpServletRequest
+    Tomcat->>Controller: 5. Dispatches request to handler method
+    Controller-->>Tomcat: 6. Returns UserDTO
+    Tomcat-->>LB: 7. HTTP/1.1 200 OK + JSON payload
+    LB-->>Client: 8. Encrypted TLS response delivered to client
 ```
 
 ---
@@ -107,12 +115,18 @@ Understanding **Safety** and **Idempotency** is one of the most frequently asked
 
 Status codes allow clients to programmatically handle responses without parsing the body text:
 
-```
-                          HTTP Status Codes
-           +---------+---------+---------+---------+
-           |         |         |         |         |
-          2xx       3xx       4xx       5xx       1xx
-       (Success) (Redirect) (Client)  (Server)  (Informational)
+```text
+╭─────────────────────────────────────────────────────────────────────────────╮
+│                         HTTP Status Code Categories                         │
+├──────────────┬──────────────┬──────────────┬──────────────┬─────────────────┤
+│     1xx      │     2xx      │     3xx      │     4xx      │       5xx       │
+│ Informational│   Success    │ Redirection  │ Client Error │  Server Error   │
+├──────────────┼──────────────┼──────────────┼──────────────┼─────────────────┤
+│ 100 Continue │ 200 OK       │ 301 Moved    │ 400 Bad Req  │ 500 Server Err  │
+│ 101 Switch   │ 201 Created  │ 302 Found    │ 401 Unauth   │ 502 Bad Gateway │
+│              │ 204 No Cont  │ 304 Not Mod  │ 403 Forbidden│ 503 Serv Unavail│
+│              │              │              │ 404 Not Found│ 504 Gateway TO  │
+╰──────────────┴──────────────┴──────────────┴──────────────┴─────────────────╯
 ```
 
 ### 1. 2xx: Success
@@ -159,18 +173,28 @@ A web service is truly **RESTful** (Representational State Transfer) if it adher
 
 How does the backend know who you are across requests?
 
-```
-Pattern 1: Server-Side Sessions (Stateful)
-Client ---> [Login] ---> Server creates Session in memory (ID: s-1234)
-                    <--- Sets Cookie: Set-Cookie: JSESSIONID=s-1234
-Client ---> [GET /profile] (Sends Cookie: JSESSIONID=s-1234)
-* Problem: If Server 1 crashes or traffic routes to Server 2, session is LOST unless Redis is used!
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Client as 📱 Client
+    participant Server as ☕ Java Server
+    participant Redis as 💾 Redis / Session Store
 
-Pattern 2: JSON Web Tokens (Stateless - Modern Standard)
-Client ---> [Login] ---> Server signs Token: Header.Payload.Signature
-                    <--- Returns Token: { "token": "eyJhbGciOi..." }
-Client ---> [GET /profile] (Header: Authorization: Bearer eyJhbGciOi...)
-* Advantage: ANY Java backend instance can verify the signature mathematically without DB lookups!
+    Note over Client,Redis: Pattern 1: Stateful Server-Side Sessions
+    Client->>Server: POST /login (credentials)
+    Server->>Redis: Create session record (ID: s-1234)
+    Server-->>Client: Set-Cookie: JSESSIONID=s-1234
+    Client->>Server: GET /profile (Cookie: JSESSIONID=s-1234)
+    Server->>Redis: Lookup session s-1234
+    Redis-->>Server: User session data
+    Server-->>Client: 200 OK + Profile Data
+
+    Note over Client,Redis: Pattern 2: Stateless JSON Web Tokens (Modern Standard)
+    Client->>Server: POST /login (credentials)
+    Server-->>Client: Returns signed JWT: { "token": "eyJhbGci..." }
+    Client->>Server: GET /profile (Authorization: Bearer eyJhbGci...)
+    Note over Server: Validates JWT signature cryptographically in-memory (No DB lookup needed!)
+    Server-->>Client: 200 OK + Profile Data
 ```
 
 | Dimension | Cookies | Server Session (`JSESSIONID`) | JSON Web Token (JWT) |

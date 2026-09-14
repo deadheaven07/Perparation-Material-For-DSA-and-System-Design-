@@ -21,20 +21,26 @@ public User getUser(@PathVariable Long id) {
 2. **Infinite JSON Recursion**: If `User` has `@OneToMany List<Order> orders` and `Order` has `@ManyToOne User user`, Jackson serializer enters an infinite loop, throwing **`StackOverflowError`** and crashing the thread!
 3. **API Contract Breaking**: If you rename a database column from `first_name` to `given_name`, your public API contract breaks for all mobile apps and web clients.
 
-```
-+-------------------+        Maps to        +-------------------+
-|  HTTP Request JSON| --------------------> |    Request DTO    |
-+-------------------+                       +-------------------+
-                                                      |
-                                                      v Validated & converted
-                                            +-------------------+
-                                            | JPA Domain Entity | (Interacts with DB)
-                                            +-------------------+
-                                                      |
-                                                      v Converted to
-+-------------------+       Serialized to   +-------------------+
-| HTTP Response JSON| <-------------------- |   Response DTO    |
-+-------------------+                       +-------------------+
+```mermaid
+flowchart LR
+    subgraph ClientZone["Client Zone"]
+        ReqJSON["HTTP Request JSON"]
+        ResJSON["HTTP Response JSON"]
+    end
+
+    subgraph DTOZone["DTO Layer (API Contract)"]
+        ReqDTO["Request DTO<br/><sub>Jakarta Validations (@NotNull, @Size)</sub>"]
+        ResDTO["Response DTO<br/><sub>Hides internal DB fields</sub>"]
+    end
+
+    subgraph DomainZone["Persistence Layer (Database Domain)"]
+        Entity["JPA Domain Entity<br/><sub>@Entity User (PasswordHash, Internal IDs)</sub>"]
+    end
+
+    ReqJSON -- "Deserialized into" --> ReqDTO
+    ReqDTO -- "Validated & mapped to" --> Entity
+    Entity -- "Mapped & converted to" --> ResDTO
+    ResDTO -- "Serialized to" --> ResJSON
 ```
 
 ### Using Modern Java Records as DTOs (Java 16+ / Spring Boot 3)

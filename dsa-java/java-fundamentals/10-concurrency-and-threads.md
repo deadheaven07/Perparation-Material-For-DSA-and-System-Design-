@@ -13,18 +13,36 @@ Welcome to Page 10 of the Java Fundamentals series. Multithreading is a core top
 | **Stack** | Own call stack | Has its **own independent call stack** |
 | **Creation Cost** | Heavyweight (OS level) | Lightweight |
 
+```text
+╭─────────────────────────────────────────────────────────────────────────────╮
+│                     Java Process vs. Threads Memory Layout                  │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ 🌐 Process (JVM Application Instance)                                       │
+│    Shared Heap Memory (Objects, Arrays, Metaspace, Class Definitions)       │
+│                                                                             │
+│    ╭──────────────────────────────╮  ╭──────────────────────────────╮       │
+│    │ 🧵 Thread 1                  │  │ 🧵 Thread 2                  │       │
+│    │  • Program Counter (PC)      │  │  • Program Counter (PC)      │  ...  │
+│    │  • Independent Thread Stack  │  │  • Independent Thread Stack  │       │
+│    │    (LIFO Method Call Frames) │  │    (LIFO Method Call Frames) │       │
+│    ╰──────────────────────────────╯  ╰──────────────────────────────╯       │
+╰─────────────────────────────────────────────────────────────────────────────╯
 ```
-+--------------------------------------------------------------+
-| Process (Java Application Instance)                          |
-|                                                              |
-|   Shared Heap Memory (Objects, Arrays, Shared State)         |
-|                                                              |
-|   +-------------------+  +-------------------+               |
-|   | Thread 1          |  | Thread 2          |  ...          |
-|   |  - Program Counter|  |  - Program Counter|               |
-|   |  - Thread Stack   |  |  - Thread Stack   |               |
-|   +-------------------+  +-------------------+               |
-+--------------------------------------------------------------+
+
+### The 6 States of a Java Thread (Thread Lifecycle)
+
+```mermaid
+stateDiagram-v2
+    [*] --> NEW : new Thread()
+    NEW --> RUNNABLE : thread.start()
+    RUNNABLE --> BLOCKED : Waiting to acquire monitor lock
+    BLOCKED --> RUNNABLE : Monitor lock acquired
+    RUNNABLE --> WAITING : Object.wait() / Thread.join()
+    WAITING --> RUNNABLE : Object.notify() / notifyAll()
+    RUNNABLE --> TIMED_WAITING : Thread.sleep(ms) / wait(timeout)
+    TIMED_WAITING --> RUNNABLE : Timeout expires or notified
+    RUNNABLE --> TERMINATED : Run method completes
+    TERMINATED --> [*]
 ```
 
 ---

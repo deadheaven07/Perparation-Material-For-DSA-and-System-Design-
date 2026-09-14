@@ -8,19 +8,25 @@ Welcome to Page 8 of the Java Fundamentals series. Exception handling is essenti
 
 All errors and exceptions in Java descend from the `java.lang.Throwable` class:
 
-```
-                            Throwable
-                           /         \
-                      Error           Exception
-               (Unrecoverable)            |
-             - StackOverflowError         +-----------------------+
-             - OutOfMemoryError           |                       |
-                                   Checked Exceptions     Unchecked Exceptions
-                                   (Compile-Time Check)   (RuntimeException)
-                                   - IOException          - NullPointerException
-                                   - SQLException         - ArrayIndexOutOfBounds
-                                   - ClassNotFound        - IllegalArgumentException
-                                                          - ConcurrentModification
+```mermaid
+flowchart TD
+    Throwable["Throwable"] --> Error["Error<br/><sub>Unrecoverable System Failures</sub>"]
+    Throwable --> Exception["Exception"]
+
+    Error --> SOE["StackOverflowError"]
+    Error --> OOM["OutOfMemoryError"]
+
+    Exception --> Checked["Checked Exceptions<br/><sub>Compile-Time Verification</sub>"]
+    Exception --> Unchecked["Unchecked Exceptions<br/><sub>RuntimeException</sub>"]
+
+    Checked --> IOE["IOException / FileNotFoundException"]
+    Checked --> SQLE["SQLException"]
+    Checked --> CNFE["ClassNotFoundException"]
+
+    Unchecked --> NPE["NullPointerException"]
+    Unchecked --> AIOOB["ArrayIndexOutOfBoundsException"]
+    Unchecked --> IAE["IllegalArgumentException"]
+    Unchecked --> CME["ConcurrentModificationException"]
 ```
 
 ### 1. `Error` (System Failures)

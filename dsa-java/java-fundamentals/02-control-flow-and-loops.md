@@ -181,12 +181,18 @@ Similarly, `continue searchOuter;` skips directly to the next iteration of the `
 
 When iterating over a 2D array (`int[][] matrix`), the traversal order significantly impacts performance due to CPU cache lines:
 
-```
-Row-Major Order (Fast, CPU Cache Friendly):
-[ (0,0) -> (0,1) -> (0,2) ] -> [ (1,0) -> (1,1) -> (1,2) ]
-
-Column-Major Order (Slow, Frequent Cache Misses):
-(0,0) -> (1,0) -> (2,0) -> (0,1) -> (1,1) -> ...
+```text
+╭─────────────────────────────────────────────────────────────────────────────╮
+│              CPU Cache Locality in 2D Array Traversal                       │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ 🚀 Row-Major Order (Fast — Cache Hit):                                       │
+│    Memory Line:  [ (0,0) ➔ (0,1) ➔ (0,2) ] ➔ [ (1,0) ➔ (1,1) ➔ (1,2) ]       │
+│    Execution:    Spatial locality loads adjacent elements into L1 Cache     │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ 🐌 Column-Major Order (Slow — Frequent Cache Misses):                       │
+│    Memory Jumps: (0,0) ➔ (1,0) ➔ (2,0) ➔ (0,1) ➔ (1,1) ➔ (2,1)              │
+│    Execution:    Repeatedly fetches distant memory references from RAM      │
+╰─────────────────────────────────────────────────────────────────────────────╯
 ```
 
 ```java

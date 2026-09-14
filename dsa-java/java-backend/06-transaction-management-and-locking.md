@@ -8,30 +8,33 @@ Welcome to Page 6 of the Java Backend Engineering series. Data integrity under h
 
 When you annotate a class or method with `@Transactional`, Spring does **not** modify your source code. Instead, it generates a **Dynamic AOP Proxy** that wraps your service bean.
 
-```
-Caller (e.g., UserController)
-        |
-        v Invokes userService.transferMoney()
-+-----------------------------------------------------------------------------+
-|                         Spring AOP Dynamic Proxy                            |
-|                                                                             |
-|  1. Intercepts method call                                                  |
-|  2. Fetches a connection from HikariCP pool                                 |
-|  3. Starts transaction: connection.setAutoCommit(false);                    |
-|  4. Invokes target method on actual UserService instance...                 |
-|                                                                             |
-|     +-------------------------------------------------------------+         |
-|     | Target: UserServiceImpl.transferMoney()                     |         |
-|     |   - debitAccount(acc1, $100);                               |         |
-|     |   - creditAccount(acc2, $100);                              |         |
-|     +-------------------------------------------------------------+         |
-|                                                                             |
-|  5. If method completes successfully:                                       |
-|        connection.commit();                                                 |
-|     If unhandled exception thrown:                                          |
-|        connection.rollback();                                               |
-|  6. Returns connection to pool                                              |
-+-----------------------------------------------------------------------------+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Caller as 🎯 Caller (UserController)
+    participant Proxy as 🛡️ Spring AOP Transaction Proxy
+    participant Pool as 🏊 HikariCP Connection Pool
+    participant Target as ⚙️ UserServiceImpl (Target)
+    participant DB as 💾 Database
+
+    Caller->>Proxy: transferMoney(acc1, acc2, $100)
+    Proxy->>Pool: 1. Borrow connection
+    Pool-->>Proxy: Connection instance
+    Proxy->>DB: 2. connection.setAutoCommit(false) [BEGIN TX]
+    
+    Proxy->>Target: 3. Invoke transferMoney() on actual bean
+    Target->>DB: 4. debitAccount(acc1, $100)
+    Target->>DB: 5. creditAccount(acc2, $100)
+    Target-->>Proxy: 6. Method returns successfully
+    
+    Proxy->>DB: 7. connection.commit() [SUCCESS]
+    Proxy->>Pool: 8. Return connection to pool
+    Proxy-->>Caller: 9. Method result returned
+
+    opt On Unhandled RuntimeException
+        Proxy->>DB: connection.rollback() [ABORT]
+        Proxy->>Pool: Return connection to pool
+    end
 ```
 
 > [!CAUTION]
@@ -118,23 +121,21 @@ public class AuditService {
 
 When thousands of users try to purchase the last 2 seats on a flight, how do you prevent double-booking?
 
-```
-                     Optimistic Locking                            Pessimistic Locking
-              (@Version: Fast, No DB lock held)               (SELECT FOR UPDATE: DB row locked)
-                            |                                               |
-                Read Ticket (Version = 1)                       SELECT * FROM tickets WHERE id = 10
-                            |                                           FOR UPDATE; (Acquires Lock)
-                  Process in Java Application                               |
-                            |                                       Thread 1 modifies row;
-               UPDATE tickets SET status = 'SOLD',                  Thread 2 BLOCKS waiting for lock!
-               version = 2 WHERE id = 10 AND version = 1;                   |
-                            |                                       Thread 1 commits & releases lock.
-              Did update affect 1 row?
-                    /          \
-                 (Yes)         (No - Conflict!)
-                  |              |
-               Success     Throw OptimisticLockException
-                           (Retry or fail gracefully)
+```text
+╭─────────────────────────────────────────────────────────────────────────────╮
+│                Optimistic Locking vs. Pessimistic Locking                   │
+├──────────────────────────────────────────────┬──────────────────────────────┤
+│ 🚀 Optimistic Locking (@Version)             │ 🔒 Pessimistic Locking (DB)  │
+│    (Conflicts are rare — Maximum concurrency)│    (Conflicts are frequent)  │
+├──────────────────────────────────────────────┼──────────────────────────────┤
+│ 1. Read Ticket row (Version = 1)             │ 1. SELECT * FROM tickets     │
+│ 2. Compute in Java application               │    WHERE id = 10 FOR UPDATE  │
+│ 3. Execute update with version check:        │    (Acquires exclusive lock) │
+│    UPDATE tickets SET status = 'SOLD',       │ 2. Thread 1 updates row;     │
+│    version = 2 WHERE id = 10 AND version = 1;│    Thread 2 BLOCKS waiting!  │
+│ 4. If row count == 1 ➔ Success!              │ 3. Thread 1 commits and      │
+│    If row count == 0 ➔ Throw OptimisticLock  │    releases DB row lock.     │
+╰──────────────────────────────────────────────┴──────────────────────────────╯
 ```
 
 ### 1. Optimistic Locking in Spring Data JPA:

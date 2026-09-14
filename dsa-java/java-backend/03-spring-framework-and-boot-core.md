@@ -19,18 +19,21 @@ public class OrderService {
 ### The Inversion:
 With **Inversion of Control**, you give control of object creation to the **Spring ApplicationContext (IoC Container)**. Your class simply declares what it needs, and Spring **injects** the dependency.
 
-```
-Without IoC (Tight Coupling):
-OrderService ---------------------> creates new StripePaymentGateway()
+```mermaid
+flowchart TD
+    subgraph WithoutIoC["❌ Without IoC (Tight Coupling)"]
+        OS1["OrderService"] -- "new StripePaymentGateway()" --> Stripe1["StripePaymentGateway"]
+        Note1["Cannot mock for testing without modifying OrderService"]
+    end
 
-With Spring IoC Container:
-[ Spring IoC Container ]
-       |
-       | 1. Instantiates StripePaymentGateway
-       | 2. Instantiates OrderService
-       | 3. Injects Stripe into OrderService constructor!
-       v
-OrderService (Receives PaymentGateway interface via Constructor)
+    subgraph WithIoC["✅ With Spring IoC Container (Loose Coupling)"]
+        Container["⚙️ Spring ApplicationContext (IoC Container)"]
+        Gateway["StripePaymentGateway<br/><sub>implements PaymentGateway</sub>"]
+        OS2["OrderService<br/><sub>declares PaymentGateway in constructor</sub>"]
+        Container -- "1. Instantiates" --> Gateway
+        Container -- "2. Instantiates" --> OS2
+        Container -- "3. Injects Gateway into" --> OS2
+    end
 ```
 
 ---
@@ -182,13 +185,11 @@ When your application starts, Spring Boot inspects:
    - `@ConditionalOnClass(DataSource.class)`: Run only if `DataSource` class exists.
    - `@ConditionalOnMissingBean(DataSource.class)`: Run **only if the developer has NOT defined their own custom DataSource bean**!
 
-```
-Developer provides custom DataSource Bean?
-          /                      \
-       (YES)                     (NO)
-        |                         |
-Spring Boot steps aside   Spring Boot automatically configures
-and uses developer bean   HikariCP DataSource with default settings!
+```mermaid
+flowchart TD
+    Start{"Developer provides custom<br/>DataSource @Bean?"}
+    Start -- "Yes" --> Custom["Spring Boot steps aside<br/>and uses developer's custom DataSource bean"]
+    Start -- "No" --> Auto["Spring Boot auto-configures<br/>HikariCP DataSource with default settings"]
 ```
 
 ---

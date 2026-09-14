@@ -6,30 +6,27 @@ Welcome to Page 6 of the Java Fundamentals series. The Java Collections Framewor
 
 ## 1. The Collections Framework Hierarchy
 
-```
-                           Iterable<E>
-                                |
-                          Collection<E>
-             +------------------+------------------+
-             |                  |                  |
-          List<E>            Queue<E>            Set<E>
-        (Ordered,            (FIFO /          (Unique values)
-        Duplicates)         Priority)              |
-             |                  |            +-----+-----+
-      +------+------+        +--+--+         |           |
-      |             |        |     |      HashSet    SortedSet
-  ArrayList    LinkedList    |  PriorityQueue        (TreeSet)
-                             |
-                           Deque<E> (Double-ended)
-                             |
-                         ArrayDeque
+```mermaid
+flowchart TD
+    Iterable["Iterable&lt;E&gt;"] --> Collection["Collection&lt;E&gt;"]
+    Collection --> List["List&lt;E&gt;<br/><sub>Ordered, Duplicates</sub>"]
+    Collection --> Queue["Queue&lt;E&gt;<br/><sub>FIFO / Priority</sub>"]
+    Collection --> Set["Set&lt;E&gt;<br/><sub>Unique Values</sub>"]
 
-  [Separate Hierarchy]:
-        Map<K, V> (Key-Value pairs, Unique Keys)
-             |
-      +------+------+
-      |             |
-   HashMap      SortedMap (TreeMap)
+    List --> AL["ArrayList"]
+    List --> LL["LinkedList"]
+
+    Queue --> PQ["PriorityQueue"]
+    Queue --> Deque["Deque&lt;E&gt;<br/><sub>Double-Ended</sub>"]
+    Deque --> AD["ArrayDeque"]
+
+    Set --> HS["HashSet"]
+    Set --> TS["TreeSet<br/><sub>SortedSet</sub>"]
+
+    subgraph MapHierarchy["Separate Hierarchy: Key-Value"]
+        Map["Map&lt;K, V&gt;<br/><sub>Unique Keys</sub>"] --> HM["HashMap"]
+        Map --> TM["TreeMap<br/><sub>SortedMap</sub>"]
+    end
 ```
 
 ---

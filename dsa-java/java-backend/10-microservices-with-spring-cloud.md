@@ -6,29 +6,23 @@ Welcome to Page 10 of the Java Backend Engineering series. As software organizat
 
 ## 1. The Microservices Ecosystem Architecture
 
-```
-[ Mobile / Web Client ]
-          |
-          v (HTTPS Request)
-+-------------------------------------------------------------+
-|                  API Gateway (Spring Cloud Gateway)         |
-|  - Route: /api/v1/users/**    -> USER-SERVICE               |
-|  - Route: /api/v1/orders/**   -> ORDER-SERVICE              |
-|  - Centralized JWT verification, Rate limiting & CORS       |
-+-------------------------------------------------------------+
-          |
-          +-----------------------+-----------------------+
-          |                       |                       |
-          v                       v                       v
-  [ USER-SERVICE ]        [ ORDER-SERVICE ]     [ PAYMENT-SERVICE ]
-       (JVM 1)                 (JVM 2)               (JVM 3)
-          |                       |                       |
-          +-----------------------+-----------------------+
-                                  |
-                                  v Registers dynamic IP / Heartbeat
-                 +---------------------------------+
-                 | Service Registry (Eureka/Consul)|
-                 +---------------------------------+
+```mermaid
+flowchart TD
+    Client(["📱 Mobile / Web Client"]) --> Gateway["🛡️ Spring Cloud Gateway<br/><sub>JWT verification, Rate limiting, CORS</sub>"]
+    
+    subgraph ServiceMesh["Microservices Mesh"]
+        Gateway --> UserSvc["👤 USER-SERVICE<br/><sub>(Port 8081)</sub>"]
+        Gateway --> OrderSvc["📦 ORDER-SERVICE<br/><sub>(Port 8082)</sub>"]
+        Gateway --> PaymentSvc["💳 PAYMENT-SERVICE<br/><sub>(Port 8083)</sub>"]
+    end
+
+    subgraph Discovery["Discovery & Config Infrastructure"]
+        Eureka[("🔍 Eureka Service Discovery<br/><sub>Heartbeats & Dynamic IP Registry</sub>")]
+        Config[("⚙️ Spring Cloud Config Server<br/><sub>Centralized Git / Vault Properties</sub>")]
+    end
+
+    UserSvc & OrderSvc & PaymentSvc -. "Heartbeat Registration" .-> Eureka
+    UserSvc & OrderSvc & PaymentSvc -. "Bootstrap Config" .-> Config
 ```
 
 ---

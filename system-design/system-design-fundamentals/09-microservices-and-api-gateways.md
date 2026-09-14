@@ -35,13 +35,20 @@ In a microservices architecture, clients should **never** talk to dozens of back
 
 How does the API Gateway know the dynamic IP addresses of 20 dynamically scaling `OrderService` Docker containers?
 
-```
-1. Register on Startup
-   [ Order Service Pod (10.0.1.45) ] ---> [ Service Registry (Consul / Eureka) ]
-                                          Stores: "order-service" -> [10.0.1.45, 10.0.1.46]
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Pod as 📦 Order Service Pod (10.0.1.45)
+    participant Reg as 🔍 Service Registry (Eureka/Consul)
+    participant GW as 🛡️ API Gateway
 
-2. Query & Route
-   [ API Gateway ] ---> Queries Registry for "order-service" ---> Routes to 10.0.1.45
+    Pod->>Reg: 1. Register on Startup: "order-service" -> 10.0.1.45:8080
+    loop Every 30s
+        Pod->>Reg: 2. Send Heartbeat (Health check active)
+    end
+    GW->>Reg: 3. Query: "Where is order-service?"
+    Reg-->>GW: Return IP: 10.0.1.45:8080
+    GW->>Pod: 4. Route incoming client HTTP request
 ```
 
 ### Client-Side vs. Server-Side Discovery:
@@ -54,21 +61,20 @@ How does the API Gateway know the dynamic IP addresses of 20 dynamically scaling
 
 For internal communication between Java microservices, **gRPC** is standard at high scale:
 
-```
-REST over HTTP/1.1 (Text JSON)
-+-------------------------------------------------------+
-| HTTP/1.1 Header (Text)                                |
-| Content-Type: application/json                        |
-| Payload: { "userId": 101, "name": "Alice", ... }      |
-+-------------------------------------------------------+
-* Bulky text serialization, requires new TCP handshake or sequential head-of-line blocking.
-
-gRPC over HTTP/2 (Binary Protocol Buffers)
-+-------------------------------------------------------+
-| HTTP/2 Binary Frame (Compressed Header)               |
-| Stream ID: 1 | Binary Payload (Protobuf Encoded)      |
-+-------------------------------------------------------+
-* Compact binary encoding, multiplexed streams over a SINGLE long-lived TCP connection!
+```text
+╭─────────────────────────────────────────────────────────────────────────────╮
+│                Protocol Comparison: REST (JSON) vs. gRPC                    │
+├──────────────────────────────────────────────┬──────────────────────────────┤
+│ 📄 REST over HTTP/1.1 (Text JSON)            │ ⚡ gRPC over HTTP/2 (Binary Protobuf) │
+├──────────────────────────────────────────────┼──────────────────────────────┤
+│ ╭──────────────────────────────────────────╮ │ ╭──────────────────────────╮ │
+│ │ HTTP/1.1 Header (Text strings)           │ │ │ HTTP/2 Compressed Header │ │
+│ │ Content-Type: application/json           │ │ │ Stream ID: 1 (Multiplex) │ │
+│ │ Payload: { "userId": 101, "name": ... }  │ │ │ Binary Encoded Protobuf  │ │
+│ ╰──────────────────────────────────────────╯ │ ╰──────────────────────────╯ │
+│ • Bulky text encoding (high byte overhead)   │ • Ultra-compact binary serialization │
+│ • Head-of-line blocking per connection       │ • Multiplexes 100s of calls per TCP  │
+╰──────────────────────────────────────────────┴──────────────────────────────╯
 ```
 
 ### Head-to-Head Comparison:

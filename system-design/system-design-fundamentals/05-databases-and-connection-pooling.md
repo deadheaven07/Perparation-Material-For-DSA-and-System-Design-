@@ -6,21 +6,14 @@ Welcome to Page 5 of the System Design Fundamentals series. The database is almo
 
 ## 1. SQL vs. NoSQL: Decision Framework
 
-```
-                          Database Selection
-                                   |
-                  Do you need ACID & Complex Joins?
-                                /     \
-                            (Yes)     (No)
-                             /           \
-                 RDBMS (PostgreSQL, MySQL)  What is the access pattern?
-                                              |
-                     +------------------------+------------------------+
-                     |                        |                        |
-                Key-Value                  Document               Wide-Column
-             (Redis, DynamoDB)            (MongoDB)          (Cassandra, ScyllaDB)
-              - Fast by Key            - Flexible JSON        - Massive Writes
-              - Caching, Sessions      - Catalogs, Blogs      - Time-Series, IoT
+```mermaid
+flowchart TD
+    Start(["Database Selection"]) --> CheckACID{"Do you need ACID &<br/>Complex Relational Joins?"}
+    CheckACID -- "Yes" --> RDBMS[("🗄️ Relational DB (RDBMS)<br/><sub>PostgreSQL, MySQL</sub><br/>- Financial ledgers, Orders, Inventory")]
+    CheckACID -- "No" --> Pattern{"What is your primary<br/>data access pattern?"}
+    Pattern -- "Key Lookups & Speed" --> KV[("⚡ Key-Value Store<br/><sub>Redis, DynamoDB</sub><br/>- Session cache, Leaderboards ($O(1)$)")]
+    Pattern -- "Flexible JSON Trees" --> Doc[("📄 Document Store<br/><sub>MongoDB, Couchbase</sub><br/>- Product catalogs, Content systems")]
+    Pattern -- "High-Volume Writes" --> Col[("📊 Wide-Column Store<br/><sub>Cassandra, ScyllaDB</sub><br/>- IoT telemetry, Sensor metrics")]
 ```
 
 | Type | Examples | Best For | Trade-offs |
@@ -40,12 +33,15 @@ In Java, opening a raw JDBC database connection incurs significant overhead:
 3. Database authentication & privilege check
 4. Memory allocation on the database server ($\approx 2\text{ MB to } 10\text{ MB}$ per backend process in PostgreSQL)
 
-```
-Without Connection Pool:
-HTTP Request ---> [ Open New Socket ] ---> [ Authenticate ] ---> [ Query ] ---> [ Close Socket ] (Slow: 50-100ms!)
+```mermaid
+flowchart TD
+    subgraph WithoutPool["❌ Without Connection Pool (50 - 100ms per query)"]
+        R1["HTTP Request"] --> S1["Open TCP Socket"] --> A1["TLS & DB Auth"] --> Q1["Execute Query"] --> C1["Close Socket"]
+    end
 
-With HikariCP Connection Pool:
-HTTP Request ---> [ Borrow Pre-warmed Connection from Pool ] ---> [ Query ] ---> [ Return to Pool ] (Fast: <1ms!)
+    subgraph WithHikari["✅ With HikariCP Connection Pool (< 1ms per query)"]
+        R2["HTTP Request"] --> B2["Borrow Pre-warmed Connection"] --> Q2["Execute Query"] --> Ret2["Return Connection to Pool"]
+    end
 ```
 
 ### Why Smaller Connection Pools are Actually Faster!
@@ -94,23 +90,21 @@ spring.datasource.hikari.max-lifetime=1800000      # 30 minutes (must be < DB wa
 
 When two users try to purchase the last ticket simultaneously, how does Java prevent race conditions?
 
-```
-                     Optimistic Locking                            Pessimistic Locking
-            (Assume conflicts are rare: Fast)             (Assume conflicts are common: Safe)
-                         |                                               |
-             Read Row (Version = 1)                         SELECT * FROM Seats WHERE id = 42
-                         |                                           FOR UPDATE; (Locks Row)
-               Process in Application                                    |
-                         |                                     Only 1 transaction proceeds;
-             UPDATE Seats SET user = 'Bob',                    Others wait until COMMIT/ROLLBACK
-             version = 2 WHERE id = 42 AND version = 1;
-                         |
-           Did update affect 1 row?
-                 /          \
-              (Yes)         (No - Conflict!)
-               |              |
-            Success     Throw OptimisticLockException
-                        (Retry or Abort)
+```text
+╭─────────────────────────────────────────────────────────────────────────────╮
+│                Optimistic Locking vs. Pessimistic Locking                   │
+├──────────────────────────────────────────────┬──────────────────────────────┤
+│ 🚀 Optimistic Locking (@Version)             │ 🔒 Pessimistic Locking (DB)  │
+│    (Assume conflicts are rare: Fast & Scalable) (Assume high write collisions)│
+├──────────────────────────────────────────────┼──────────────────────────────┤
+│ 1. Read Seat row (Version = 1)               │ 1. SELECT * FROM Seats       │
+│ 2. Compute in application memory             │    WHERE id = 42 FOR UPDATE; │
+│ 3. Execute update with version check:        │    (Locks row exclusively)   │
+│    UPDATE Seats SET user = 'Bob',            │ 2. Thread 1 updates row;     │
+│    version = 2 WHERE id = 42 AND version = 1;│    Thread 2 BLOCKS!          │
+│ 4. If 1 row updated ➔ Success!               │ 3. Thread 1 commits and      │
+│    If 0 rows updated ➔ OptimisticLockException releases DB row lock.        │
+╰──────────────────────────────────────────────┴──────────────────────────────╯
 ```
 
 ### 1. Optimistic Locking in Java (JPA / Hibernate)

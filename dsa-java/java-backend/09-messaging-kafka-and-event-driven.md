@@ -6,22 +6,22 @@ Welcome to Page 9 of the Java Backend Engineering series. In modern microservice
 
 ## 1. Synchronous REST vs. Asynchronous Event-Driven Flow
 
-```
-Synchronous Chained REST (Fragile, Cascading Latency):
-Order Service ---> [REST: 200ms] ---> Inventory Service
-              ---> [REST: 300ms] ---> Payment Service
-              ---> [REST: 100ms] ---> Notification Service
-Total Latency = 600ms. If Payment Service crashes, Order placement FAILS!
+```mermaid
+flowchart TD
+    subgraph Sync["❌ Synchronous Chained REST (Fragile, 600ms latency)"]
+        O1["Order Service"] -- "200ms" --> I1["Inventory Service"]
+        O1 -- "300ms" --> P1["Payment Service"]
+        O1 -- "100ms" --> N1["Notification Service"]
+        Note1["If Payment Service crashes, Order Placement FAILS!"]
+    end
 
-Asynchronous Event-Driven Architecture with Kafka:
-Order Service ---> [ Publishes "OrderPlaced" Event to Kafka (< 5ms) ]
-              ---> Returns "Order Received" to Client immediately!
-                          |
-             +------------+------------+
-             |            |            |
-             v            v            v
-      [Inventory Svc] [Payment Svc] [Notification Svc]
-   (All 3 consume independently at their own pace from Kafka topics)
+    subgraph Async["✅ Asynchronous Event-Driven Architecture with Kafka (< 5ms latency)"]
+        O2["Order Service"] -- "Publishes 'OrderPlaced' (< 5ms)" --> Kafka[("📡 Apache Kafka Topic<br/><sub>order-events</sub>")]
+        Kafka --> I2["Inventory Service"]
+        Kafka --> P2["Payment Service"]
+        Kafka --> N2["Notification Service"]
+        Note2["Order Service acks client immediately; consumers process independently"]
+    end
 ```
 
 ---
@@ -32,11 +32,17 @@ Order Service ---> [ Publishes "OrderPlaced" Event to Kafka (< 5ms) ]
 2. **Partition**: The physical append-only log file on disk. Partitions allow topics to scale across multiple broker servers.
 3. **Consumer Group**: A set of consumers cooperating to read data.
 
-```
-Topic: "order-events"
-Partition 0: [ Msg 0 | Msg 1 | Msg 2 | Msg 3 ] ---> Consumer Instance 1 (Group A)
-Partition 1: [ Msg 0 | Msg 1 | Msg 2 | Msg 3 ] ---> Consumer Instance 2 (Group A)
-Partition 2: [ Msg 0 | Msg 1 | Msg 2 | Msg 3 ] ---> Consumer Instance 3 (Group A)
+```text
+╭─────────────────────────────────────────────────────────────────────────────╮
+│              Apache Kafka Topic: "order-events" Partitions                  │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ Partition 0: [ Msg 0 | Msg 1 | Msg 2 | Msg 3 ] ➔ Consumer 1 (Group A)       │
+│ Partition 1: [ Msg 0 | Msg 1 | Msg 2 | Msg 3 ] ➔ Consumer 2 (Group A)       │
+│ Partition 2: [ Msg 0 | Msg 1 | Msg 2 | Msg 3 ] ➔ Consumer 3 (Group A)       │
+├─────────────────────────────────────────────────────────────────────────────┤
+│ 💡 Rule: 1 partition is assigned to at most 1 consumer instance in a group  │
+│ 💡 Message Key: Hashing message key (e.g. userId) guarantees FIFO ordering │
+╰─────────────────────────────────────────────────────────────────────────────╯
 ```
 
 > [!IMPORTANT]
