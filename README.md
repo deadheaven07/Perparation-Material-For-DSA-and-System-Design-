@@ -13,3 +13,7 @@ A structured, end-to-end preparation repository containing study notes, producti
 
 ### 🏛️ [2. System Design Track (`system-design/`)](system-design/README.md)
 - [**`system-design-fundamentals/`**](system-design/system-design-fundamentals/README.md) — 10-page comprehensive guide covering High-Level Design (HLD), Low-Level Design (LLD), GoF design patterns in Java, thread pool engineering, connection pooling (HikariCP), caching strategies, Kafka event streaming, circuit breakers, and the 4-step interview blueprint.
+
+### 🤖 [3. AI for Developers Track (`ai-for-developers/`)](ai-for-developers/README.md)
+- [**`ai-for-developers/`**](ai-for-developers/README.md) — 7-page practical guide on using AI as a 10x engineering velocity multiplier: moving from typist to architect, 0-to-1 REST API scaffolding, instant stack trace triage, automated testing with Testcontainers, tool mastery (**Cursor**, **Claude Cowork & Projects**, **GitHub Copilot**, `.cursorrules`), accelerating in **500k+ LOC enterprise codebases**, and speeding up System Design capacity math and Socratic DSA problem solving.
+
