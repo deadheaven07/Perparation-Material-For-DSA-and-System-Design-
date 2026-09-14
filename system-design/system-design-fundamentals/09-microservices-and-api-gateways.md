@@ -142,4 +142,6 @@ Client Request (Trace ID: abc-123)
 
 ---
 
-👉 **Next Up: [Page 10: The 4-Step System Design Interview Blueprint & Capacity Math](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/system-design/system-design-fundamentals/10-interview-framework-and-math.md)**
+| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+| :--- | :---: | ---: |
+| [Page 8: Circuit Breakers & Rate Limiters](08-resilience-circuit-breaker-rate-limiting.md) | [System Design Index](README.md) | [Page 10: Interview Blueprint & Math](10-interview-framework-and-math.md) |

@@ -198,4 +198,6 @@ public class GlobalExceptionHandler {
 
 ---
 
-👉 **Next Up: [Page 5: Database Persistence with Spring Data JPA & Hibernate](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-backend/05-database-persistence-jpa-hibernate.md)**
+| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+| :--- | :---: | ---: |
+| [Page 3: Spring Boot Core & IoC](03-spring-framework-and-boot-core.md) | [Java Backend Index](README.md) | [Page 5: JPA & Hibernate Persistence](05-database-persistence-jpa-hibernate.md) |

@@ -218,4 +218,6 @@ public class HotItemService {
 
 ---
 
-👉 **Next Up: [Page 9: Asynchronous Messaging & Apache Kafka](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-backend/09-messaging-kafka-and-event-driven.md)**
+| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+| :--- | :---: | ---: |
+| [Page 7: Async & Virtual Threads](07-async-virtual-threads-and-concurrency.md) | [Java Backend Index](README.md) | [Page 9: Messaging & Apache Kafka](09-messaging-kafka-and-event-driven.md) |

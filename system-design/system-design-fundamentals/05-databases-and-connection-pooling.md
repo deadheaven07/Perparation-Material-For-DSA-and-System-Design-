@@ -153,4 +153,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
 ---
 
-👉 **Next Up: [Page 6: Caching Strategies & Implementing In-Memory LRU in Java](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/system-design/system-design-fundamentals/06-caching-strategies-and-lru.md)**
+| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+| :--- | :---: | ---: |
+| [Page 4: Scaling & Thread Pools](04-scaling-and-thread-pools.md) | [System Design Index](README.md) | [Page 6: Caching & LRU in Java](06-caching-strategies-and-lru.md) |

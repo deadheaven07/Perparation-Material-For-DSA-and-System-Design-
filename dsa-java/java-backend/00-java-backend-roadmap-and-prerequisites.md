@@ -186,4 +186,6 @@ Before building backend applications, ensure you have:
 
 ---
 
-👉 **Next Up: [Page 1: Web & HTTP Protocols from Ground Zero](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-backend/01-web-and-http-protocols.md)**
+| 🏠 Course Index | ➡️ Next |
+| :---: | ---: |
+| [Java Backend Index](README.md) | [Page 1: Web & HTTP Protocols](01-web-and-http-protocols.md) |

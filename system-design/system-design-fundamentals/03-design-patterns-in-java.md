@@ -228,4 +228,6 @@ public class StockMarket {
 
 ---
 
-👉 **Next Up: [Page 4: Scaling & Java Thread Pool Engineering](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/system-design/system-design-fundamentals/04-scaling-and-thread-pools.md)**
+| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+| :--- | :---: | ---: |
+| [Page 2: SOLID Principles & LLD](02-solid-principles-in-java.md) | [System Design Index](README.md) | [Page 4: Scaling & Thread Pools](04-scaling-and-thread-pools.md) |

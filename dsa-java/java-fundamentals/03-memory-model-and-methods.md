@@ -186,4 +186,6 @@ Call Stack Progression for factorial(3):
 
 ---
 
-👉 **Next Up: [Page 4: Object-Oriented Programming (OOP) Principles for DSA & LLD](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-fundamentals/04-oop-principles.md)**
+| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+| :--- | :---: | ---: |
+| [Page 2: Control Flow & Loops](02-control-flow-and-loops.md) | [Java Fundamentals Index](README.md) | [Page 4: OOP Principles](04-oop-principles.md) |

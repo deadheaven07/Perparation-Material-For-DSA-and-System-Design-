@@ -277,4 +277,6 @@ Test your understanding before proceeding to Page 2:
 
 ---
 
-👉 **Next Up: [Page 2: Control Flow & Loops (If/Else, Modern Switch Expressions, For, While & Labeled Jumps)](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-fundamentals/02-control-flow-and-loops.md)**
+| 🏠 Course Index | ➡️ Next |
+| :---: | ---: |
+| [Java Fundamentals Index](README.md) | [Page 2: Control Flow & Loops](02-control-flow-and-loops.md) |

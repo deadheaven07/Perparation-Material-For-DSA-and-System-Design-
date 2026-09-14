@@ -183,4 +183,6 @@ spring.threads.virtual.enabled=true
 
 ---
 
-👉 **Next Up: [Page 8: Caching Strategies & Redis Integration](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-backend/08-caching-and-redis-integration.md)**
+| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+| :--- | :---: | ---: |
+| [Page 6: Transactions & Locking](06-transaction-management-and-locking.md) | [Java Backend Index](README.md) | [Page 8: Caching & Redis Integration](08-caching-and-redis-integration.md) |

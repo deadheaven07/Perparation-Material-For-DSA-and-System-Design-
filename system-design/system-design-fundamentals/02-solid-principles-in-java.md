@@ -231,4 +231,6 @@ public class NotificationManager {
 
 ---
 
-👉 **Next Up: [Page 3: GoF Design Patterns in Java for System Design](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/system-design/system-design-fundamentals/03-design-patterns-in-java.md)**
+| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+| :--- | :---: | ---: |
+| [Page 1: Java Backend Architecture](01-java-backend-architecture.md) | [System Design Index](README.md) | [Page 3: GoF Design Patterns](03-design-patterns-in-java.md) |

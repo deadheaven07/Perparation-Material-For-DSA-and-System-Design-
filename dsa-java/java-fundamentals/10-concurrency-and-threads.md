@@ -220,5 +220,6 @@ BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(10);
 
 ---
 
-🎉 **Congratulations! You have completed the Java Fundamentals (Pages 1 to 10) series!**
-You are now fully equipped with deep Java mechanics from memory models to modern functional and concurrency features.
+| ⬅️ Previous | 🏠 Course Index | 🚀 Next Track |
+| :--- | :---: | ---: |
+| [Page 9: Functional Java & Streams](09-lambdas-and-streams.md) | [Java Fundamentals Index](README.md) | [Java Backend Engineering Course](../java-backend/README.md) |

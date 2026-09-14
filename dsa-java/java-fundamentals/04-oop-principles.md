@@ -235,4 +235,6 @@ public class Solution {
 
 ---
 
-👉 **Next Up: [Page 5: Arrays, Strings, String Pool & Mutability](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-fundamentals/05-arrays-and-strings.md)**
+| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+| :--- | :---: | ---: |
+| [Page 3: Memory Layout & Pass-by-Value](03-memory-model-and-methods.md) | [Java Fundamentals Index](README.md) | [Page 5: Arrays, Strings & String Pool](05-arrays-and-strings.md) |

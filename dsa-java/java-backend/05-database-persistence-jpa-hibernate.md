@@ -233,4 +233,6 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
 ---
 
-👉 **Next Up: [Page 6: Transaction Management & Database Locking](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-backend/06-transaction-management-and-locking.md)**
+| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+| :--- | :---: | ---: |
+| [Page 4: REST APIs & Validation](04-restful-apis-dto-and-validation.md) | [Java Backend Index](README.md) | [Page 6: Transactions & Locking](06-transaction-management-and-locking.md) |

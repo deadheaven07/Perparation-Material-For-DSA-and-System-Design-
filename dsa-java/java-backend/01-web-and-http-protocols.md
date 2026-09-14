@@ -193,4 +193,6 @@ Client ---> [GET /profile] (Header: Authorization: Bearer eyJhbGciOi...)
 
 ---
 
-👉 **Next Up: [Page 2: Servlet Containers & Spring MVC Architecture](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-backend/02-servlet-containers-and-spring-mvc.md)**
+| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+| :--- | :---: | ---: |
+| [Page 0: Roadmap & Prerequisites](00-java-backend-roadmap-and-prerequisites.md) | [Java Backend Index](README.md) | [Page 2: Servlets & Spring MVC](02-servlet-containers-and-spring-mvc.md) |

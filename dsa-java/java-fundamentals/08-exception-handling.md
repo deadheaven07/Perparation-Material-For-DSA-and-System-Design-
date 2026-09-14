@@ -175,4 +175,6 @@ public class BankAccount {
 
 ---
 
-👉 **Next Up: [Page 9: Functional Java - Lambdas, Method References & Streams API](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-fundamentals/09-lambdas-and-streams.md)**
+| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+| :--- | :---: | ---: |
+| [Page 7: Generics & Custom Comparators](07-generics-and-comparators.md) | [Java Fundamentals Index](README.md) | [Page 9: Functional Java & Streams](09-lambdas-and-streams.md) |

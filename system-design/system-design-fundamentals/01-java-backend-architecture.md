@@ -138,4 +138,6 @@ public class VirtualThreadServer {
 
 ---
 
-👉 **Next Up: [Page 2: SOLID Principles & Clean Low-Level Design (LLD) in Java](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/system-design/system-design-fundamentals/02-solid-principles-in-java.md)**
+| 🏠 Course Index | ➡️ Next |
+| :---: | ---: |
+| [System Design Index](README.md) | [Page 2: SOLID Principles & LLD](02-solid-principles-in-java.md) |

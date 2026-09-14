@@ -195,4 +195,6 @@ public class ExecutionLoggerInterceptor implements HandlerInterceptor {
 
 ---
 
-👉 **Next Up: [Page 3: Spring Framework & Spring Boot Core Demystified](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-backend/03-spring-framework-and-boot-core.md)**
+| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+| :--- | :---: | ---: |
+| [Page 1: Web & HTTP Protocols](01-web-and-http-protocols.md) | [Java Backend Index](README.md) | [Page 3: Spring Boot Core & IoC](03-spring-framework-and-boot-core.md) |

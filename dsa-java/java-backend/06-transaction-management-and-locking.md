@@ -179,4 +179,6 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
 
 ---
 
-👉 **Next Up: [Page 7: Asynchronous Processing & Virtual Threads (Java 21)](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-backend/07-async-virtual-threads-and-concurrency.md)**
+| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+| :--- | :---: | ---: |
+| [Page 5: JPA & Hibernate Persistence](05-database-persistence-jpa-hibernate.md) | [Java Backend Index](README.md) | [Page 7: Async & Virtual Threads](07-async-virtual-threads-and-concurrency.md) |

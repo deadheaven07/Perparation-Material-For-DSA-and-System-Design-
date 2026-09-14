@@ -185,4 +185,6 @@ public class RetryHelper {
 
 ---
 
-👉 **Next Up: [Page 9: Microservices, API Gateways & Protocols (REST vs. gRPC)](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/system-design/system-design-fundamentals/09-microservices-and-api-gateways.md)**
+| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+| :--- | :---: | ---: |
+| [Page 7: Asynchronous Messaging & Kafka](07-asynchronous-messaging-and-kafka.md) | [System Design Index](README.md) | [Page 9: Microservices & API Gateways](09-microservices-and-api-gateways.md) |

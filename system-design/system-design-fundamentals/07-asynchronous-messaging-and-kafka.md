@@ -176,4 +176,6 @@ If a message cannot be processed after multiple retries (due to corrupt JSON or 
 
 ---
 
-👉 **Next Up: [Page 8: System Resilience: Circuit Breakers & Rate Limiters in Java](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/system-design/system-design-fundamentals/08-resilience-circuit-breaker-rate-limiting.md)**
+| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+| :--- | :---: | ---: |
+| [Page 6: Caching & LRU in Java](06-caching-strategies-and-lru.md) | [System Design Index](README.md) | [Page 8: Circuit Breakers & Rate Limiters](08-resilience-circuit-breaker-rate-limiting.md) |

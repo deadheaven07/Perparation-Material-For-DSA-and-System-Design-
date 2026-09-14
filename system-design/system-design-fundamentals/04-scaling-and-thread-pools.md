@@ -123,4 +123,6 @@ GC Thread:          ---------------------------[Collecting]---------------->
 
 ---
 
-👉 **Next Up: [Page 5: Databases & Connection Pooling (HikariCP) in Java](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/system-design/system-design-fundamentals/05-databases-and-connection-pooling.md)**
+| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+| :--- | :---: | ---: |
+| [Page 3: GoF Design Patterns](03-design-patterns-in-java.md) | [System Design Index](README.md) | [Page 5: Databases & Connection Pooling](05-databases-and-connection-pooling.md) |

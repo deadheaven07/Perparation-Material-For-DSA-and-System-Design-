@@ -195,4 +195,6 @@ sb.setLength(0);        // Clears the builder efficiently for reuse!
 
 ---
 
-👉 **Next Up: [Page 6: Java Collections Framework (JCF) - Lists, Sets, Maps & Queues](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-fundamentals/06-collections-framework.md)**
+| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+| :--- | :---: | ---: |
+| [Page 4: OOP Principles](04-oop-principles.md) | [Java Fundamentals Index](README.md) | [Page 6: Collections Framework](06-collections-framework.md) |

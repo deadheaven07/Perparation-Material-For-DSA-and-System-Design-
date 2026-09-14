@@ -155,5 +155,6 @@ $$62^7 \approx \mathbf{3.5\text{ Trillion unique URLs}}$$
 
 ---
 
-🎉 **Congratulations! You have completed the System Design Fundamentals series!**
-You now possess a structured mental framework covering backend architecture, Java thread models, LLD design patterns, connection pools, caching, Kafka, and the 4-step interview blueprint.
+| ⬅️ Previous | 🏠 Course Index | 🚀 Next Track |
+| :--- | :---: | ---: |
+| [Page 9: Microservices & API Gateways](09-microservices-and-api-gateways.md) | [System Design Index](README.md) | [Java Backend Engineering Course](../../dsa-java/java-backend/README.md) |

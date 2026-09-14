@@ -221,4 +221,6 @@ for (int c = 0; c < cols; c++) {
 
 ---
 
-👉 **Next Up: [Page 3: Memory Layout, Stack vs. Heap & Pass-by-Value](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-fundamentals/03-memory-model-and-methods.md)**
+| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+| :--- | :---: | ---: |
+| [Page 1: Architecture, Syntax & I/O](01-introduction-and-syntax.md) | [Java Fundamentals Index](README.md) | [Page 3: Memory Layout & Pass-by-Value](03-memory-model-and-methods.md) |

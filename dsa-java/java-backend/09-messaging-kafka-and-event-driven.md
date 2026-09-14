@@ -215,4 +215,6 @@ public class OrderEventListener {
 
 ---
 
-👉 **Next Up: [Page 10: Microservices Architecture with Spring Cloud](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-backend/10-microservices-with-spring-cloud.md)**
+| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+| :--- | :---: | ---: |
+| [Page 8: Caching & Redis Integration](08-caching-and-redis-integration.md) | [Java Backend Index](README.md) | [Page 10: Microservices with Spring Cloud](10-microservices-with-spring-cloud.md) |

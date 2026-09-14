@@ -259,4 +259,6 @@ public class UserController {
 
 ---
 
-👉 **Next Up: [Page 12: Production Readiness, Observability & Resilience](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-backend/12-production-readiness-and-resilience.md)**
+| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+| :--- | :---: | ---: |
+| [Page 10: Microservices with Spring Cloud](10-microservices-with-spring-cloud.md) | [Java Backend Index](README.md) | [Page 12: Production & Resilience](12-production-readiness-and-resilience.md) |

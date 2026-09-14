@@ -204,4 +204,6 @@ and uses developer bean   HikariCP DataSource with default settings!
 
 ---
 
-👉 **Next Up: [Page 4: Building RESTful APIs, DTO Pattern & Validation](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-backend/04-restful-apis-dto-and-validation.md)**
+| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+| :--- | :---: | ---: |
+| [Page 2: Servlets & Spring MVC](02-servlet-containers-and-spring-mvc.md) | [Java Backend Index](README.md) | [Page 4: REST APIs & Validation](04-restful-apis-dto-and-validation.md) |

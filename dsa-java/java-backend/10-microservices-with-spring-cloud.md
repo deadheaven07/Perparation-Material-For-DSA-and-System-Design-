@@ -198,4 +198,6 @@ public class CheckoutController {
 
 ---
 
-👉 **Next Up: [Page 11: Backend Security with Spring Security & JWT](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-backend/11-backend-security-spring-security-jwt.md)**
+| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+| :--- | :---: | ---: |
+| [Page 9: Messaging & Apache Kafka](09-messaging-kafka-and-event-driven.md) | [Java Backend Index](README.md) | [Page 11: Security & JWT](11-backend-security-spring-security-jwt.md) |

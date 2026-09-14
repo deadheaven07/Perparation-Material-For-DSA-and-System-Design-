@@ -184,5 +184,6 @@ spring.lifecycle.timeout-per-shutdown-phase=30s
 
 ---
 
-🎉 **Congratulations! You have completed the complete Java Backend Engineering Course (Pages 0 to 12)!**
-You now have a production-grade, enterprise mental model spanning web protocols, Spring Boot core, persistence, concurrency, caching, messaging, security, and resilience.
+| ⬅️ Previous | 🏠 Course Index | 🚀 Next Track |
+| :--- | :---: | ---: |
+| [Page 11: Security & JWT](11-backend-security-spring-security-jwt.md) | [Java Backend Index](README.md) | [System Design Fundamentals](../../system-design/system-design-fundamentals/README.md) |

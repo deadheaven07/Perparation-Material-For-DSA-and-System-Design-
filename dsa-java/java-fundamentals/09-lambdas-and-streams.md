@@ -175,4 +175,6 @@ System.out.println(p1.equals(p2)); // true! Evaluates field equality automatical
 
 ---
 
-👉 **Next Up: [Page 10: Multithreading & Concurrency Basics for Technical Interviews](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-fundamentals/10-concurrency-and-threads.md)**
+| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+| :--- | :---: | ---: |
+| [Page 8: Exception Handling](08-exception-handling.md) | [Java Fundamentals Index](README.md) | [Page 10: Multithreading & Concurrency](10-concurrency-and-threads.md) |

@@ -189,4 +189,6 @@ for (Map.Entry<String, Integer> entry : map.entrySet()) {
 
 ---
 
-👉 **Next Up: [Page 7: Generics, Comparable vs. Comparator & Custom Sorting](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-fundamentals/07-generics-and-comparators.md)**
+| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+| :--- | :---: | ---: |
+| [Page 5: Arrays, Strings & String Pool](05-arrays-and-strings.md) | [Java Fundamentals Index](README.md) | [Page 7: Generics & Custom Comparators](07-generics-and-comparators.md) |

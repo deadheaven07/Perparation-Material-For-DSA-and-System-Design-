@@ -207,4 +207,6 @@ events.sort(
 
 ---
 
-👉 **Next Up: [Page 8: Exception Handling & Resource Management](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-fundamentals/08-exception-handling.md)**
+| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+| :--- | :---: | ---: |
+| [Page 6: Collections Framework](06-collections-framework.md) | [Java Fundamentals Index](README.md) | [Page 8: Exception Handling](08-exception-handling.md) |

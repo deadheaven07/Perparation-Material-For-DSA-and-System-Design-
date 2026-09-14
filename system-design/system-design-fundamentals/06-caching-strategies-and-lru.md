@@ -146,4 +146,6 @@ public class LRUCache<K, V> extends LinkedHashMap<K, V> {
 
 ---
 
-👉 **Next Up: [Page 7: Asynchronous Messaging & Event Streaming (Kafka) in Java](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/system-design/system-design-fundamentals/07-asynchronous-messaging-and-kafka.md)**
+| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+| :--- | :---: | ---: |
+| [Page 5: Databases & Connection Pooling](05-databases-and-connection-pooling.md) | [System Design Index](README.md) | [Page 7: Asynchronous Messaging & Kafka](07-asynchronous-messaging-and-kafka.md) |
