@@ -4,22 +4,37 @@ Comprehensive resources, notes, and architectural case studies covering both **H
 
 ---
 
-## 🏛️ High-Level Design (HLD)
+## 🏛️ System Design Fundamentals (Java Perspective)
 
-### 1. System Design Fundamentals
-- **Scalability**: Horizontal vs. Vertical Scaling
-- **Reliability, Availability & Fault Tolerance**: SLAs, SLOs, SLIs, Redundancy
-- **Consistency Models**: Strong vs. Eventual Consistency, CAP Theorem, PACELC Theorem
-- **Databases**: SQL vs. NoSQL, Replication, Sharding, Partitioning, ACID vs. BASE
+Master the core architectural building blocks, Java threading models, design patterns, and interview blueprint page by page:
 
-### 2. Core Architectural Building Blocks
+👉 **[System Design Fundamentals Course (Pages 1 to 10)](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/system-design/system-design-fundamentals/README.md)**
+
+| Page | Title | Link |
+| :---: | :--- | :--- |
+| **Page 1** | Java Backend Architecture & Threading Models | [01-java-backend-architecture.md](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/system-design/system-design-fundamentals/01-java-backend-architecture.md) |
+| **Page 2** | SOLID Principles & Clean Low-Level Design (LLD) | [02-solid-principles-in-java.md](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/system-design/system-design-fundamentals/02-solid-principles-in-java.md) |
+| **Page 3** | GoF Design Patterns in Java for System Design | [03-design-patterns-in-java.md](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/system-design/system-design-fundamentals/03-design-patterns-in-java.md) |
+| **Page 4** | Scaling & Java Thread Pool Engineering | [04-scaling-and-thread-pools.md](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/system-design/system-design-fundamentals/04-scaling-and-thread-pools.md) |
+| **Page 5** | Databases & Connection Pooling (HikariCP) | [05-databases-and-connection-pooling.md](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/system-design/system-design-fundamentals/05-databases-and-connection-pooling.md) |
+| **Page 6** | Caching Strategies & Implementing LRU in Java | [06-caching-strategies-and-lru.md](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/system-design/system-design-fundamentals/06-caching-strategies-and-lru.md) |
+| **Page 7** | Asynchronous Messaging & Event Streaming (Kafka) | [07-asynchronous-messaging-and-kafka.md](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/system-design/system-design-fundamentals/07-asynchronous-messaging-and-kafka.md) |
+| **Page 8** | System Resilience: Circuit Breakers & Rate Limiters | [08-resilience-circuit-breaker-rate-limiting.md](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/system-design/system-design-fundamentals/08-resilience-circuit-breaker-rate-limiting.md) |
+| **Page 9** | Microservices, API Gateways & Protocols (REST vs gRPC) | [09-microservices-and-api-gateways.md](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/system-design/system-design-fundamentals/09-microservices-and-api-gateways.md) |
+| **Page 10** | The 4-Step System Design Interview Blueprint | [10-interview-framework-and-math.md](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/system-design/system-design-fundamentals/10-interview-framework-and-math.md) |
+
+---
+
+## 🏛️ High-Level Design (HLD) Roadmap
+
+### 1. Architectural Building Blocks
 - **Load Balancers** (Reverse Proxy, Round Robin, Consistent Hashing)
 - **Caching** (Cache-Aside, Write-Through, Write-Back, Eviction policies: LRU, LFU)
 - **Message Queues & Event Streaming** (Kafka, RabbitMQ, SQS)
 - **Content Delivery Networks (CDNs)**
 - **API Gateways & Rate Limiters** (Token Bucket, Leaky Bucket)
 
-### 3. Classic System Design Problems
+### 2. Classic System Design Problems
 - URL Shortener (TinyURL)
 - Rate Limiter
 - Key-Value Store (DynamoDB-style)
@@ -33,10 +48,7 @@ Comprehensive resources, notes, and architectural case studies covering both **H
 
 - **OOP Concepts**: Encapsulation, Abstraction, Inheritance, Polymorphism
 - **SOLID Principles**: Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion
-- **Design Patterns**:
-  - *Creational*: Factory, Abstract Factory, Singleton, Builder
-  - *Structural*: Adapter, Decorator, Facade, Proxy
-  - *Behavioral*: Strategy, Observer, Command, State
+- **Design Patterns**: Creational (Singleton, Builder, Factory), Structural (Adapter, Decorator, Facade), Behavioral (Strategy, Observer, Chain of Responsibility)
 - **Classic LLD Problems**:
   - Parking Lot System
   - Elevator Management System
