@@ -1,12 +1,12 @@
-# Data Structures & Algorithms (Java)
+# Data Structures, Algorithms & Backend Engineering (Java)
 
-This directory contains preparation material, practice problems, and implementations for Data Structures and Algorithms in **Java**.
+This directory contains comprehensive preparation material, practice problems, runtime architectures, and production implementations for Data Structures, Algorithms, and Enterprise Backend Development in **Java**.
 
 ---
 
-## ☕ Java Language Mastery (Zero to Advanced)
+## ☕ 1. Java Language Mastery (Zero to Advanced)
 
-Before diving into algorithmic problems, master the Java language mechanics page by page:
+Master core Java language mechanics, JVM memory models, collections, and concurrency page by page:
 
 👉 **[Java Fundamentals Course (Pages 1 to 10)](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-fundamentals/README.md)**
 
@@ -25,7 +25,31 @@ Before diving into algorithmic problems, master the Java language mechanics page
 
 ---
 
-## 📚 DSA Roadmap & Topic Scaffolding
+## 🚀 2. Java Backend Engineering (Zero to Production)
+
+Master how enterprise web backends, Spring Boot 3.x, database persistence, Kafka messaging, and distributed microservices run in production:
+
+👉 **[Java Backend Course (Pages 0 to 12)](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-backend/README.md)**
+
+| Page | Title | Link |
+| :---: | :--- | :--- |
+| **Page 00** | Master Roadmap & 3-Tier Backend Mental Model | [00-java-backend-roadmap-and-prerequisites.md](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-backend/00-java-backend-roadmap-and-prerequisites.md) |
+| **Page 01** | Web & HTTP Protocols from Ground Zero | [01-web-and-http-protocols.md](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-backend/01-web-and-http-protocols.md) |
+| **Page 02** | Servlet Containers & Spring MVC Architecture | [02-servlet-containers-and-spring-mvc.md](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-backend/02-servlet-containers-and-spring-mvc.md) |
+| **Page 03** | Spring Framework & Boot Core Demystified | [03-spring-framework-and-boot-core.md](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-backend/03-spring-framework-and-boot-core.md) |
+| **Page 04** | RESTful APIs, DTO Pattern & Validation | [04-restful-apis-dto-and-validation.md](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-backend/04-restful-apis-dto-and-validation.md) |
+| **Page 05** | Database Persistence (Spring Data JPA & Hibernate) | [05-database-persistence-jpa-hibernate.md](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-backend/05-database-persistence-jpa-hibernate.md) |
+| **Page 06** | Transaction Management & Database Locking | [06-transaction-management-and-locking.md](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-backend/06-transaction-management-and-locking.md) |
+| **Page 07** | Asynchronous Processing & Virtual Threads (Java 21) | [07-async-virtual-threads-and-concurrency.md](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-backend/07-async-virtual-threads-and-concurrency.md) |
+| **Page 08** | Caching Strategies & Redis Integration | [08-caching-and-redis-integration.md](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-backend/08-caching-and-redis-integration.md) |
+| **Page 09** | Asynchronous Messaging & Apache Kafka | [09-messaging-kafka-and-event-driven.md](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-backend/09-messaging-kafka-and-event-driven.md) |
+| **Page 10** | Microservices Architecture with Spring Cloud | [10-microservices-with-spring-cloud.md](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-backend/10-microservices-with-spring-cloud.md) |
+| **Page 11** | Backend Security with Spring Security & JWT | [11-backend-security-spring-security-jwt.md](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-backend/11-backend-security-spring-security-jwt.md) |
+| **Page 12** | Production Readiness, Observability & Resilience | [12-production-readiness-and-resilience.md](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-backend/12-production-readiness-and-resilience.md) |
+
+---
+
+## 📚 3. DSA Roadmap & Topic Scaffolding
 
 ### 1. Fundamentals & Core Data Structures
 - **Arrays & Strings** (Two Pointers, Sliding Window, Prefix Sum)
@@ -47,6 +71,6 @@ Before diving into algorithmic problems, master the Java language mechanics page
 
 ---
 
-## 💻 Java Setup & Best Practices
+## 💻 4. Java Setup & Best Practices
 - Utilize the Java Collections Framework (`ArrayList`, `LinkedList`, `HashMap`, `PriorityQueue`, `ArrayDeque`).
 - Analyze Time & Space complexity for every solution ($O(N)$, $O(\log N)$, etc.).
