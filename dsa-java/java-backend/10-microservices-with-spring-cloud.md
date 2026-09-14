@@ -198,6 +198,8 @@ public class CheckoutController {
 
 ---
 
-| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+## 🧭 Continue Learning
+
+| ◀️ Previous Topic | 🧭 Track Hub | Next Topic ▶️ |
 | :--- | :---: | ---: |
-| [Page 9: Messaging & Apache Kafka](09-messaging-kafka-and-event-driven.md) | [Java Backend Index](README.md) | [Page 11: Security & JWT](11-backend-security-spring-security-jwt.md) |
+| [**Page 9: Messaging & Apache Kafka**](09-messaging-kafka-and-event-driven.md)<br><sub>*Event-Driven Backends, Offsets & DLQs*</sub> | [**Java Backend Index**](README.md)<br><sub>*Curriculum & Architecture*</sub> | [**Page 11: Security & JWT**](11-backend-security-spring-security-jwt.md)<br><sub>*Security Filter Chain, Stateless Auth & RBAC*</sub> |

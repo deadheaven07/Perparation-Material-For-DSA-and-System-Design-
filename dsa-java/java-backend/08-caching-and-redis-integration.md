@@ -218,6 +218,8 @@ public class HotItemService {
 
 ---
 
-| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+## 🧭 Continue Learning
+
+| ◀️ Previous Topic | 🧭 Track Hub | Next Topic ▶️ |
 | :--- | :---: | ---: |
-| [Page 7: Async & Virtual Threads](07-async-virtual-threads-and-concurrency.md) | [Java Backend Index](README.md) | [Page 9: Messaging & Apache Kafka](09-messaging-kafka-and-event-driven.md) |
+| [**Page 7: Async & Virtual Threads**](07-async-virtual-threads-and-concurrency.md)<br><sub>*CompletableFuture & Java 21 Project Loom*</sub> | [**Java Backend Index**](README.md)<br><sub>*Curriculum & Architecture*</sub> | [**Page 9: Messaging & Apache Kafka**](09-messaging-kafka-and-event-driven.md)<br><sub>*Event-Driven Backends, Offsets & DLQs*</sub> |

@@ -235,6 +235,8 @@ public class Solution {
 
 ---
 
-| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+## 🧭 Continue Learning
+
+| ◀️ Previous Topic | 🧭 Track Hub | Next Topic ▶️ |
 | :--- | :---: | ---: |
-| [Page 3: Memory Layout & Pass-by-Value](03-memory-model-and-methods.md) | [Java Fundamentals Index](README.md) | [Page 5: Arrays, Strings & String Pool](05-arrays-and-strings.md) |
+| [**Page 3: Memory Layout & Pass-by-Value**](03-memory-model-and-methods.md)<br><sub>*Stack vs Heap, Pass-by-Value & Call Stack*</sub> | [**Java Fundamentals Index**](README.md)<br><sub>*Core Language & Runtime Mechanics*</sub> | [**Page 5: Arrays, Strings & String Pool**](05-arrays-and-strings.md)<br><sub>*Immutability, SCP & StringBuilder*</sub> |

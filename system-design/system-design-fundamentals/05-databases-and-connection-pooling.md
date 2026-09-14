@@ -153,6 +153,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
 ---
 
-| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+## 🧭 Continue Learning
+
+| ◀️ Previous Topic | 🧭 Track Hub | Next Topic ▶️ |
 | :--- | :---: | ---: |
-| [Page 4: Scaling & Thread Pools](04-scaling-and-thread-pools.md) | [System Design Index](README.md) | [Page 6: Caching & LRU in Java](06-caching-strategies-and-lru.md) |
+| [**Page 4: Scaling & Thread Pools**](04-scaling-and-thread-pools.md)<br><sub>*Vertical/Horizontal Scaling & Pool Sizing Math*</sub> | [**System Design Index**](README.md)<br><sub>*Architecture, LLD & Scalability*</sub> | [**Page 6: Caching & LRU in Java**](06-caching-strategies-and-lru.md)<br><sub>*Cache-Aside, LinkedHashMap LRU & Redis*</sub> |

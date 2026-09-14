@@ -215,6 +215,8 @@ public class OrderEventListener {
 
 ---
 
-| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+## 🧭 Continue Learning
+
+| ◀️ Previous Topic | 🧭 Track Hub | Next Topic ▶️ |
 | :--- | :---: | ---: |
-| [Page 8: Caching & Redis Integration](08-caching-and-redis-integration.md) | [Java Backend Index](README.md) | [Page 10: Microservices with Spring Cloud](10-microservices-with-spring-cloud.md) |
+| [**Page 8: Caching & Redis Integration**](08-caching-and-redis-integration.md)<br><sub>*Spring Cache, RedisTemplate & Stampede Fixes*</sub> | [**Java Backend Index**](README.md)<br><sub>*Curriculum & Architecture*</sub> | [**Page 10: Microservices with Spring Cloud**](10-microservices-with-spring-cloud.md)<br><sub>*API Gateway, Eureka Discovery & OpenFeign*</sub> |

@@ -176,6 +176,8 @@ If a message cannot be processed after multiple retries (due to corrupt JSON or 
 
 ---
 
-| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+## 🧭 Continue Learning
+
+| ◀️ Previous Topic | 🧭 Track Hub | Next Topic ▶️ |
 | :--- | :---: | ---: |
-| [Page 6: Caching & LRU in Java](06-caching-strategies-and-lru.md) | [System Design Index](README.md) | [Page 8: Circuit Breakers & Rate Limiters](08-resilience-circuit-breaker-rate-limiting.md) |
+| [**Page 6: Caching & LRU in Java**](06-caching-strategies-and-lru.md)<br><sub>*Cache-Aside, LinkedHashMap LRU & Redis*</sub> | [**System Design Index**](README.md)<br><sub>*Architecture, LLD & Scalability*</sub> | [**Page 8: Circuit Breakers & Rate Limiters**](08-resilience-circuit-breaker-rate-limiting.md)<br><sub>*Resilience4j, Token Bucket & Exponential Jitter*</sub> |

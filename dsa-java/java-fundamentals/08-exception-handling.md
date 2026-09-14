@@ -175,6 +175,8 @@ public class BankAccount {
 
 ---
 
-| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+## 🧭 Continue Learning
+
+| ◀️ Previous Topic | 🧭 Track Hub | Next Topic ▶️ |
 | :--- | :---: | ---: |
-| [Page 7: Generics & Custom Comparators](07-generics-and-comparators.md) | [Java Fundamentals Index](README.md) | [Page 9: Functional Java & Streams](09-lambdas-and-streams.md) |
+| [**Page 7: Generics & Custom Comparators**](07-generics-and-comparators.md)<br><sub>*Type Erasure, PECS & Subtraction Bug*</sub> | [**Java Fundamentals Index**](README.md)<br><sub>*Core Language & Runtime Mechanics*</sub> | [**Page 9: Functional Java & Streams**](09-lambdas-and-streams.md)<br><sub>*Lambdas, Streams API Pipelines & Records*</sub> |

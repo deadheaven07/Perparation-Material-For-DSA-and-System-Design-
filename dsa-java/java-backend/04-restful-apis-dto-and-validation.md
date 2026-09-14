@@ -198,6 +198,8 @@ public class GlobalExceptionHandler {
 
 ---
 
-| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+## 🧭 Continue Learning
+
+| ◀️ Previous Topic | 🧭 Track Hub | Next Topic ▶️ |
 | :--- | :---: | ---: |
-| [Page 3: Spring Boot Core & IoC](03-spring-framework-and-boot-core.md) | [Java Backend Index](README.md) | [Page 5: JPA & Hibernate Persistence](05-database-persistence-jpa-hibernate.md) |
+| [**Page 3: Spring Boot Core & IoC**](03-spring-framework-and-boot-core.md)<br><sub>*Dependency Injection & Auto-Configuration*</sub> | [**Java Backend Index**](README.md)<br><sub>*Curriculum & Architecture*</sub> | [**Page 5: JPA & Hibernate Persistence**](05-database-persistence-jpa-hibernate.md)<br><sub>*Entity Relationships & N+1 Query Fixes*</sub> |

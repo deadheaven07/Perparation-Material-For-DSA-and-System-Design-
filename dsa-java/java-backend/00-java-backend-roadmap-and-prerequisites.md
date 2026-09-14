@@ -182,10 +182,12 @@ Before building backend applications, ensure you have:
 3. **Integrated Development Environment (IDE)**: IntelliJ IDEA (Community or Ultimate) or VS Code with Java Extension Pack.
 4. **API Client**: Postman, Insomnia, or command-line `cURL` for testing HTTP requests.
 5. **Relational Database**: PostgreSQL or MySQL installed locally or via Docker.
-6. **Core Java Proficiency**: Comfort with OOP, Collections (`List`, `Map`, `Set`), Exception Handling, and Streams (covered in [Java Fundamentals](file:///Users/deadheaven07/Downloads/Prep_DSA_SystemDesign/dsa-java/java-fundamentals/README.md)).
+6. **Core Java Proficiency**: Comfort with OOP, Collections (`List`, `Map`, `Set`), Exception Handling, and Streams (covered in [Java Fundamentals](../java-fundamentals/README.md)).
 
 ---
 
-| 🏠 Course Index | ➡️ Next |
-| :---: | ---: |
-| [Java Backend Index](README.md) | [Page 1: Web & HTTP Protocols](01-web-and-http-protocols.md) |
+## 🧭 Continue Learning
+
+| 🏁 Track Start | 🧭 Track Hub | Next Topic ▶️ |
+| :--- | :---: | ---: |
+| *You are at the first topic* | [**Java Backend Index**](README.md)<br><sub>*Curriculum & Architecture*</sub> | [**Page 1: Web & HTTP Protocols**](01-web-and-http-protocols.md)<br><sub>*HTTP Methods, Status Codes & REST*</sub> |

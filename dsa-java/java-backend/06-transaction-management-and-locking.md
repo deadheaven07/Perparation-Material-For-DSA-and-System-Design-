@@ -179,6 +179,8 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
 
 ---
 
-| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+## 🧭 Continue Learning
+
+| ◀️ Previous Topic | 🧭 Track Hub | Next Topic ▶️ |
 | :--- | :---: | ---: |
-| [Page 5: JPA & Hibernate Persistence](05-database-persistence-jpa-hibernate.md) | [Java Backend Index](README.md) | [Page 7: Async & Virtual Threads](07-async-virtual-threads-and-concurrency.md) |
+| [**Page 5: JPA & Hibernate Persistence**](05-database-persistence-jpa-hibernate.md)<br><sub>*Entity Relationships & N+1 Query Fixes*</sub> | [**Java Backend Index**](README.md)<br><sub>*Curriculum & Architecture*</sub> | [**Page 7: Async & Virtual Threads**](07-async-virtual-threads-and-concurrency.md)<br><sub>*CompletableFuture & Java 21 Project Loom*</sub> |

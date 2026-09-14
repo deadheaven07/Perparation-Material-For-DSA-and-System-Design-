@@ -138,6 +138,8 @@ public class VirtualThreadServer {
 
 ---
 
-| 🏠 Course Index | ➡️ Next |
-| :---: | ---: |
-| [System Design Index](README.md) | [Page 2: SOLID Principles & LLD](02-solid-principles-in-java.md) |
+## 🧭 Continue Learning
+
+| 🏁 Track Start | 🧭 Track Hub | Next Topic ▶️ |
+| :--- | :---: | ---: |
+| *You are at the first topic* | [**System Design Index**](README.md)<br><sub>*Architecture, LLD & Scalability*</sub> | [**Page 2: SOLID Principles & LLD**](02-solid-principles-in-java.md)<br><sub>*Clean Architecture & Dependency Injection*</sub> |

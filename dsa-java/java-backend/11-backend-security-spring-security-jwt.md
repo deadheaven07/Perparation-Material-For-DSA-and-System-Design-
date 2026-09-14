@@ -259,6 +259,8 @@ public class UserController {
 
 ---
 
-| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+## 🧭 Continue Learning
+
+| ◀️ Previous Topic | 🧭 Track Hub | Next Topic ▶️ |
 | :--- | :---: | ---: |
-| [Page 10: Microservices with Spring Cloud](10-microservices-with-spring-cloud.md) | [Java Backend Index](README.md) | [Page 12: Production & Resilience](12-production-readiness-and-resilience.md) |
+| [**Page 10: Microservices with Spring Cloud**](10-microservices-with-spring-cloud.md)<br><sub>*API Gateway, Eureka Discovery & OpenFeign*</sub> | [**Java Backend Index**](README.md)<br><sub>*Curriculum & Architecture*</sub> | [**Page 12: Production & Resilience**](12-production-readiness-and-resilience.md)<br><sub>*Actuator, Prometheus, Tracing & Resilience4j*</sub> |

@@ -220,6 +220,8 @@ BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(10);
 
 ---
 
-| ⬅️ Previous | 🏠 Course Index | 🚀 Next Track |
+## 🧭 Continue Learning
+
+| ◀️ Previous Topic | 🧭 Track Hub | 🚀 Next Track |
 | :--- | :---: | ---: |
-| [Page 9: Functional Java & Streams](09-lambdas-and-streams.md) | [Java Fundamentals Index](README.md) | [Java Backend Engineering Course](../java-backend/README.md) |
+| [**Page 9: Functional Java & Streams**](09-lambdas-and-streams.md)<br><sub>*Lambdas, Streams API Pipelines & Records*</sub> | [**Java Fundamentals Index**](README.md)<br><sub>*Core Language & Runtime Mechanics*</sub> | [**Java Backend Engineering Course**](../java-backend/README.md)<br><sub>*Spring Boot, Persistence & Microservices*</sub> |

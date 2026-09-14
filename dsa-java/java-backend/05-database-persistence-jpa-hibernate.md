@@ -233,6 +233,8 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
 ---
 
-| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+## 🧭 Continue Learning
+
+| ◀️ Previous Topic | 🧭 Track Hub | Next Topic ▶️ |
 | :--- | :---: | ---: |
-| [Page 4: REST APIs & Validation](04-restful-apis-dto-and-validation.md) | [Java Backend Index](README.md) | [Page 6: Transactions & Locking](06-transaction-management-and-locking.md) |
+| [**Page 4: REST APIs & Validation**](04-restful-apis-dto-and-validation.md)<br><sub>*DTO Pattern, Jakarta Validation & Error Handling*</sub> | [**Java Backend Index**](README.md)<br><sub>*Curriculum & Architecture*</sub> | [**Page 6: Transactions & Locking**](06-transaction-management-and-locking.md)<br><sub>*@Transactional, Isolation & Concurrency Locks*</sub> |

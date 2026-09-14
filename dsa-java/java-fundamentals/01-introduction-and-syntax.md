@@ -277,6 +277,8 @@ Test your understanding before proceeding to Page 2:
 
 ---
 
-| 🏠 Course Index | ➡️ Next |
-| :---: | ---: |
-| [Java Fundamentals Index](README.md) | [Page 2: Control Flow & Loops](02-control-flow-and-loops.md) |
+## 🧭 Continue Learning
+
+| 🏁 Track Start | 🧭 Track Hub | Next Topic ▶️ |
+| :--- | :---: | ---: |
+| *You are at the first topic* | [**Java Fundamentals Index**](README.md)<br><sub>*Core Language & Runtime Mechanics*</sub> | [**Page 2: Control Flow & Loops**](02-control-flow-and-loops.md)<br><sub>*Modern Switch, Labeled Jumps & Cache Locality*</sub> |

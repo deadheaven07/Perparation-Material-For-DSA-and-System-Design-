@@ -228,6 +228,8 @@ public class StockMarket {
 
 ---
 
-| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+## 🧭 Continue Learning
+
+| ◀️ Previous Topic | 🧭 Track Hub | Next Topic ▶️ |
 | :--- | :---: | ---: |
-| [Page 2: SOLID Principles & LLD](02-solid-principles-in-java.md) | [System Design Index](README.md) | [Page 4: Scaling & Thread Pools](04-scaling-and-thread-pools.md) |
+| [**Page 2: SOLID Principles & LLD**](02-solid-principles-in-java.md)<br><sub>*Clean Architecture & Dependency Injection*</sub> | [**System Design Index**](README.md)<br><sub>*Architecture, LLD & Scalability*</sub> | [**Page 4: Scaling & Thread Pools**](04-scaling-and-thread-pools.md)<br><sub>*Vertical/Horizontal Scaling & Pool Sizing Math*</sub> |

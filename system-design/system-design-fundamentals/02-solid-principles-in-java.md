@@ -231,6 +231,8 @@ public class NotificationManager {
 
 ---
 
-| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+## 🧭 Continue Learning
+
+| ◀️ Previous Topic | 🧭 Track Hub | Next Topic ▶️ |
 | :--- | :---: | ---: |
-| [Page 1: Java Backend Architecture](01-java-backend-architecture.md) | [System Design Index](README.md) | [Page 3: GoF Design Patterns](03-design-patterns-in-java.md) |
+| [**Page 1: Java Backend Architecture**](01-java-backend-architecture.md)<br><sub>*Request Lifecycle, Tomcat & Virtual Threads*</sub> | [**System Design Index**](README.md)<br><sub>*Architecture, LLD & Scalability*</sub> | [**Page 3: GoF Design Patterns**](03-design-patterns-in-java.md)<br><sub>*Thread-Safe Singleton, Builder & Strategy*</sub> |

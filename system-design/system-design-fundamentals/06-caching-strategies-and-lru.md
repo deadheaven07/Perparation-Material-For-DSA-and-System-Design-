@@ -146,6 +146,8 @@ public class LRUCache<K, V> extends LinkedHashMap<K, V> {
 
 ---
 
-| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+## 🧭 Continue Learning
+
+| ◀️ Previous Topic | 🧭 Track Hub | Next Topic ▶️ |
 | :--- | :---: | ---: |
-| [Page 5: Databases & Connection Pooling](05-databases-and-connection-pooling.md) | [System Design Index](README.md) | [Page 7: Asynchronous Messaging & Kafka](07-asynchronous-messaging-and-kafka.md) |
+| [**Page 5: Databases & Connection Pooling**](05-databases-and-connection-pooling.md)<br><sub>*HikariCP Sizing, ACID & Locking Strategies*</sub> | [**System Design Index**](README.md)<br><sub>*Architecture, LLD & Scalability*</sub> | [**Page 7: Asynchronous Messaging & Kafka**](07-asynchronous-messaging-and-kafka.md)<br><sub>*Kafka Partitions, Consumer Groups & Idempotency*</sub> |

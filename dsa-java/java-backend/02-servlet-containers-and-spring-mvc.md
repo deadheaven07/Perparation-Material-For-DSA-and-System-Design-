@@ -195,6 +195,8 @@ public class ExecutionLoggerInterceptor implements HandlerInterceptor {
 
 ---
 
-| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+## 🧭 Continue Learning
+
+| ◀️ Previous Topic | 🧭 Track Hub | Next Topic ▶️ |
 | :--- | :---: | ---: |
-| [Page 1: Web & HTTP Protocols](01-web-and-http-protocols.md) | [Java Backend Index](README.md) | [Page 3: Spring Boot Core & IoC](03-spring-framework-and-boot-core.md) |
+| [**Page 1: Web & HTTP Protocols**](01-web-and-http-protocols.md)<br><sub>*HTTP Methods, Status Codes & REST*</sub> | [**Java Backend Index**](README.md)<br><sub>*Curriculum & Architecture*</sub> | [**Page 3: Spring Boot Core & IoC**](03-spring-framework-and-boot-core.md)<br><sub>*Dependency Injection & Auto-Configuration*</sub> |

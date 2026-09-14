@@ -189,6 +189,8 @@ for (Map.Entry<String, Integer> entry : map.entrySet()) {
 
 ---
 
-| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+## 🧭 Continue Learning
+
+| ◀️ Previous Topic | 🧭 Track Hub | Next Topic ▶️ |
 | :--- | :---: | ---: |
-| [Page 5: Arrays, Strings & String Pool](05-arrays-and-strings.md) | [Java Fundamentals Index](README.md) | [Page 7: Generics & Custom Comparators](07-generics-and-comparators.md) |
+| [**Page 5: Arrays, Strings & String Pool**](05-arrays-and-strings.md)<br><sub>*Immutability, SCP & StringBuilder*</sub> | [**Java Fundamentals Index**](README.md)<br><sub>*Core Language & Runtime Mechanics*</sub> | [**Page 7: Generics & Custom Comparators**](07-generics-and-comparators.md)<br><sub>*Type Erasure, PECS & Subtraction Bug*</sub> |

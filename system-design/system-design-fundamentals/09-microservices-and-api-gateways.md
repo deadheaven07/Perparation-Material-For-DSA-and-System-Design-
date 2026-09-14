@@ -142,6 +142,8 @@ Client Request (Trace ID: abc-123)
 
 ---
 
-| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+## 🧭 Continue Learning
+
+| ◀️ Previous Topic | 🧭 Track Hub | Next Topic ▶️ |
 | :--- | :---: | ---: |
-| [Page 8: Circuit Breakers & Rate Limiters](08-resilience-circuit-breaker-rate-limiting.md) | [System Design Index](README.md) | [Page 10: Interview Blueprint & Math](10-interview-framework-and-math.md) |
+| [**Page 8: Circuit Breakers & Rate Limiters**](08-resilience-circuit-breaker-rate-limiting.md)<br><sub>*Resilience4j, Token Bucket & Exponential Jitter*</sub> | [**System Design Index**](README.md)<br><sub>*Architecture, LLD & Scalability*</sub> | [**Page 10: Interview Blueprint & Math**](10-interview-framework-and-math.md)<br><sub>*Capacity Math, QPS Estimation & TinyURL*</sub> |

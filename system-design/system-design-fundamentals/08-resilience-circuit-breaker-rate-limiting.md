@@ -185,6 +185,8 @@ public class RetryHelper {
 
 ---
 
-| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+## 🧭 Continue Learning
+
+| ◀️ Previous Topic | 🧭 Track Hub | Next Topic ▶️ |
 | :--- | :---: | ---: |
-| [Page 7: Asynchronous Messaging & Kafka](07-asynchronous-messaging-and-kafka.md) | [System Design Index](README.md) | [Page 9: Microservices & API Gateways](09-microservices-and-api-gateways.md) |
+| [**Page 7: Asynchronous Messaging & Kafka**](07-asynchronous-messaging-and-kafka.md)<br><sub>*Kafka Partitions, Consumer Groups & Idempotency*</sub> | [**System Design Index**](README.md)<br><sub>*Architecture, LLD & Scalability*</sub> | [**Page 9: Microservices & API Gateways**](09-microservices-and-api-gateways.md)<br><sub>*API Gateway, Service Discovery & gRPC*</sub> |

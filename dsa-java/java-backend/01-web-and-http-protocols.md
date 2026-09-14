@@ -193,6 +193,8 @@ Client ---> [GET /profile] (Header: Authorization: Bearer eyJhbGciOi...)
 
 ---
 
-| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+## 🧭 Continue Learning
+
+| ◀️ Previous Topic | 🧭 Track Hub | Next Topic ▶️ |
 | :--- | :---: | ---: |
-| [Page 0: Roadmap & Prerequisites](00-java-backend-roadmap-and-prerequisites.md) | [Java Backend Index](README.md) | [Page 2: Servlets & Spring MVC](02-servlet-containers-and-spring-mvc.md) |
+| [**Page 0: Roadmap & Prerequisites**](00-java-backend-roadmap-and-prerequisites.md)<br><sub>*Architecture & 3-Tier Mental Model*</sub> | [**Java Backend Index**](README.md)<br><sub>*Curriculum & Architecture*</sub> | [**Page 2: Servlets & Spring MVC**](02-servlet-containers-and-spring-mvc.md)<br><sub>*Tomcat, DispatcherServlet & Filters*</sub> |

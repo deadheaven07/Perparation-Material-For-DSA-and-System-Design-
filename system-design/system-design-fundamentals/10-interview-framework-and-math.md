@@ -155,6 +155,8 @@ $$62^7 \approx \mathbf{3.5\text{ Trillion unique URLs}}$$
 
 ---
 
-| ⬅️ Previous | 🏠 Course Index | 🚀 Next Track |
+## 🧭 Continue Learning
+
+| ◀️ Previous Topic | 🧭 Track Hub | 🚀 Next Track |
 | :--- | :---: | ---: |
-| [Page 9: Microservices & API Gateways](09-microservices-and-api-gateways.md) | [System Design Index](README.md) | [Java Backend Engineering Course](../../dsa-java/java-backend/README.md) |
+| [**Page 9: Microservices & API Gateways**](09-microservices-and-api-gateways.md)<br><sub>*API Gateway, Service Discovery & gRPC*</sub> | [**System Design Index**](README.md)<br><sub>*Architecture, LLD & Scalability*</sub> | [**Java Backend Engineering Course**](../../dsa-java/java-backend/README.md)<br><sub>*Spring Boot, Persistence & Microservices*</sub> |

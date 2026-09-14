@@ -123,6 +123,8 @@ GC Thread:          ---------------------------[Collecting]---------------->
 
 ---
 
-| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+## 🧭 Continue Learning
+
+| ◀️ Previous Topic | 🧭 Track Hub | Next Topic ▶️ |
 | :--- | :---: | ---: |
-| [Page 3: GoF Design Patterns](03-design-patterns-in-java.md) | [System Design Index](README.md) | [Page 5: Databases & Connection Pooling](05-databases-and-connection-pooling.md) |
+| [**Page 3: GoF Design Patterns**](03-design-patterns-in-java.md)<br><sub>*Thread-Safe Singleton, Builder & Strategy*</sub> | [**System Design Index**](README.md)<br><sub>*Architecture, LLD & Scalability*</sub> | [**Page 5: Databases & Connection Pooling**](05-databases-and-connection-pooling.md)<br><sub>*HikariCP Sizing, ACID & Locking Strategies*</sub> |

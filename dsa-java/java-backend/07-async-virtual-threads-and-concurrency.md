@@ -183,6 +183,8 @@ spring.threads.virtual.enabled=true
 
 ---
 
-| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+## 🧭 Continue Learning
+
+| ◀️ Previous Topic | 🧭 Track Hub | Next Topic ▶️ |
 | :--- | :---: | ---: |
-| [Page 6: Transactions & Locking](06-transaction-management-and-locking.md) | [Java Backend Index](README.md) | [Page 8: Caching & Redis Integration](08-caching-and-redis-integration.md) |
+| [**Page 6: Transactions & Locking**](06-transaction-management-and-locking.md)<br><sub>*@Transactional, Isolation & Concurrency Locks*</sub> | [**Java Backend Index**](README.md)<br><sub>*Curriculum & Architecture*</sub> | [**Page 8: Caching & Redis Integration**](08-caching-and-redis-integration.md)<br><sub>*Spring Cache, RedisTemplate & Stampede Fixes*</sub> |

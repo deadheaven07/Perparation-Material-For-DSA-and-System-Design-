@@ -207,6 +207,8 @@ events.sort(
 
 ---
 
-| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+## 🧭 Continue Learning
+
+| ◀️ Previous Topic | 🧭 Track Hub | Next Topic ▶️ |
 | :--- | :---: | ---: |
-| [Page 6: Collections Framework](06-collections-framework.md) | [Java Fundamentals Index](README.md) | [Page 8: Exception Handling](08-exception-handling.md) |
+| [**Page 6: Collections Framework**](06-collections-framework.md)<br><sub>*ArrayList, ArrayDeque, PriorityQueue & Maps*</sub> | [**Java Fundamentals Index**](README.md)<br><sub>*Core Language & Runtime Mechanics*</sub> | [**Page 8: Exception Handling**](08-exception-handling.md)<br><sub>*Throwable Hierarchy & Defensive Coding*</sub> |

@@ -204,6 +204,8 @@ and uses developer bean   HikariCP DataSource with default settings!
 
 ---
 
-| ⬅️ Previous | 🏠 Course Index | ➡️ Next |
+## 🧭 Continue Learning
+
+| ◀️ Previous Topic | 🧭 Track Hub | Next Topic ▶️ |
 | :--- | :---: | ---: |
-| [Page 2: Servlets & Spring MVC](02-servlet-containers-and-spring-mvc.md) | [Java Backend Index](README.md) | [Page 4: REST APIs & Validation](04-restful-apis-dto-and-validation.md) |
+| [**Page 2: Servlets & Spring MVC**](02-servlet-containers-and-spring-mvc.md)<br><sub>*Tomcat, DispatcherServlet & Filters*</sub> | [**Java Backend Index**](README.md)<br><sub>*Curriculum & Architecture*</sub> | [**Page 4: REST APIs & Validation**](04-restful-apis-dto-and-validation.md)<br><sub>*DTO Pattern, Jakarta Validation & Error Handling*</sub> |
