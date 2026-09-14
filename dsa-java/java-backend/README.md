@@ -34,9 +34,10 @@ flowchart TD
         P10["Page 10: Microservices with Spring Cloud<br/><sub>API Gateway, Eureka Discovery, OpenFeign</sub>"]
     end
 
-    subgraph S6["🛡️ STAGE 6: Enterprise Security & Resilience"]
+    subgraph S6["🛡️ STAGE 6: Enterprise Security, Resilience & Testing"]
         P11["Page 11: Backend Security with JWT<br/><sub>SecurityFilterChain, Stateless Auth Filter, RBAC</sub>"]
         P12["Page 12: Production Observability & Resilience<br/><sub>Actuator, Prometheus, Distributed Tracing, Resilience4j</sub>"]
+        P13["Page 13: Testing, Build Tools & Packaging<br/><sub>Maven/Gradle, MockMvc, Slices, Testcontainers, Fat JAR</sub>"]
     end
 
     S1 --> S2 --> S3 --> S4 --> S5 --> S6
@@ -61,6 +62,7 @@ flowchart TD
 | **10** | [**Microservices & Spring Cloud**](10-microservices-with-spring-cloud.md) | Monolith to microservices, Spring Cloud Gateway, Eureka discovery, Declarative REST with OpenFeign, Config Server |
 | **11** | [**Security & JWT Authentication**](11-backend-security-spring-security-jwt.md) | `SecurityFilterChain`, Custom Stateless JWT Filter, BCrypt password hashing, RBAC (`@PreAuthorize`), CORS/CSRF |
 | **12** | [**Production & Observability**](12-production-readiness-and-resilience.md) | Spring Boot Actuator, Micrometer & Prometheus metrics, Distributed Tracing (Zipkin), Resilience4j Circuit Breakers |
+| **13** | [**Testing & Build Packaging**](13-testing-build-tools-and-packaging.md) | Maven/Gradle, BOMs, Fat JAR packaging, Testing pyramid (JUnit 5, Mockito, `@WebMvcTest`, Testcontainers, `@SpringBootTest`) |
 
 ---
 

@@ -194,7 +194,116 @@ flowchart TD
 
 ---
 
-## 7. Self-Check & Quick Review
+## 7. Configuration Management: `@ConfigurationProperties` vs `@Value` & Spring Profiles
+
+Modern enterprise applications cannot hardcode database credentials, third-party API keys, or timeout thresholds. Spring Boot provides two primary mechanisms to bind configuration properties from `application.yml` or environment variables into Java objects:
+
+### Why `@ConfigurationProperties` is Superior to `@Value`
+
+| Feature | `@Value("${app.timeout}")` | `@ConfigurationProperties(prefix = "app")` |
+| :--- | :--- | :--- |
+| **Type Safety** | ❌ Loose (String-based evaluation, fails at runtime) | ✅ Strict (Compile-time & startup validation) |
+| **Data Structure** | ❌ Flat key-value pairs | ✅ Hierarchical (Lists, Maps, nested objects) |
+| **Immutability** | ❌ Requires mutable fields or `@ConstructorBinding` | ✅ Works natively with modern **Java Records** |
+| **Validation** | ❌ Manual validation | ✅ Full **Jakarta Validation** (`@NotNull`, `@Min`) |
+| **Refactoring** | ❌ Searching String literals across files | ✅ Standard IDE safe refactoring |
+
+#### Production Example: Strongly-Typed Config Record
+
+```java
+@ConfigurationProperties(prefix = "app.payment")
+@Validated
+public record PaymentProperties(
+    @NotBlank String provider,
+    @NotBlank String apiKey,
+    @Min(1000) @Max(30000) int timeoutMillis,
+    RetryConfig retry
+) {
+    public record RetryConfig(
+        @Min(1) int maxAttempts,
+        long backoffDelayMillis
+    ) {}
+}
+```
+
+Enable it in your configuration or application class:
+```java
+@SpringBootApplication
+@ConfigurationPropertiesScan // Scans and registers all @ConfigurationProperties records
+public class Application { ... }
+```
+
+---
+
+### Spring Profiles: Multi-Environment Layering
+
+Spring Profiles allow you to isolate parts of your application configuration and make it available only in specific environments (`local`, `dev`, `staging`, `prod`).
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│              SPRING CONFIGURATION HIERARCHY                 │
+├─────────────────────────────────────────────────────────────┤
+│  1. application.yml             (Base defaults for all envs)│
+│          ▼ overrides                                        │
+│  2. application-local.yml       (H2 in-memory DB, debug log)│
+│     OR application-prod.yml     (RDS Aurora, JSON log, SSL) │
+│          ▼ overrides                                        │
+│  3. Environment Variables       (APP_PAYMENT_API_KEY=xxx)   │
+│          ▼ overrides                                        │
+│  4. JVM System Properties       (-Dspring.profiles.active)  │
+└─────────────────────────────────────────────────────────────┘
+```
+
+#### Multi-Profile `application.yml` Setup
+
+```yaml
+# application.yml (Base configuration applied to all environments)
+spring:
+  application:
+    name: order-service
+  jpa:
+    open-in-view: false
+
+app:
+  payment:
+    provider: "stripe"
+    timeout-millis: 5000
+    retry:
+      max-attempts: 3
+      backoff-delay-millis: 1000
+
+---
+# application-local.yml
+spring:
+  config:
+    activate:
+      on-profile: "local"
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+
+---
+# application-prod.yml
+spring:
+  config:
+    activate:
+      on-profile: "prod"
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:prod-db.internal}:5432/orderdb
+    username: ${DB_USER}
+    password: ${DB_PASS}
+    hikari:
+      maximum-pool-size: 20
+```
+
+#### Activating Profiles in Production:
+- **CLI Flag**: `java -jar app.jar --spring.profiles.active=prod`
+- **JVM Argument**: `java -Dspring.profiles.active=prod -jar app.jar`
+- **Environment Variable (Standard for Kubernetes / Docker)**: `export SPRING_PROFILES_ACTIVE=prod`
+
+---
+
+## 8. Self-Check & Quick Review
 
 1. **Q**: Why should field injection (`@Autowired private MyService myService;`) be avoided?
    - *A*: It prevents fields from being `final` (breaking immutability), makes unit testing impossible without reflection, and masks violation of the Single Responsibility Principle.
@@ -202,6 +311,10 @@ flowchart TD
    - *A*: **Singleton** (one shared instance per Spring `ApplicationContext`).
 3. **Q**: How does `@ConditionalOnMissingBean` help Spring Boot developers?
    - *A*: It provides sensible defaults out-of-the-box while allowing developers to seamlessly override any bean simply by declaring their own `@Bean` method.
+4. **Q**: Why should you prefer `@ConfigurationProperties` over `@Value` for configuration?
+   - *A*: `@ConfigurationProperties` supports hierarchical mapping, works with immutable Java records, validates inputs at startup using Jakarta Validation (`@NotNull`, `@Min`), and enables IDE auto-completion.
+5. **Q**: How does Spring Boot resolve conflicting properties across profiles?
+   - *A*: Specific profile files (`application-{profile}.yml`) override base files (`application.yml`), and environment variables / JVM flags override both.
 
 ---
 
@@ -210,3 +323,4 @@ flowchart TD
 | ◀️ Previous Topic | 🧭 Track Hub | Next Topic ▶️ |
 | :--- | :---: | ---: |
 | [**Page 2: Servlets & Spring MVC**](02-servlet-containers-and-spring-mvc.md)<br><sub>*Tomcat, DispatcherServlet & Filters*</sub> | [**Java Backend Index**](README.md)<br><sub>*Curriculum & Architecture*</sub> | [**Page 4: REST APIs & Validation**](04-restful-apis-dto-and-validation.md)<br><sub>*DTO Pattern, Jakarta Validation & Error Handling*</sub> |
+

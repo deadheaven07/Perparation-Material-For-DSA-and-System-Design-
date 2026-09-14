@@ -113,9 +113,10 @@ flowchart TD
         P10["Page 10: Microservices with Spring Cloud<br/><sub>API Gateway, Eureka Discovery, OpenFeign</sub>"]
     end
 
-    subgraph S6["🛡️ STAGE 6: Enterprise Security & Resilience"]
+    subgraph S6["🛡️ STAGE 6: Enterprise Security, Resilience & Testing"]
         P11["Page 11: Backend Security with JWT<br/><sub>SecurityFilterChain, Stateless Auth Filter, RBAC</sub>"]
         P12["Page 12: Production Observability & Resilience<br/><sub>Actuator, Prometheus, Distributed Tracing, Resilience4j</sub>"]
+        P13["Page 13: Testing, Build Tools & Packaging<br/><sub>Maven/Gradle, MockMvc, Slices, Testcontainers, Fat JAR</sub>"]
     end
 
     S1 --> S2 --> S3 --> S4 --> S5 --> S6
@@ -146,9 +147,10 @@ flowchart TD
 - **Page 09: Asynchronous Messaging with Apache Kafka** — Decoupling services with event streams. Producers (`acks=all`), Consumers, partition offsets, Dead Letter Queues (DLQ), and Spring Application Events.
 - **Page 10: Microservices with Spring Cloud** — Decomposing the monolith. Spring Cloud Gateway, Eureka service discovery, declarative REST with OpenFeign, and centralized configuration.
 
-### Stage 6: Enterprise Security & Production Observability
+### Stage 6: Enterprise Security, Resilience & Testing
 - **Page 11: Backend Security with Spring Security & JWT** — Production-grade defense. Security Filter Chain, stateless JWT authentication filter, password hashing with BCrypt, and Role-Based Access Control (RBAC).
 - **Page 12: Production Readiness, Observability & Resilience** — Running in production. Spring Boot Actuator, Prometheus/Micrometer metrics, distributed tracing with Zipkin, and Resilience4j circuit breakers.
+- **Page 13: Testing, Build Tools & Packaging** — Production delivery lifecycle. Maven/Gradle dependency scopes and BOMs, Fat JAR mechanics, Docker packaging, and the testing pyramid (JUnit 5, Mockito, `@WebMvcTest` with `MockMvc`, `@DataJpaTest` with Testcontainers, and `@SpringBootTest`).
 
 ---
 

@@ -29,7 +29,7 @@ Master core Java language mechanics, JVM memory models, collections, and concurr
 
 Master how enterprise web backends, Spring Boot 3.x, database persistence, Kafka messaging, and distributed microservices run in production:
 
-👉 **[Java Backend Course (Pages 0 to 12)](java-backend/README.md)**
+👉 **[Java Backend Course (Pages 0 to 13)](java-backend/README.md)**
 
 | Page | Title | Link |
 | :---: | :--- | :--- |
@@ -46,6 +46,7 @@ Master how enterprise web backends, Spring Boot 3.x, database persistence, Kafka
 | **Page 10** | Microservices Architecture with Spring Cloud | [10-microservices-with-spring-cloud.md](java-backend/10-microservices-with-spring-cloud.md) |
 | **Page 11** | Backend Security with Spring Security & JWT | [11-backend-security-spring-security-jwt.md](java-backend/11-backend-security-spring-security-jwt.md) |
 | **Page 12** | Production Readiness, Observability & Resilience | [12-production-readiness-and-resilience.md](java-backend/12-production-readiness-and-resilience.md) |
+| **Page 13** | Testing, Build Tools & Application Packaging | [13-testing-build-tools-and-packaging.md](java-backend/13-testing-build-tools-and-packaging.md) |
 
 ---
 

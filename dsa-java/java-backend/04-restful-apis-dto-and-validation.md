@@ -190,7 +190,95 @@ public class GlobalExceptionHandler {
 
 ---
 
-## 4. Self-Check & Quick Review
+## 4. Pagination & Sorting in REST Controllers (`Pageable`, `@PageableDefault`)
+
+In production, endpoints must **never return an unbound `List<T>`**. If a database table grows to 1,000,000 orders, calling `GET /api/v1/orders` without limits will:
+1. Trigger an out-of-memory error (`OutOfMemoryError: Java heap space`) on the JVM.
+2. Saturate database CPU and lock buffer pools with massive table scans.
+3. Choke the network serializing hundreds of megabytes of JSON.
+
+Spring Web provides first-class support for pagination and sorting via the **`Pageable`** interface.
+
+### Controller Integration: `@PageableDefault`
+
+Spring MVC automatically parses URL query parameters such as:
+`GET /api/v1/orders?page=0&size=20&sort=createdAt,desc&sort=totalAmount,asc`
+
+```java
+@RestController
+@RequestMapping("/api/v1/orders")
+public class OrderController {
+
+    private final OrderService orderService;
+
+    public OrderController(OrderService orderService) {
+        this.orderService = orderService;
+    }
+
+    @GetMapping
+    public ResponseEntity<PagedResponse<OrderResponseDTO>> getOrders(
+            @PageableDefault(page = 0, size = 20, sort = "createdAt", direction = Sort.Direction.DESC)
+            Pageable pageable) {
+
+        PagedResponse<OrderResponseDTO> response = orderService.getOrders(pageable);
+        return ResponseEntity.ok(response);
+    }
+}
+```
+
+---
+
+### Designing a Standard `PagedResponse<T>` DTO
+
+While Spring's default `org.springframework.data.domain.Page<T>` can be serialized directly, production APIs typically wrap results in a custom immutable record to control the JSON contract:
+
+```java
+public record PagedResponse<T>(
+    List<T> content,
+    int pageNumber,
+    int pageSize,
+    long totalElements,
+    int totalPages,
+    boolean isLast
+) {
+    public static <T> PagedResponse<T> from(Page<T> page) {
+        return new PagedResponse<>(
+            page.getContent(),
+            page.getNumber(),
+            page.getSize(),
+            page.getTotalElements(),
+            page.getTotalPages(),
+            page.isLast()
+        );
+    }
+}
+```
+
+#### Client JSON Response Payload:
+```json
+{
+  "content": [
+    {
+      "id": 1042,
+      "orderNumber": "ORD-99823",
+      "totalAmount": 149.99,
+      "createdAt": "2026-03-15T10:30:00Z"
+    }
+  ],
+  "pageNumber": 0,
+  "pageSize": 20,
+  "totalElements": 384,
+  "totalPages": 20,
+  "isLast": false
+}
+```
+
+> [!TIP]
+> **Defensive API Design**: Always enforce a hard ceiling on `size` (e.g. `size = Math.min(pageable.getPageSize(), 100)`). Malicious clients could otherwise pass `?size=500000` to intentionally trigger an application Denial of Service (DoS).
+
+---
+
+## 5. Self-Check & Quick Review
 
 1. **Q**: What is the difference between `@NotNull`, `@NotEmpty`, and `@NotBlank`?
    - *A*: 
@@ -201,6 +289,10 @@ public class GlobalExceptionHandler {
    - *A*: A bidirectional relationship (e.g., User $\leftrightarrow$ Orders) creates a circular loop where Jackson serializes `user.orders[0].user.orders[0]...` indefinitely. DTOs completely solve this.
 3. **Q**: What HTTP status code should a `POST` creation request return?
    - *A*: **`201 Created`** (accompanied by a `Location` header pointing to the new resource URI), not a generic `200 OK`.
+4. **Q**: Why must production REST endpoints never return an unbound `List<T>`?
+   - *A*: As tables grow, fetching an entire table causes JVM heap exhaustion (`OOM`), network saturation, and severe database connection starvation. Endpoints must always enforce pagination via `Pageable`.
+5. **Q**: How can you prevent clients from requesting an overwhelming page size like `?size=1000000`?
+   - *A*: Set a global maximum in `application.yml` (`spring.data.web.pageable.max-page-size=100`) or clamp the value inside the service/controller layer.
 
 ---
 
@@ -209,3 +301,4 @@ public class GlobalExceptionHandler {
 | ◀️ Previous Topic | 🧭 Track Hub | Next Topic ▶️ |
 | :--- | :---: | ---: |
 | [**Page 3: Spring Boot Core & IoC**](03-spring-framework-and-boot-core.md)<br><sub>*Dependency Injection & Auto-Configuration*</sub> | [**Java Backend Index**](README.md)<br><sub>*Curriculum & Architecture*</sub> | [**Page 5: JPA & Hibernate Persistence**](05-database-persistence-jpa-hibernate.md)<br><sub>*Entity Relationships & N+1 Query Fixes*</sub> |
+

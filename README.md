@@ -8,7 +8,7 @@ A structured, end-to-end preparation repository containing study notes, producti
 
 ### ☕ [1. Java Track (`dsa-java/`)](dsa-java/README.md)
 - [**`java-fundamentals/`**](dsa-java/java-fundamentals/README.md) — 10-page master guide covering JVM memory models, Stack vs. Heap, OOP pillars, Collections Framework, Generics, Lambdas, and Multithreading basics.
-- [**`java-backend/`**](dsa-java/java-backend/README.md) — 13-page enterprise backend engineering course covering HTTP/REST protocols, Servlets, Spring Boot 3.x, Spring Data JPA/Hibernate (N+1 query fixes), Concurrency & Virtual Threads (Java 21), Redis Caching, Apache Kafka, Spring Cloud Microservices, Spring Security with Stateless JWT, and Production Observability.
+- [**`java-backend/`**](dsa-java/java-backend/README.md) — 14-page enterprise backend engineering course (Pages 00 to 13) covering HTTP/REST protocols, Servlets, Spring Boot 3.x, Spring Data JPA/Hibernate (N+1 query fixes), Concurrency & Virtual Threads (Java 21), Redis Caching, Apache Kafka, Spring Cloud Microservices, Spring Security with Stateless JWT, Production Observability, and Automated Testing & Packaging (Maven/Gradle, MockMvc, Slices, Testcontainers).
 - **DSA Roadmap & Practice Sets** — Curated problem lists and pattern-by-pattern implementations.
 
 ### 🏛️ [2. System Design Track (`system-design/`)](system-design/README.md)
