@@ -50,28 +50,27 @@ Master how enterprise web backends, Spring Boot 3.x, database persistence, Kafka
 
 ---
 
-## 📚 3. DSA Roadmap & Topic Scaffolding
+## 🧱 3. Data Structures & Algorithms: Arrays Mastery (1D, 2D, 3D)
 
-### 1. Fundamentals & Core Data Structures
-- **Arrays & Strings** (Two Pointers, Sliding Window, Prefix Sum)
-- **Linked Lists** (Singly, Doubly, Fast & Slow Pointers)
-- **Stacks & Queues** (Monotonic Stack, Priority Queue / Heaps)
-- **Hash Tables & Hash Sets**
+Master contiguous memory models, hardware cache line dynamics, multi-dimensional coordinate mathematics, and canonical algorithm patterns:
 
-### 2. Advanced Data Structures
-- **Trees & Binary Search Trees (BST)** (Traversals, LCA, Serialization)
-- **Tries** (Prefix Trees, Autocomplete patterns)
-- **Graphs** (BFS, DFS, Topological Sort, Dijkstra, Disjoint Set Union / Union-Find)
+👉 **[Arrays Course Hub (Pages 00 to 08)](arrays/README.md)**
 
-### 3. Algorithm Paradigms
-- **Recursion & Backtracking**
-- **Dynamic Programming (DP)** (1D, 2D, Knapsack, Longest Common Subsequence, Intervals)
-- **Greedy Algorithms**
-- **Binary Search & Divide and Conquer**
-- **Bit Manipulation & Math**
+| Page | Title | Link |
+| :---: | :--- | :--- |
+| **Page 00** | Problem Types & Algorithm Taxonomy | [00-array-problem-types-and-algorithm-taxonomy.md](arrays/00-array-problem-types-and-algorithm-taxonomy.md) |
+| **Page 01** | 1D Arrays & Memory Architecture | [01-array-fundamentals-and-memory-architecture.md](arrays/01-array-fundamentals-and-memory-architecture.md) |
+| **Page 02** | Multidimensional Arrays (2D & 3D) | [02-multidimensional-arrays-2d-and-3d.md](arrays/02-multidimensional-arrays-2d-and-3d.md) |
+| **Page 03** | Two Pointers & Sliding Window Patterns | [03-two-pointers-and-sliding-window.md](arrays/03-two-pointers-and-sliding-window.md) |
+| **Page 04** | Prefix Sums & Kadane's Algorithm | [04-prefix-sum-and-kadanes-algorithm.md](arrays/04-prefix-sum-and-kadanes-algorithm.md) |
+| **Page 05** | In-Place Manipulations & Cyclic Sort | [05-in-place-manipulations-and-cyclic-sort.md](arrays/05-in-place-manipulations-and-cyclic-sort.md) |
+| **Page 06** | Matrix Manipulations & 2D Algorithms | [06-matrix-manipulations-and-2d-algorithms.md](arrays/06-matrix-manipulations-and-2d-algorithms.md) |
+| **Page 07** | 3D Arrays & Advanced Multidimensional Problems | [07-3d-arrays-and-advanced-multidimensional-problems.md](arrays/07-3d-arrays-and-advanced-multidimensional-problems.md) |
+| **Page 08** | Advanced Array Techniques & Large-Scale Systems | [08-advanced-array-techniques-and-large-scale-systems.md](arrays/08-advanced-array-techniques-and-large-scale-systems.md) |
 
 ---
 
 ## 💻 4. Java Setup & Best Practices
-- Utilize the Java Collections Framework (`ArrayList`, `LinkedList`, `HashMap`, `PriorityQueue`, `ArrayDeque`).
-- Analyze Time & Space complexity for every solution ($O(N)$, $O(\log N)$, etc.).
+- Utilize the Java Collections Framework (`ArrayList`, `ArrayDeque`, `PriorityQueue`, `HashMap`).
+- Analyze Time & Space complexity for every solution ($O(N)$, $O(\log N)$, etc.) with hardware cache locality in mind.
+
