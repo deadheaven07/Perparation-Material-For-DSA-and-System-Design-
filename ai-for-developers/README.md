@@ -29,7 +29,16 @@ flowchart TD
         P07["Page 07: System Design & DSA Velocity<br/><sub>Architecture Blueprints, Capacity Math & Socratic Problem Solving</sub>"]
     end
 
-    S1 --> S2 --> S3 --> S4
+    subgraph S5["🤖 STAGE 5: Autonomous Agents & Building with Spring AI"]
+        P08["Page 08: Autonomous Agents & MCP<br/><sub>ReAct Loops, Tool Protocols & Self-Correction Loops</sub>"]
+        P09["Page 09: Building with Spring AI<br/><sub>ChatClient, Records, Function Calling & RAG with pgvector</sub>"]
+    end
+
+    subgraph S6["📋 STAGE 6: Tactical Prompt Reference"]
+        P10["Page 10: 30+ Prompt Cheatsheet<br/><sub>Ready-to-Use Developer Prompts Across All Engineering Phases</sub>"]
+    end
+
+    S1 --> S2 --> S3 --> S4 --> S5 --> S6
 ```
 
 ---
@@ -45,6 +54,9 @@ flowchart TD
 | **05** | [**Modern AI Developer Tools & Rules**](05-mastering-ai-developer-tools-and-rules.md) | GitHub Copilot vs Cursor vs **Claude Cowork & Projects**; context window engineering; custom `.cursorrules` and `CLAUDE.md` |
 | **06** | [**Large-Scale & Enterprise Codebases**](06-ai-for-large-scale-and-enterprise-codebases.md) | Navigating 500,000+ LOC; rapid onboarding to legacy monoliths; multi-module call tracing; OpenRewrite + AI enterprise migrations |
 | **07** | [**System Design & DSA Velocity**](07-speeding-up-system-design-and-dsa-prep.md) | Instant capacity math (QPS/storage); architecture blueprints; technology trade-off matrices; Socratic DSA progressive hints |
+| **08** | [**Autonomous Agents & MCP**](08-autonomous-coding-agents-and-mcp.md) | ReAct loop (`Thought ➔ Action ➔ Observation`); Model Context Protocol (MCP) servers & clients; autonomous test self-correction |
+| **09** | [**Building with Spring AI**](09-building-ai-powered-java-apps-spring-ai.md) | Enterprise Spring AI `ChatClient`; structured JSON deserialization into Java 21 Records; function calling; RAG with `pgvector` |
+| **10** | [**30+ Prompt Cheatsheet**](10-developer-prompt-engineering-cheatsheet.md) | Battle-tested copy-paste prompts across SQL optimization, concurrency, deadlocks, testing, regex, Docker, and system design |
 
 ---
 

@@ -146,6 +146,6 @@ Start the interview now with your opening greeting.
 
 ## 🧭 Continue Learning
 
-| ◀️ Previous Topic | 🧭 Track Hub | 🚀 Next Track |
+| ◀️ Previous Topic | 🧭 Track Hub | Next Topic ▶️ |
 | :--- | :---: | ---: |
-| [**Page 6: Large-Scale & Enterprise Codebases**](06-ai-for-large-scale-and-enterprise-codebases.md)<br><sub>*500k+ LOC, Legacy Code & Multi-Module Tracing*</sub> | [**AI for Developers Index**](README.md)<br><sub>*Master Visual Roadmap*</sub> | [**System Design Fundamentals**](../system-design/system-design-fundamentals/README.md)<br><sub>*High-Level Architecture & Scalability*</sub> |
+| [**Page 6: Large-Scale & Enterprise Codebases**](06-ai-for-large-scale-and-enterprise-codebases.md)<br><sub>*500k+ LOC, Legacy Code & Multi-Module Tracing*</sub> | [**AI for Developers Index**](README.md)<br><sub>*Master Visual Roadmap*</sub> | [**Page 8: Autonomous Agents & MCP**](08-autonomous-coding-agents-and-mcp.md)<br><sub>*ReAct Loops & Tool Protocol*</sub> |
