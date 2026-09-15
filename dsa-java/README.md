@@ -89,7 +89,25 @@ Master non-contiguous heap memory models, array limitations, fast/slow pointer a
 
 ---
 
-## 💻 5. Java Setup & Best Practices
+## ⚡ 5. Data Structures & Algorithms: Advanced Problems Track (Arrays & Linked Lists)
+
+Master advanced problem-solving through deep deduction, structural invariants, mathematical proofs, procedural Mermaid blueprints, and systems engineering:
+
+👉 **[Advanced Problems Track Hub (Pages 01 to 06)](advanced-problems-arrays-and-linked-lists/README.md)**
+
+| Page | Title | Link |
+| :---: | :--- | :--- |
+| **Page 01** | Dual Partition Search & Inversion Dynamics | [01-advanced-array-search-and-partitioning.md](advanced-problems-arrays-and-linked-lists/01-advanced-array-search-and-partitioning.md) |
+| **Page 02** | Monotonic Stacks & Geometric Arrays | [02-monotonic-stack-and-geometric-arrays.md](advanced-problems-arrays-and-linked-lists/02-monotonic-stack-and-geometric-arrays.md) |
+| **Page 03** | Advanced Sliding Window & Frequency Math | [03-advanced-sliding-window-and-frequency-math.md](advanced-problems-arrays-and-linked-lists/03-advanced-sliding-window-and-frequency-math.md) |
+| **Page 04** | Array-to-Linked-List Duality & Pointer Graphs | [04-array-to-linked-list-and-pointer-duality.md](advanced-problems-arrays-and-linked-lists/04-array-to-linked-list-and-pointer-duality.md) |
+| **Page 05** | Advanced Composite Pointer Structures | [05-advanced-composite-pointer-structures.md](advanced-problems-arrays-and-linked-lists/05-advanced-composite-pointer-structures.md) |
+| **Page 06** | Hybrid Scale Systems, TTL Caches & Ring Buffers | [06-hybrid-scale-systems-and-ttl-caches.md](advanced-problems-arrays-and-linked-lists/06-hybrid-scale-systems-and-ttl-caches.md) |
+
+---
+
+## 💻 6. Java Setup & Best Practices
 - Utilize the Java Collections Framework (`ArrayList`, `LinkedList`, `ArrayDeque`, `PriorityQueue`, `HashMap`).
-- Analyze Time & Space complexity for every solution ($O(N)$, $O(\log N)$, etc.) with hardware cache locality and object overhead in mind.
+- Analyze Time & Space complexity for every solution ($O(N)$, $O(\log N)$, etc.) with hardware cache locality, branch prediction, and object overhead in mind.
+
 
