@@ -18,19 +18,19 @@ sequenceDiagram
     participant Env as 💻 IDE / Terminal / Git
     participant Test as 🧪 Test Suite (JUnit 5)
 
-    User->>Agent: "Fix the NullPointerException in OrderService and verify"
-    loop ReAct Loop (Reasoning ➔ Action ➔ Observation)
-        Agent->>Agent: Thought: "I need to inspect the failing test and line 42 of OrderService.java"
-        Agent->>Env: Action: view_file(OrderService.java#L40-L50)
-        Env-->>Agent: Observation: "customer.getAddress().getZipCode() is called without null check"
-        Agent->>Agent: Thought: "Customer address can be null. I should use Optional or null-safe navigation."
+    User->>Agent: Fix the NullPointerException in OrderService and verify
+    loop ReAct Loop: Reasoning, Action, Observation
+        Agent->>Agent: Thought: Inspect failing test and line 42 of OrderService
+        Agent->>Env: Action: view_file(OrderService.java)
+        Env-->>Agent: Observation: customer.getAddress().getZipCode() lacks null check
+        Agent->>Agent: Thought: Address can be null. Add null-safe check.
         Agent->>Env: Action: replace_file_content(OrderService.java)
-        Env-->>Agent: Observation: "File modified successfully"
-        Agent->>Env: Action: run_command("mvn test -Dtest=OrderServiceTest")
+        Env-->>Agent: Observation: File modified successfully
+        Agent->>Env: Action: run_command(mvn test -Dtest=OrderServiceTest)
         Env->>Test: Execute tests
-        Test-->>Agent: Observation: "BUILD SUCCESS (4 tests passed)"
+        Test-->>Agent: Observation: BUILD SUCCESS (4 tests passed)
     end
-    Agent-->>User: "Fixed NPE with null-safe check on getAddress(); verified with green unit tests."
+    Agent-->>User: Fixed NPE with null-safe check and verified with green unit tests
 ```
 
 ```
