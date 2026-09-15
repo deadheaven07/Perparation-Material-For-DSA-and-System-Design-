@@ -133,18 +133,19 @@ On a standard 64-bit JVM with Compressed OOPs:
 
 ```java
 // Singly Linked List Node
-public class ListNode {
+class ListNode {
     int val;         // 4 bytes
     ListNode next;   // 4 bytes (Compressed OOP)
 }
 
 // Doubly Linked List Node (e.g. java.util.LinkedList$Node)
-private static class Node<E> {
-    E item;          // 4 bytes
-    Node<E> next;    // 4 bytes
-    Node<E> prev;    // 4 bytes
+class DoublyNode<E> {
+    E item;              // 4 bytes
+    DoublyNode<E> next;  // 4 bytes
+    DoublyNode<E> prev;  // 4 bytes
 }
 ```
+
 
 ```text
 ╭─────────────────────────────────────────────────────────────────────────────╮

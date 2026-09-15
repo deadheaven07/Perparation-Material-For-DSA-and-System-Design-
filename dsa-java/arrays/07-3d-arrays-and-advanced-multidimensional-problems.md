@@ -214,6 +214,9 @@ Orthogonal Neighbors (Face-sharing):
 ```
 
 ```java
+import java.util.ArrayDeque;
+import java.util.Queue;
+
 public class VoxelConnectedComponents {
     public static final int[][] DIRS_6 = {
         {1, 0, 0}, {-1, 0, 0},
