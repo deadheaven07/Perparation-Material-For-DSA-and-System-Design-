@@ -70,7 +70,26 @@ Master contiguous memory models, hardware cache line dynamics, multi-dimensional
 
 ---
 
-## 💻 4. Java Setup & Best Practices
-- Utilize the Java Collections Framework (`ArrayList`, `ArrayDeque`, `PriorityQueue`, `HashMap`).
-- Analyze Time & Space complexity for every solution ($O(N)$, $O(\log N)$, etc.) with hardware cache locality in mind.
+## 🔗 4. Data Structures & Algorithms: Linked Lists & ArrayList Mastery
+
+Master non-contiguous heap memory models, array limitations, fast/slow pointer algorithms, in-place reversals, composite structures (LRU/LFU cache), and concurrent lock-free queues:
+
+👉 **[Linked Lists Course Hub (Pages 00 to 07)](linked-lists/README.md)**
+
+| Page | Title | Link |
+| :---: | :--- | :--- |
+| **Page 00** | Problem Types & Pointer Patterns | [00-linked-list-problem-types-and-patterns.md](linked-lists/00-linked-list-problem-types-and-patterns.md) |
+| **Page 01** | Array Limitations & Linked List Fundamentals | [01-array-limitations-and-linkedlist-fundamentals.md](linked-lists/01-array-limitations-and-linkedlist-fundamentals.md) |
+| **Page 02** | Fast & Slow Pointers (Cycle Detection) | [02-fast-and-slow-pointers-and-cycle-detection.md](linked-lists/02-fast-and-slow-pointers-and-cycle-detection.md) |
+| **Page 03** | In-Place Reversals & Subsegment Manipulations | [03-in-place-reversal-and-subsegment-manipulations.md](linked-lists/03-in-place-reversal-and-subsegment-manipulations.md) |
+| **Page 04** | Merging, Sorting & Partitioning | [04-merging-sorting-and-partitioning.md](linked-lists/04-merging-sorting-and-partitioning.md) |
+| **Page 05** | Deep Copy & Complex Pointer Rewiring | [05-deep-copy-and-complex-pointer-rewiring.md](linked-lists/05-deep-copy-and-complex-pointer-rewiring.md) |
+| **Page 06** | Composite Structures: LRU & LFU Cache | [06-composite-data-structures-lru-and-lfu-cache.md](linked-lists/06-composite-data-structures-lru-and-lfu-cache.md) |
+| **Page 07** | Advanced Techniques & Large-Scale Systems | [07-advanced-techniques-and-system-scale.md](linked-lists/07-advanced-techniques-and-system-scale.md) |
+
+---
+
+## 💻 5. Java Setup & Best Practices
+- Utilize the Java Collections Framework (`ArrayList`, `LinkedList`, `ArrayDeque`, `PriorityQueue`, `HashMap`).
+- Analyze Time & Space complexity for every solution ($O(N)$, $O(\log N)$, etc.) with hardware cache locality and object overhead in mind.
 
