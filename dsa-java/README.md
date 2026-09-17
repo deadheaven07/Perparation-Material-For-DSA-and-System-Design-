@@ -169,7 +169,24 @@ Master pointerless complete binary trees, $\mathcal{O}(N)$ build-heap derivation
 
 ---
 
-## 💻 9. Java Setup & Best Practices
+## 🕸️ 9. Data Structures & Algorithms: Graphs, DSU & Network Topologies Mastery
+
+Master network graphs, physical memory layouts (Adjacency Matrix, List, CSR), Bidirectional BFS, Kahn's in-degree topological sorting, shortest path algorithms (Dijkstra, 0-1 BFS, Bellman-Ford, Floyd-Warshall), Disjoint Set Union (DSU with Inverse Ackermann $\alpha(N)$), Kruskal's/Prim's MST, Bipartite 2-coloring, and Tarjan's bridge-finding algorithms:
+
+👉 **[Graphs Course Hub (Pages 01 to 06)](graphs/README.md)**
+
+| Page | Title | Link |
+| :---: | :--- | :--- |
+| **Page 01** | Graph Representations & Traversal Foundations | [01-graph-representations-and-traversal-foundations.md](graphs/01-graph-representations-and-traversal-foundations.md) |
+| **Page 02** | Topological Sorting & DAG Architectures | [02-topological-sorting-and-dag-architectures.md](graphs/02-topological-sorting-and-dag-architectures.md) |
+| **Page 03** | Shortest Paths: Dijkstra, 0-1 BFS, Bellman-Ford & Floyd-Warshall | [03-shortest-paths-dijkstra-bellman-ford-and-floyd-warshall.md](graphs/03-shortest-paths-dijkstra-bellman-ford-and-floyd-warshall.md) |
+| **Page 04** | Disjoint Set Union (DSU) & Minimum Spanning Trees | [04-disjoint-set-union-and-minimum-spanning-trees.md](graphs/04-disjoint-set-union-and-minimum-spanning-trees.md) |
+| **Page 05** | Bipartite Graphs & Graph Coloring | [05-bipartite-matching-and-graph-coloring.md](graphs/05-bipartite-matching-and-graph-coloring.md) |
+| **Page 06** | Advanced Hard Graph Algorithms: Bridges & Eulerian Paths | [06-advanced-hard-graph-algorithms.md](graphs/06-advanced-hard-graph-algorithms.md) |
+
+---
+
+## 💻 10. Java Setup & Best Practices
 - Utilize the Java Collections Framework (`ArrayList`, `LinkedList`, `ArrayDeque`, `PriorityQueue`, `HashMap`, `TreeMap`).
 - Prefer `java.util.ArrayDeque` over `java.util.Stack` and `LinkedList` for stacks, queues, and deques to ensure $O(1)$ operations with zero synchronization and optimal cache line prefetching.
 - Analyze Time & Space complexity for every solution ($O(N)$, $O(\log N)$, etc.) with hardware cache locality, branch prediction, and object overhead in mind.
