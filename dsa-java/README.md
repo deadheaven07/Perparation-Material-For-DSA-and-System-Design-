@@ -152,10 +152,28 @@ Master non-linear hierarchical models, 32-byte JVM node layouts, Morris $O(1)$ s
 
 ---
 
-## 💻 8. Java Setup & Best Practices
+## 🌋 8. Data Structures & Algorithms: Heaps, Priority Queues & Greedy Mastery
+
+Master pointerless complete binary trees, $\mathcal{O}(N)$ build-heap derivations, custom Indexed Priority Queues, Two-Heap real-time streaming medians with lazy deletion, K-way merges, and formal greedy exchange arguments:
+
+👉 **[Heaps & Greedy Course Hub (Pages 01 to 06)](heaps-and-greedy/README.md)**
+
+| Page | Title | Link |
+| :---: | :--- | :--- |
+| **Page 01** | Binary Heap Fundamentals & Priority Queues | [01-binary-heap-fundamentals-and-priority-queues.md](heaps-and-greedy/01-binary-heap-fundamentals-and-priority-queues.md) |
+| **Page 02** | Top-K & Selection Paradigms | [02-top-k-and-selection-paradigms.md](heaps-and-greedy/02-top-k-and-selection-paradigms.md) |
+| **Page 03** | The Two-Heap Architecture & Streaming | [03-the-two-heap-architecture-and-streaming.md](heaps-and-greedy/03-the-two-heap-architecture-and-streaming.md) |
+| **Page 04** | K-Way Merge & Interval Scheduling | [04-k-way-merge-and-interval-scheduling.md](heaps-and-greedy/04-k-way-merge-and-interval-scheduling.md) |
+| **Page 05** | Greedy Choice & Exchange Arguments | [05-greedy-choice-and-exchange-arguments.md](heaps-and-greedy/05-greedy-choice-and-exchange-arguments.md) |
+| **Page 06** | Advanced Hard Heap & Greedy Problems | [06-advanced-hard-heap-and-greedy-problems.md](heaps-and-greedy/06-advanced-hard-heap-and-greedy-problems.md) |
+
+---
+
+## 💻 9. Java Setup & Best Practices
 - Utilize the Java Collections Framework (`ArrayList`, `LinkedList`, `ArrayDeque`, `PriorityQueue`, `HashMap`, `TreeMap`).
 - Prefer `java.util.ArrayDeque` over `java.util.Stack` and `LinkedList` for stacks, queues, and deques to ensure $O(1)$ operations with zero synchronization and optimal cache line prefetching.
 - Analyze Time & Space complexity for every solution ($O(N)$, $O(\log N)$, etc.) with hardware cache locality, branch prediction, and object overhead in mind.
+
 
 
 
