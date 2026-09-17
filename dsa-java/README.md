@@ -133,8 +133,27 @@ Master restricted-access linear structures, call stack mechanics, circular ring 
 
 ---
 
-## 💻 7. Java Setup & Best Practices
-- Utilize the Java Collections Framework (`ArrayList`, `LinkedList`, `ArrayDeque`, `PriorityQueue`, `HashMap`).
+## 🌲 7. Data Structures & Algorithms: Trees, BSTs & Hierarchies Mastery
+
+Master non-linear hierarchical models, 32-byte JVM node layouts, Morris $O(1)$ space traversals, self-balancing AVL trees, Segment Trees with Lazy Propagation, Bitwise Tries, and Database Storage Engines (B+ Trees & LSM-Trees):
+
+👉 **[Trees Course Hub (Pages 00 to 07)](trees/README.md)**
+
+| Page | Title | Link |
+| :---: | :--- | :--- |
+| **Page 00** | Problem Archetypes & Canonical Patterns | [00-tree-problem-archetypes-and-patterns.md](trees/00-tree-problem-archetypes-and-patterns.md) |
+| **Page 01** | Tree Fundamentals & Traversal Paradigms | [01-tree-fundamentals-and-traversal-paradigms.md](trees/01-tree-fundamentals-and-traversal-paradigms.md) |
+| **Page 02** | Tree Archetypes & Path Metrics | [02-tree-archetypes-and-path-metrics.md](trees/02-tree-archetypes-and-path-metrics.md) |
+| **Page 03** | Binary Search Trees & Ordered Space | [03-binary-search-trees-and-ordered-space.md](trees/03-binary-search-trees-and-ordered-space.md) |
+| **Page 04** | Self-Balancing Trees & Interval Structures | [04-self-balancing-trees-and-interval-structures.md](trees/04-self-balancing-trees-and-interval-structures.md) |
+| **Page 05** | Tries & Bitwise Prefix Trees | [05-tries-and-bitwise-prefix-trees.md](trees/05-tries-and-bitwise-prefix-trees.md) |
+| **Page 06** | Advanced Tree Systems & Storage Engines | [06-advanced-tree-systems-and-storage-engines.md](trees/06-advanced-tree-systems-and-storage-engines.md) |
+| **Page 07** | Advanced Hard-Tier Tree Problems | [07-advanced-hard-tree-problems.md](trees/07-advanced-hard-tree-problems.md) |
+
+---
+
+## 💻 8. Java Setup & Best Practices
+- Utilize the Java Collections Framework (`ArrayList`, `LinkedList`, `ArrayDeque`, `PriorityQueue`, `HashMap`, `TreeMap`).
 - Prefer `java.util.ArrayDeque` over `java.util.Stack` and `LinkedList` for stacks, queues, and deques to ensure $O(1)$ operations with zero synchronization and optimal cache line prefetching.
 - Analyze Time & Space complexity for every solution ($O(N)$, $O(\log N)$, etc.) with hardware cache locality, branch prediction, and object overhead in mind.
 
