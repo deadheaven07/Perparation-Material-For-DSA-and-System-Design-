@@ -186,7 +186,25 @@ Master network graphs, physical memory layouts (Adjacency Matrix, List, CSR), Bi
 
 ---
 
-## 💻 10. Java Setup & Best Practices
+## 💎 10. Data Structures & Algorithms: Dynamic Programming (DP) Mastery
+
+Master the science of stored optimal choices, Bellman recurrence equations, 1D rolling space compression, 2D reverse bottom-up grid traversals, the Knapsack family (0/1 and Unbounded capacity sweep math), sequence alignments & edit distance, interval length iteration, tree DP with subtree rerooting, and bitmask state compression:
+
+👉 **[Dynamic Programming Course Hub (Pages 01 to 07)](dynamic-programming/README.md)**
+
+| Page | Title | Link |
+| :---: | :--- | :--- |
+| **Page 01** | 1D State Formulations & Fundamentals | [01-dp-fundamentals-and-1d-state-formulations.md](dynamic-programming/01-dp-fundamentals-and-1d-state-formulations.md) |
+| **Page 02** | Grid & Multi-Dimensional Dynamic Programming | [02-grid-and-multi-dimensional-dp.md](dynamic-programming/02-grid-and-multi-dimensional-dp.md) |
+| **Page 03** | The Knapsack Family & Subset Sum Formulations | [03-the-knapsack-family-and-subset-sums.md](dynamic-programming/03-the-knapsack-family-and-subset-sums.md) |
+| **Page 04** | Strings, Sequences & Edit Distance | [04-strings-sequences-and-edit-distance.md](dynamic-programming/04-strings-sequences-and-edit-distance.md) |
+| **Page 05** | Interval DP & Game Theory Formulations | [05-interval-dp-and-game-theory.md](dynamic-programming/05-interval-dp-and-game-theory.md) |
+| **Page 06** | Tree DP & Subtree Rerooting Architectures | [06-tree-dp-and-subtree-rerooting.md](dynamic-programming/06-tree-dp-and-subtree-rerooting.md) |
+| **Page 07** | Bitmask Dynamic Programming & State Compression | [07-bitmask-dp-and-state-compression.md](dynamic-programming/07-bitmask-dp-and-state-compression.md) |
+
+---
+
+## 💻 11. Java Setup & Best Practices
 - Utilize the Java Collections Framework (`ArrayList`, `LinkedList`, `ArrayDeque`, `PriorityQueue`, `HashMap`, `TreeMap`).
 - Prefer `java.util.ArrayDeque` over `java.util.Stack` and `LinkedList` for stacks, queues, and deques to ensure $O(1)$ operations with zero synchronization and optimal cache line prefetching.
 - Analyze Time & Space complexity for every solution ($O(N)$, $O(\log N)$, etc.) with hardware cache locality, branch prediction, and object overhead in mind.
