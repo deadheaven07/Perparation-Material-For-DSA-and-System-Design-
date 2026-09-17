@@ -4,6 +4,17 @@ This directory contains comprehensive preparation material, practice problems, r
 
 ---
 
+## 🏛️ Foundational Architecture: Linear vs. Non-Linear Guide
+
+Before diving into specific structures, master the theoretical, mathematical, hardware memory models, and algorithmic trade-offs across all computing scenarios:
+
+👉 **[Master Guide: Linear vs. Non-Linear Data Structures & Algorithms](00-linear-vs-non-linear-dsa-and-algorithms-guide.md)**
+- Complete taxonomy of Linear (Arrays, Lists, Stacks, Queues) vs Non-Linear (Trees, BSTs, Heaps, Graphs, Tries, DSU).
+- Exhaustive **15+ Computing Scenario Mapping Matrix** with exact Best/Avg/Worst Time Complexities (TC) and Auxiliary Space (SC).
+- 64-byte CPU cache prefetching vs pointer-chasing memory stall mechanics.
+
+---
+
 ## ☕ 1. Java Language Mastery (Zero to Advanced)
 
 Master core Java language mechanics, JVM memory models, collections, and concurrency page by page:
@@ -106,8 +117,26 @@ Master advanced problem-solving through deep deduction, structural invariants, m
 
 ---
 
-## 💻 6. Java Setup & Best Practices
+## 🥞 6. Data Structures & Algorithms: Stacks, Queues & Deques Mastery
+
+Master restricted-access linear structures, call stack mechanics, circular ring buffers, monotonic deques, expression parsers, and lock-free concurrency:
+
+👉 **[Stacks & Queues Course Hub (Pages 01 to 05)](stacks-and-queues/README.md)**
+
+| Page | Title | Link |
+| :---: | :--- | :--- |
+| **Page 01** | Stack Fundamentals & Monotonic Stacks | [01-stack-fundamentals-and-monotonic-stacks.md](stacks-and-queues/01-stack-fundamentals-and-monotonic-stacks.md) |
+| **Page 02** | Queue Fundamentals & Circular Buffers | [02-queue-fundamentals-and-circular-buffers.md](stacks-and-queues/02-queue-fundamentals-and-circular-buffers.md) |
+| **Page 03** | Deques & Monotonic Sliding Windows | [03-deques-and-monotonic-sliding-windows.md](stacks-and-queues/03-deques-and-monotonic-sliding-windows.md) |
+| **Page 04** | Expression Parsing & Evaluators | [04-expression-parsing-and-evaluators.md](stacks-and-queues/04-expression-parsing-and-evaluators.md) |
+| **Page 05** | Advanced Systems Stacks & Queues | [05-advanced-systems-stacks-queues.md](stacks-and-queues/05-advanced-systems-stacks-queues.md) |
+
+---
+
+## 💻 7. Java Setup & Best Practices
 - Utilize the Java Collections Framework (`ArrayList`, `LinkedList`, `ArrayDeque`, `PriorityQueue`, `HashMap`).
+- Prefer `java.util.ArrayDeque` over `java.util.Stack` and `LinkedList` for stacks, queues, and deques to ensure $O(1)$ operations with zero synchronization and optimal cache line prefetching.
 - Analyze Time & Space complexity for every solution ($O(N)$, $O(\log N)$, etc.) with hardware cache locality, branch prediction, and object overhead in mind.
+
 
 
