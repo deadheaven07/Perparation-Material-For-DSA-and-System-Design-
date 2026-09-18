@@ -35,4 +35,6 @@ A structured, end-to-end preparation repository containing study notes, producti
 ### 🤖 [4. AI for Developers Track (`ai-for-developers/`)](ai-for-developers/README.md)
 - [**`ai-for-developers/`**](ai-for-developers/README.md) — 10-page comprehensive guide on using AI as a 10x engineering velocity multiplier and building AI applications: moving from typist to architect, 0-to-1 REST API scaffolding, instant stack trace triage, automated testing with Testcontainers, tool mastery (**Cursor**, **Claude Cowork & Projects**, **GitHub Copilot**, `.cursorrules`), accelerating in **500k+ LOC enterprise codebases**, System Design capacity math, **Autonomous Coding Agents & Model Context Protocol (MCP)**, building enterprise AI applications with **Spring AI & RAG (`pgvector`)**, and the **30+ Copy-Paste Developer Prompt Cheatsheet**.
 
+-> Sip your coffee till I complete it 
+
 
