@@ -1,7 +1,6 @@
 # Preparation Material for DSA, Java Backend & System Design
 
 A structured, end-to-end preparation repository containing study notes, production code implementations, problem-solving patterns, and architectural case studies tailored for technical coding, backend engineering, and system design interviews in **Java**.
-
 ---
 
 ## 📁 Repository Structure
