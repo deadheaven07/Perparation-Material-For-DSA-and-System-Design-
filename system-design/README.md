@@ -25,22 +25,20 @@ Master the core architectural building blocks, Java threading models, design pat
 
 ---
 
-## 🏛️ High-Level Design (HLD) Roadmap
+## 🌐 High-Level Design (HLD) Deep-Dive Case Studies
 
-### 1. Architectural Building Blocks
-- **Load Balancers** (Reverse Proxy, Round Robin, Consistent Hashing)
-- **Caching** (Cache-Aside, Write-Through, Write-Back, Eviction policies: LRU, LFU)
-- **Message Queues & Event Streaming** (Kafka, RabbitMQ, SQS)
-- **Content Delivery Networks (CDNs)**
-- **API Gateways & Rate Limiters** (Token Bucket, Leaky Bucket)
+Master end-to-end distributed system architectures, capacity estimation, data partitioning, and failure mode analysis following the 4-step interview blueprint:
 
-### 2. Classic System Design Problems
-- URL Shortener (TinyURL)
-- Rate Limiter
-- Key-Value Store (DynamoDB-style)
-- Distributed Message Queue
-- Chat System (WhatsApp / Slack)
-- Video Streaming Service (YouTube / Netflix)
+👉 **[High-Level Design (HLD) Case Studies Master Hub](hld-case-studies/README.md)**
+
+| # | Case Study | Core Tech & Architectural Challenges | Link |
+| :---: | :--- | :--- | :--- |
+| **01** | Design a Distributed Rate Limiter | Sliding window counter, Redis cluster + Lua, race conditions | [01-design-a-distributed-rate-limiter.md](hld-case-studies/01-design-a-distributed-rate-limiter.md) |
+| **02** | Design a Global URL Shortener (TinyURL) | 100:1 read ratio, Base62 token service (KGS), 301 vs 302 redirects | [02-design-a-global-url-shortener-tinyurl.md](hld-case-studies/02-design-a-global-url-shortener-tinyurl.md) |
+| **03** | Design a Real-Time Chat System (WhatsApp) | WebSockets, Cassandra LSM-Tree, sequence generators, presence | [03-design-a-real-time-chat-system-whatsapp-slack.md](hld-case-studies/03-design-a-real-time-chat-system-whatsapp-slack.md) |
+| **04** | Design a Distributed Message Queue (Kafka) | Sequential disk I/O, PageCache, Linux zero-copy `sendfile`, KRaft | [04-design-a-distributed-message-queue-kafka-clone.md](hld-case-studies/04-design-a-distributed-message-queue-kafka-clone.md) |
+| **05** | Design a Video Streaming Platform (YouTube) | Transcoding DAG, Adaptive Bitrate Streaming (HLS/DASH), CDN edge | [05-design-a-video-streaming-platform-youtube-netflix.md](hld-case-studies/05-design-a-video-streaming-platform-youtube-netflix.md) |
+| **06** | Design a Distributed Key-Value Store (Dynamo) | Consistent hashing, vnodes, vector clocks, tunable quorum ($R+W>N$) | [06-design-a-distributed-key-value-store-dynamo-style.md](hld-case-studies/06-design-a-distributed-key-value-store-dynamo-style.md) |
 
 ---
 

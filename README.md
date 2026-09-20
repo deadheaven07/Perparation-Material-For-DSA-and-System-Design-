@@ -1,6 +1,17 @@
 # Preparation Material for DSA, Java Backend & System Design
 
+<div align="center">
+
+![Java 21](https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![CI Status](https://img.shields.io/badge/CI-Passing-brightgreen?style=for-the-badge&logo=githubactions&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
+![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen?style=for-the-badge)
+![Diagrams](https://img.shields.io/badge/Diagrams-Mermaid.js-ff69b4?style=for-the-badge&logo=mermaid&logoColor=white)
+
 A structured, end-to-end preparation repository containing study notes, production code implementations, problem-solving patterns, and architectural case studies tailored for technical coding, backend engineering, and system design interviews in **Java**.
+
+</div>
+
 ---
 
 ## 📁 Repository Structure
@@ -32,9 +43,22 @@ A structured, end-to-end preparation repository containing study notes, producti
 ### 🏛️ [3. System Design Track (`system-design/`)](system-design/README.md)
 - [**`system-design-fundamentals/`**](system-design/system-design-fundamentals/README.md) — 10-page comprehensive guide covering High-Level Design (HLD), Low-Level Design (LLD), GoF design patterns in Java, thread pool engineering, connection pooling (HikariCP), caching strategies, Kafka event streaming, circuit breakers, and the 4-step interview blueprint.
 - [**`lld-machine-coding/`**](system-design/lld-machine-coding/README.md) — 6-page enterprise track on Object-Oriented Low-Level Design & Machine Coding in Java (Java 17/21): 90-minute interview framework, Parking Lot System (Strategy, Factory, concurrent spot locking), Elevator Control System (State, LOOK/SCAN disk scheduling, multi-car bank), In-Memory Key-Value Store with TTL & Transactions (ReadWriteLock, passive/active cleanup, ACID rollback/commit, nested transactions), Expense Sharing System / Splitwise (Equal/Exact/Percent strategies, greedy Min-Cash-Flow debt simplification), and Movie Ticket Booking System / BookMyShow (atomic seat locks with TTL, deadlock-free sorted lock hierarchy, payment gateway integration).
+- [**`hld-case-studies/`**](system-design/hld-case-studies/README.md) — 7-page end-to-end High-Level Design (HLD) deep-dive case studies covering capacity estimation, data partitioning, and failure mode analysis:
+  - [**`01-design-a-distributed-rate-limiter.md`**](system-design/hld-case-studies/01-design-a-distributed-rate-limiter.md): Sliding window counter, Redis cluster + Lua scripts, local token lease caching, clock drift.
+  - [**`02-design-a-global-url-shortener-tinyurl.md`**](system-design/hld-case-studies/02-design-a-global-url-shortener-tinyurl.md): 100:1 read ratio, Base62 Key Generation Service (KGS), 301 vs 302 redirects, DB sharding.
+  - [**`03-design-a-real-time-chat-system-whatsapp-slack.md`**](system-design/hld-case-studies/03-design-a-real-time-chat-system-whatsapp-slack.md): WebSockets, Cassandra LSM-Tree, per-chat monotonic sequencing, heartbeat presence.
+  - [**`04-design-a-distributed-message-queue-kafka-clone.md`**](system-design/hld-case-studies/04-design-a-distributed-message-queue-kafka-clone.md): Sequential disk I/O, PageCache, Linux zero-copy `sendfile`, KRaft consensus, ISR.
+  - [**`05-design-a-video-streaming-platform-youtube-netflix.md`**](system-design/hld-case-studies/05-design-a-video-streaming-platform-youtube-netflix.md): Transcoding DAG, Adaptive Bitrate Streaming (HLS/DASH), CDN edge caching.
+  - [**`06-design-a-distributed-key-value-store-dynamo-style.md`**](system-design/hld-case-studies/06-design-a-distributed-key-value-store-dynamo-style.md): Consistent hashing, vnodes, vector clocks, tunable quorum ($R+W>N$), hinted handoff.
 
 ### 🤖 [4. AI for Developers Track (`ai-for-developers/`)](ai-for-developers/README.md)
 - [**`ai-for-developers/`**](ai-for-developers/README.md) — 10-page comprehensive guide on using AI as a 10x engineering velocity multiplier and building AI applications: moving from typist to architect, 0-to-1 REST API scaffolding, instant stack trace triage, automated testing with Testcontainers, tool mastery (**Cursor**, **Claude Cowork & Projects**, **GitHub Copilot**, `.cursorrules`), accelerating in **500k+ LOC enterprise codebases**, System Design capacity math, **Autonomous Coding Agents & Model Context Protocol (MCP)**, building enterprise AI applications with **Spring AI & RAG (`pgvector`)**, and the **30+ Copy-Paste Developer Prompt Cheatsheet**.
+
+### ⚡ [5. 24-Hour Quick-Revision Cheatsheets (`cheatsheets/`)](cheatsheets/README.md)
+- [**`01-dsa-formulas-and-invariants-cheatsheet.md`**](cheatsheets/01-dsa-formulas-and-invariants-cheatsheet.md) — Master complexity bounds table, Master Theorem quick reference, Bitwise arithmetic formulas, Tree & Graph formulas, and the 6 Universal Algorithmic Invariants.
+- [**`02-system-design-numbers-and-capacity-math.md`**](cheatsheets/02-system-design-numbers-and-capacity-math.md) — Latency numbers every systems engineer should know, powers of 2 vs 10 shorthand, QPS mental math rules, and High Availability SLA downtime tables.
+- [**`03-gof-patterns-and-concurrency-cheatsheet.md`**](cheatsheets/03-gof-patterns-and-concurrency-cheatsheet.md) — 23 GoF Design Patterns quick-trigger matrix, Java concurrency lock selection matrix, `volatile` memory visibility rules, and modern concurrency primitives.
+
 ---
 
 <div align="center">
@@ -44,3 +68,4 @@ A structured, end-to-end preparation repository containing study notes, producti
 *Curated with precision for software engineers, backend developers, and system architects.* 💡🎯
 
 </div>
+
