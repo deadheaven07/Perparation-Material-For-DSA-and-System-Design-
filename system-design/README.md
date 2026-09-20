@@ -44,13 +44,16 @@ Master the core architectural building blocks, Java threading models, design pat
 
 ---
 
-## 📐 Low-Level Design (LLD) & Object-Oriented Design
+## 📐 Low-Level Design (LLD) & Machine Coding in Java
 
-- **OOP Concepts**: Encapsulation, Abstraction, Inheritance, Polymorphism
-- **SOLID Principles**: Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion
-- **Design Patterns**: Creational (Singleton, Builder, Factory), Structural (Adapter, Decorator, Facade), Behavioral (Strategy, Observer, Chain of Responsibility)
-- **Classic LLD Problems**:
-  - Parking Lot System
-  - Elevator Management System
-  - Tic-Tac-Toe / Chess Game
-  - BookMyShow / Movie Ticket Booking
+Master Object-Oriented Design (OOD), GoF design patterns, thread-safe concurrent systems, and 90-minute machine coding interview solutions written in modern Java:
+
+👉 **[LLD & Machine Coding Master Hub (Problems 01 to 05)](lld-machine-coding/README.md)**
+
+| Problem | Title | Primary Patterns & Highlights | Link |
+| :---: | :--- | :--- | :--- |
+| **01** | Design a Parking Lot System | Strategy, Factory, Spot Locks | [01-design-a-parking-lot-system.md](lld-machine-coding/01-design-a-parking-lot-system.md) |
+| **02** | Design an Elevator Control System | State, Strategy, LOOK / SCAN | [02-design-an-elevator-control-system.md](lld-machine-coding/02-design-an-elevator-control-system.md) |
+| **03** | Design an In-Memory Key-Value Store | Command, Memento, ReadWriteLock, TTL | [03-design-an-in-memory-key-value-store-with-ttl-and-transactions.md](lld-machine-coding/03-design-an-in-memory-key-value-store-with-ttl-and-transactions.md) |
+| **04** | Design an Expense Sharing System (Splitwise) | Strategy, Min-Cash-Flow Algorithm | [04-design-an-expense-sharing-system-splitwise.md](lld-machine-coding/04-design-an-expense-sharing-system-splitwise.md) |
+| **05** | Design a Movie Ticket Booking System (BookMyShow) | State, Strategy, TTL Seat Locking | [05-design-a-movie-ticket-booking-system-bookmyshow.md](lld-machine-coding/05-design-a-movie-ticket-booking-system-bookmyshow.md) |

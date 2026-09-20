@@ -204,11 +204,24 @@ Master the science of stored optimal choices, Bellman recurrence equations, 1D r
 
 ---
 
-## 💻 11. Java Setup & Best Practices
+## 🏆 11. Data Structures & Algorithms: Advanced Hard-Tier Track (Trees, Graphs, DP & Heaps)
+
+Master hard-tier non-linear algorithmic invariants, 3D boundary shrinking min-heaps, level-synchronized predecessor DAG backtracks, dual-key sorting with patience sort LIS, Tarjan's discovery and low-link bridge equations, dual-heap lazy deletion, and arbitrary cyclic graph wire protocols:
+
+👉 **[Advanced Problems Track Hub: Trees, Graphs & DP (Pages 01 to 06)](advanced-problems-trees-graphs-and-dp/README.md)**
+
+| Page | Title | Link |
+| :---: | :--- | :--- |
+| **Page 01** | Trapping Rain Water II: 3D Boundary Contraction | [01-trapping-rain-water-ii-3d-boundary-contraction.md](advanced-problems-trees-graphs-and-dp/01-trapping-rain-water-ii-3d-boundary-contraction.md) |
+| **Page 02** | Word Ladder II: Bidirectional BFS & DAG Backtracking | [02-word-ladder-ii-bidirectional-bfs-and-dag-backtracking.md](advanced-problems-trees-graphs-and-dp/02-word-ladder-ii-bidirectional-bfs-and-dag-backtracking.md) |
+| **Page 03** | Russian Doll Envelopes: 2D Sorting & Patience Sort LIS | [03-russian-doll-envelopes-2d-sorting-and-patience-sort-lis.md](advanced-problems-trees-graphs-and-dp/03-russian-doll-envelopes-2d-sorting-and-patience-sort-lis.md) |
+| **Page 04** | Critical Connections & Network Biconnectivity | [04-critical-connections-and-network-biconnectivity.md](advanced-problems-trees-graphs-and-dp/04-critical-connections-and-network-biconnectivity.md) |
+| **Page 05** | Sliding Window Median: Dual-Heap with Lazy Deletion | [05-sliding-window-median-lazy-heap-vs-indexed-priority-queue.md](advanced-problems-trees-graphs-and-dp/05-sliding-window-median-lazy-heap-vs-indexed-priority-queue.md) |
+| **Page 06** | Serialize & Deserialize Arbitrary Cyclic Graphs | [06-serialize-and-deserialize-arbitrary-and-cyclic-graphs.md](advanced-problems-trees-graphs-and-dp/06-serialize-and-deserialize-arbitrary-and-cyclic-graphs.md) |
+
+---
+
+## 💻 12. Java Setup & Best Practices
 - Utilize the Java Collections Framework (`ArrayList`, `LinkedList`, `ArrayDeque`, `PriorityQueue`, `HashMap`, `TreeMap`).
 - Prefer `java.util.ArrayDeque` over `java.util.Stack` and `LinkedList` for stacks, queues, and deques to ensure $O(1)$ operations with zero synchronization and optimal cache line prefetching.
 - Analyze Time & Space complexity for every solution ($O(N)$, $O(\log N)$, etc.) with hardware cache locality, branch prediction, and object overhead in mind.
-
-
-
-
