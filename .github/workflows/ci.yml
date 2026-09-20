@@ -24,15 +24,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
+          cache: "npm"
 
-      - name: Install Mermaid Dependencies
+      - name: Install Dependencies
         run: |
-          npm install @mermaid-js/mermaid-cli
+          npm install
 
-      - name: Run Comprehensive Repository Integrity Audit
+      - name: Run Integrity & Mermaid Audit Suite
         run: |
-          python3 scratch/audit_integrity.py
-
-      - name: Run Mermaid Diagram Syntax Validation
-        run: |
-          node scratch/validate_mermaid.js
+          npm test

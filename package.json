@@ -1,0 +1,16 @@
+{
+  "name": "prep-dsa-systemdesign",
+  "version": "1.0.0",
+  "description": "Preparation Material for DSA, Java Backend & System Design",
+  "type": "module",
+  "scripts": {
+    "lint:links": "python3 scripts/audit_integrity.py",
+    "lint:mermaid": "node scripts/validate_mermaid.mjs",
+    "test": "npm run lint:links && npm run lint:mermaid"
+  },
+  "devDependencies": {
+    "jsdom": "^24.0.0",
+    "mermaid": "^10.9.0"
+  },
+  "private": true
+}

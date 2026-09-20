@@ -47,11 +47,12 @@ Every new system design case study must follow the 4-step blueprint:
 Before submitting a Pull Request, run the local audit scripts from the repository root:
 
 ```bash
-# 1. Verify link integrity and balanced code fences
-python3 scratch/audit_integrity.py
+# Run the complete test suite (both link audit and Mermaid validation):
+npm test
 
-# 2. Compile and validate all Mermaid diagrams
-node scratch/validate_mermaid.js
+# Or run individual checks:
+python3 scripts/audit_integrity.py
+node scripts/validate_mermaid.mjs
 ```
 
-Both commands must exit with code `0` and report zero errors.
+The test suite must exit with code `0` and report zero errors.
