@@ -221,7 +221,58 @@ Master hard-tier non-linear algorithmic invariants, 3D boundary shrinking min-he
 
 ---
 
-## 💻 12. Java Setup & Best Practices
+## 🔄 12. Data Structures & Algorithms: Backtracking & Recursion Mastery
+
+Master the state-space tree universe, JVM thread call stack frames, combinatorial subset and permutation generation, duplicate pruning invariants, 2D grid pathing, constraint satisfaction (Sudoku & N-Queens), and combinatorial game theory with Alpha-Beta pruning:
+
+👉 **[Backtracking Course Hub (Pages 01 to 06)](backtracking-and-recursion/README.md)**
+
+| Page | Title | Link |
+| :---: | :--- | :--- |
+| **Page 01** | Recursion Mental Models & Call Stack Mechanics | [01-recursion-mental-models-and-call-stack-mechanics.md](backtracking-and-recursion/01-recursion-mental-models-and-call-stack-mechanics.md) |
+| **Page 02** | Subsets & Permutations: Combinatorial Spaces | [02-subsets-and-permutations-generating-combinatorial-spaces.md](backtracking-and-recursion/02-subsets-and-permutations-generating-combinatorial-spaces.md) |
+| **Page 03** | Combination Sum & Target Partitioning | [03-combination-sum-and-target-partitioning.md](backtracking-and-recursion/03-combination-sum-and-target-partitioning.md) |
+| **Page 04** | Grid Search & Maze Backtracking | [04-grid-search-and-maze-backtracking.md](backtracking-and-recursion/04-grid-search-and-maze-backtracking.md) |
+| **Page 05** | Constraint Satisfaction: Sudoku & N-Queens | [05-constraint-satisfaction-sudoku-and-n-queens.md](backtracking-and-recursion/05-constraint-satisfaction-sudoku-and-n-queens.md) |
+| **Page 06** | Game Theory & Minimax with Alpha-Beta Pruning | [06-game-theory-and-minimax-with-alpha-beta-pruning.md](backtracking-and-recursion/06-game-theory-and-minimax-with-alpha-beta-pruning.md) |
+
+---
+
+## ⚡ 13. Data Structures & Algorithms: Bit Manipulation & Mathematical Systems
+
+Master two's complement register mechanics in Java, the 6 universal silicon bit hacks, parity cancellation, 3-state finite state machines, subset submask enumeration, number theory sieves, Euclidean GCD/LCM, modular multiplicative inverses, combinatorics $n\text{C}r$, and reservoir sampling:
+
+👉 **[Bit Manipulation & Math Course Hub (Pages 01 to 06)](bit-manipulation-and-math/README.md)**
+
+| Page | Title | Link |
+| :---: | :--- | :--- |
+| **Page 01** | Bitwise Fundamentals & Two's Complement in Java | [01-bitwise-fundamentals-and-twos-complement-in-java.md](bit-manipulation-and-math/01-bitwise-fundamentals-and-twos-complement-in-java.md) |
+| **Page 02** | The XOR Family & Frequency Cancellation | [02-the-xor-family-and-frequency-cancellation.md](bit-manipulation-and-math/02-the-xor-family-and-frequency-cancellation.md) |
+| **Page 03** | Bitmask Subsets & State Representations | [03-bitmask-subsets-and-state-representations.md](bit-manipulation-and-math/03-bitmask-subsets-and-state-representations.md) |
+| **Page 04** | Number Theory: Primes, Factors & GCD | [04-number-theory-primes-factors-and-gcd.md](bit-manipulation-and-math/04-number-theory-primes-factors-and-gcd.md) |
+| **Page 05** | Modular Arithmetic & Fast Exponentiation | [05-modular-arithmetic-and-fast-exponentiation.md](bit-manipulation-and-math/05-modular-arithmetic-and-fast-exponentiation.md) |
+| **Page 06** | Advanced Math & Randomized Algorithms | [06-advanced-math-and-randomized-algorithms.md](bit-manipulation-and-math/06-advanced-math-and-randomized-algorithms.md) |
+
+---
+
+## 🔤 14. Data Structures & Algorithms: String Algorithms & Pattern Matching Mastery
+
+Master Java 21 String internals (Compact Strings Latin-1), two-pointer palindromes, the Knuth-Morris-Pratt (KMP) $\pi$ prefix function, polynomial rolling hashes with double hashing, the $Z$-algorithm with Z-box windows, Manacher's strictly $\mathcal{O}(N)$ palindrome radii, and the Aho-Corasick multi-pattern automaton:
+
+👉 **[String Algorithms Course Hub (Pages 01 to 06)](string-algorithms/README.md)**
+
+| Page | Title | Link |
+| :---: | :--- | :--- |
+| **Page 01** | String Internals & Two-Pointer Palindromes | [01-string-internals-and-two-pointer-palindromes.md](string-algorithms/01-string-internals-and-two-pointer-palindromes.md) |
+| **Page 02** | The KMP Algorithm & Prefix Function | [02-the-kmp-algorithm-and-prefix-function.md](string-algorithms/02-the-kmp-algorithm-and-prefix-function.md) |
+| **Page 03** | Rabin-Karp Rolling Hash & String Matching | [03-rabin-karp-rolling-hash-and-string-matching.md](string-algorithms/03-rabin-karp-rolling-hash-and-string-matching.md) |
+| **Page 04** | The Z-Algorithm & Longest Common Prefix | [04-z-algorithm-and-longest-common-prefix.md](string-algorithms/04-z-algorithm-and-longest-common-prefix.md) |
+| **Page 05** | Manacher's Linear-Time Palindromes | [05-manachers-algorithm-linear-time-palindromes.md](string-algorithms/05-manachers-algorithm-linear-time-palindromes.md) |
+| **Page 06** | Aho-Corasick Multi-Pattern Automata | [06-aho-corasick-and-multi-pattern-automata.md](string-algorithms/06-aho-corasick-and-multi-pattern-automata.md) |
+
+---
+
+## 💻 15. Java Setup & Best Practices
 - Utilize the Java Collections Framework (`ArrayList`, `LinkedList`, `ArrayDeque`, `PriorityQueue`, `HashMap`, `TreeMap`).
 - Prefer `java.util.ArrayDeque` over `java.util.Stack` and `LinkedList` for stacks, queues, and deques to ensure $O(1)$ operations with zero synchronization and optimal cache line prefetching.
 - Analyze Time & Space complexity for every solution ($O(N)$, $O(\log N)$, etc.) with hardware cache locality, branch prediction, and object overhead in mind.
