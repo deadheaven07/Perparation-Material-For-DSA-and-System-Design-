@@ -6,7 +6,11 @@
   "scripts": {
     "lint:links": "python3 scripts/audit_integrity.py",
     "lint:mermaid": "node scripts/validate_mermaid.mjs",
-    "test": "npm run lint:links && npm run lint:mermaid"
+    "test:scripts": "python3 scripts/flashcards.py --test && python3 scripts/tracker.py --test && python3 scripts/search.py --test",
+    "test": "npm run lint:links && npm run lint:mermaid && npm run test:scripts",
+    "quiz": "python3 scripts/flashcards.py",
+    "track": "python3 scripts/tracker.py",
+    "search": "python3 scripts/search.py"
   },
   "devDependencies": {
     "jsdom": "^24.0.0",

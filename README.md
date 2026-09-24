@@ -1,16 +1,80 @@
 # Preparation Material for DSA, Java Backend & System Design
 
+```text
+  ██████╗  ███████╗  █████╗      ███████╗██╗   ██╗███████╗████████╗███████╗███╗   ███╗
+  ██╔══██╗ ██╔════╝ ██╔══██╗     ██╔════╝╚██╗ ██╔╝██╔════╝╚══██╔══╝██╔════╝████╗ ████║
+  ██║  ██║ ███████╗ ███████║     ███████╗ ╚████╔╝ ███████╗   ██║   █████╗  ██╔████╔██║
+  ██║  ██║ ╚════██║ ██╔══██║     ╚════██║  ╚██╔╝  ╚════██║   ██║   ██╔══╝  ██║╚██╔╝██║
+  ██████╔╝ ███████║ ██║  ██║     ███████║   ██║   ███████║   ██║   ███████╗██║ ╚═╝ ██║
+  ╚═════╝  ╚══════╝ ╚═╝  ╚═╝     ╚══════╝   ╚═╝   ╚══════╝   ╚═╝   ╚══════╝╚═╝     ╚═╝
+```
+
 <div align="center">
 
 ![Java 21](https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![JUnit 5](https://img.shields.io/badge/JUnit-5.10.2-25A162?style=for-the-badge&logo=junit5&logoColor=white)
 ![CI Status](https://img.shields.io/badge/CI-Passing-brightgreen?style=for-the-badge&logo=githubactions&logoColor=white)
-![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
-![Diagrams](https://img.shields.io/badge/Diagrams-Mermaid.js-ff69b4?style=for-the-badge&logo=mermaid&logoColor=white)
+![Interactive CLI](https://img.shields.io/badge/CLI-Quiz_%7C_Tracker_%7C_Search-blueviolet?style=for-the-badge&logo=gnubash&logoColor=white)
+![Modules](https://img.shields.io/badge/Curriculum-188+_Modules-orange?style=for-the-badge)
+![Zero Broken Links](https://img.shields.io/badge/Integrity-100%25_Verified-success?style=for-the-badge)
 
-A structured, end-to-end preparation repository containing study notes, production code implementations, problem-solving patterns, and architectural case studies tailored for technical coding, backend engineering, and system design interviews in **Java**.
+**The production-grade, interactive engineering platform for technical coding, Java backend concurrency, Low-Level Machine Coding, and distributed High-Level Design.**
+
+[⚡ Interactive CLI Suite](#-interactive-terminal-developer-suite) • [☕ Java 21 Playground](#-runnable-java-21-lld-playground) • [🏆 Why This Platform?](#-why-this-platform-differentiation-matrix) • [📁 Curriculum](#-repository-structure)
 
 </div>
+
+---
+
+## 🏆 Why This Platform? (Differentiation Matrix)
+
+| Dimension | Standard Cheat Sheets / Blind 75 | Generic System Design Repos | 🚀 This Master Platform |
+| :--- | :--- | :--- | :--- |
+| **Language Depth** | Language-agnostic or generic Python | Abstract box diagrams only | **Modern Java 21** with JVM memory layouts (64B cache line, compressed OOPs, memory visibility) |
+| **HLD Coverage** | None (DSA only) | 4–6 shallow overviews | **13 Heavyweight Case Studies** with exact capacity math, storage partitioning, CDC, and failure triage |
+| **LLD & Machine Coding** | None | Simple class diagrams | **9 Enterprise Modules** with thread-safe concurrency (`ReentrantReadWriteLock`, atomic CAS, DelayQueue) |
+| **Runnable Code** | Theoretical snippets | Snippets with missing imports | **Production Maven Playground** ([`code-samples/`](code-samples/README.md)) with multi-threaded JUnit 5 test suites |
+| **Interactive Terminal Tools**| None | None | **Built-in Developer Suite**: active recall quiz CLI (`quiz`), progress tracker (`track`), fuzzy search (`search`) |
+| **Engineering Rigor** | Frequently broken links & typos | Inconsistent formatting | **Automated CI Integrity Engine**: 100% relative link audits, Mermaid syntax validation, and test suites |
+
+---
+
+## ⚡ Interactive Terminal Developer Suite
+
+This repository features built-in developer CLI tools directly runnable from your terminal via `npm`:
+
+```bash
+# 1. Active Recall Flashcard Quiz across DSA, Java, HLD, LLD, and Leadership
+npm run quiz                     # Interactive full quiz
+npm run quiz -- --category hld   # Filter by track (dsa | java | hld | lld | leadership)
+
+# 2. Interactive Study Roadmap Progress Tracker (supports 30, 60, and 90-day sprints)
+npm run track                    # View active progress and mark milestones complete
+npm run track -- --plan 30       # Switch to 30-Day FAANG Sprint
+npm run track -- --plan 60       # Switch to 60-Day Comprehensive SDE2 Roadmap
+npm run track -- --plan 90       # Switch to 90-Day Senior/Staff Architect Blueprint
+
+# 3. Sub-Second Markdown Knowledge Base Fuzzy Search
+npm run search "Gorilla"         # Search TSDB Gorilla compression
+npm run search "SkipList"        # Find skip list data structures and implementations
+```
+
+---
+
+## ☕ Runnable Java 21 LLD Playground
+
+A fully compilable Maven project is located in [`code-samples/`](code-samples/README.md) featuring production-grade Low-Level Design implementations and multi-threaded JUnit 5 concurrency tests:
+
+```bash
+cd code-samples
+mvn test                         # Run all concurrent JUnit 5 test suites
+```
+
+Key implementations:
+- **Concurrent In-Memory Cache**: LRU, LFU, and FIFO pluggable eviction strategies with read/write lock striping and TTL purge.
+- **In-Memory Rate Limiter Library**: Token Bucket with nanosecond refill precision and Sliding Window Log with zero boundary burst.
+- **Distributed Task Scheduler**: In-memory `DelayQueue` coordinator with a decoupled worker pool and exponential backoff retries.
+
 
 ---
 
@@ -45,8 +109,8 @@ A structured, end-to-end preparation repository containing study notes, producti
 
 ### 🏛️ [3. System Design Track (`system-design/`)](system-design/README.md)
 - [**`system-design-fundamentals/`**](system-design/system-design-fundamentals/README.md) — 10-page comprehensive guide covering High-Level Design (HLD), Low-Level Design (LLD), GoF design patterns in Java, thread pool engineering, connection pooling (HikariCP), caching strategies, Kafka event streaming, circuit breakers, and the 4-step interview blueprint.
-- [**`lld-machine-coding/`**](system-design/lld-machine-coding/README.md) — 8-page enterprise track on Object-Oriented Low-Level Design & Machine Coding in Java (Java 17/21): 90-minute interview framework, Parking Lot System (Strategy, Factory, concurrent spot locking), Elevator Control System (State, LOOK/SCAN disk scheduling, multi-car bank), In-Memory Key-Value Store with TTL & Transactions (ReadWriteLock, passive/active cleanup, ACID rollback/commit, nested transactions), Expense Sharing System / Splitwise (Equal/Exact/Percent strategies, greedy Min-Cash-Flow debt simplification), Movie Ticket Booking System / BookMyShow (atomic seat locks with TTL, deadlock-free sorted lock hierarchy), Concurrent In-Memory Cache with Pluggable Eviction Policies (generics, ReadWriteLock, LRU/LFU/FIFO, active+passive TTL), and Food Delivery System / Swiggy-Zomato (nearest-partner matching, atomic CAS assignment, surge pricing).
-- [**`hld-case-studies/`**](system-design/hld-case-studies/README.md) — 10-page end-to-end High-Level Design (HLD) deep-dive case studies covering capacity estimation, data partitioning, and failure mode analysis:
+- [**`lld-machine-coding/`**](system-design/lld-machine-coding/README.md) — 10-page enterprise track on Object-Oriented Low-Level Design & Machine Coding in Java (Java 17/21) with runnable Maven playground ([`code-samples/`](code-samples/README.md)): 90-minute interview framework, Parking Lot System (Strategy, Factory, concurrent spot locking), Elevator Control System (State, LOOK/SCAN disk scheduling, multi-car bank), In-Memory Key-Value Store with TTL & Transactions (ReadWriteLock, passive/active cleanup, ACID rollback/commit), Expense Sharing System / Splitwise (Equal/Exact/Percent strategies, greedy Min-Cash-Flow debt simplification), Movie Ticket Booking System / BookMyShow (atomic seat locks with TTL, deadlock-free sorted lock hierarchy), Concurrent In-Memory Cache with Pluggable Eviction Policies (generics, ReadWriteLock, LRU/LFU/FIFO, active+passive TTL), Food Delivery System / Swiggy-Zomato (nearest-partner matching, atomic CAS assignment, surge pricing), Distributed Task & Job Scheduler (DelayQueue, worker pool, exponential backoff), and In-Memory Rate Limiter Library (Token Bucket, Sliding Window Log, nanoTime CAS).
+- [**`hld-case-studies/`**](system-design/hld-case-studies/README.md) — 14-page end-to-end High-Level Design (HLD) deep-dive case studies covering capacity estimation, data partitioning, and failure mode analysis:
   - [**`01-design-a-distributed-rate-limiter.md`**](system-design/hld-case-studies/01-design-a-distributed-rate-limiter.md): Sliding window counter, Redis cluster + Lua scripts, local token lease caching, clock drift.
   - [**`02-design-a-global-url-shortener-tinyurl.md`**](system-design/hld-case-studies/02-design-a-global-url-shortener-tinyurl.md): 100:1 read ratio, Base62 Key Generation Service (KGS), 301 vs 302 redirects, DB sharding.
   - [**`03-design-a-real-time-chat-system-whatsapp-slack.md`**](system-design/hld-case-studies/03-design-a-real-time-chat-system-whatsapp-slack.md): WebSockets, Cassandra LSM-Tree, per-chat monotonic sequencing, heartbeat presence.
@@ -56,6 +120,10 @@ A structured, end-to-end preparation repository containing study notes, producti
   - [**`07-design-a-real-time-ride-hailing-system-uber-lyft.md`**](system-design/hld-case-studies/07-design-a-real-time-ride-hailing-system-uber-lyft.md): Uber H3 Hexagonal spatial indexing, 1M/s driver pings, Quadtrees, Redis pub/sub backplane.
   - [**`08-design-a-distributed-cloud-storage-and-sync-google-drive-dropbox.md`**](system-design/hld-case-studies/08-design-a-distributed-cloud-storage-and-sync-google-drive-dropbox.md): Content-Defined Chunking (Rabin fingerprints), Merkle trees, metadata service vs block store.
   - [**`09-design-an-ecommerce-flash-sale-and-inventory-system.md`**](system-design/hld-case-studies/09-design-an-ecommerce-flash-sale-and-inventory-system.md): Redis Lua script atomic reservation, Transactional Outbox + Debezium CDC, idempotency.
+  - [**`10-design-a-distributed-web-crawler-google-search.md`**](system-design/hld-case-studies/10-design-a-distributed-web-crawler-google-search.md): URL frontier politeness, MurmurHash3 de-duplication, distributed worker clusters.
+  - [**`11-design-a-distributed-metrics-and-telemetry-system-datadog.md`**](system-design/hld-case-studies/11-design-a-distributed-metrics-and-telemetry-system-datadog.md): Gorilla floating-point XOR compression, M3DB/TimescaleDB chunking, Kafka ingestion.
+  - [**`12-design-a-collaborative-real-time-document-editor-google-docs.md`**](system-design/hld-case-studies/12-design-a-collaborative-real-time-document-editor-google-docs.md): Operational Transformation (OT) / CRDT (Yjs/Loro), WebSocket fan-out, undo/redo vectors.
+  - [**`13-design-a-proximity-and-nearby-search-service-yelp-maps.md`**](system-design/hld-case-studies/13-design-a-proximity-and-nearby-search-service-yelp-maps.md): Geohash prefix tree, Google S2 / Uber H3 cell spatial hierarchies, two-tier cache.
 
 ### 🤖 [4. AI for Developers Track (`ai-for-developers/`)](ai-for-developers/README.md)
 - [**`ai-for-developers/`**](ai-for-developers/README.md) — 10-page comprehensive guide on using AI as a 10x engineering velocity multiplier and building AI applications: moving from typist to architect, 0-to-1 REST API scaffolding, instant stack trace triage, automated testing with Testcontainers, tool mastery (**Cursor**, **Claude Cowork & Projects**, **GitHub Copilot**, `.cursorrules`), accelerating in **500k+ LOC enterprise codebases**, System Design capacity math, **Autonomous Coding Agents & Model Context Protocol (MCP)**, building enterprise AI applications with **Spring AI & RAG (`pgvector`)**, and the **30+ Copy-Paste Developer Prompt Cheatsheet**.

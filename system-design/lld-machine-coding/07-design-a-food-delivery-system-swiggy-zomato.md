@@ -1,6 +1,6 @@
 # 07. Design a Food Delivery System (Swiggy / Zomato / DoorDash)
 
-[← Back to Concurrent In-Memory Cache](./06-design-a-concurrent-in-memory-cache-with-eviction-policies.md) | [Track Hub](./README.md) | [System Design Track Hub →](../README.md)
+[← Back to Concurrent In-Memory Cache](./06-design-a-concurrent-in-memory-cache-with-eviction-policies.md) | [Track Hub](./README.md) | [Next: Design a Distributed Task Scheduler →](./08-design-a-distributed-task-and-job-scheduler.md)
 
 ---
 
@@ -541,7 +541,7 @@ public class FoodDeliveryDemoDriver {
 
 <div align="center">
 
-| [← Back to Concurrent In-Memory Cache](./06-design-a-concurrent-in-memory-cache-with-eviction-policies.md) | [Track Hub: LLD & Machine Coding](./README.md) | [System Design Track Hub →](../README.md) |
+| [← Back to Concurrent In-Memory Cache](./06-design-a-concurrent-in-memory-cache-with-eviction-policies.md) | [Track Hub: LLD & Machine Coding](./README.md) | [Next: Design a Distributed Task Scheduler →](./08-design-a-distributed-task-and-job-scheduler.md) |
 | :--- | :---: | ---: |
 
 </div>

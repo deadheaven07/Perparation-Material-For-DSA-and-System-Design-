@@ -16,3 +16,7 @@ Thumbs.db
 target/
 dist/
 out/
+code-samples/target/
+
+# Local User Data
+.progress.json

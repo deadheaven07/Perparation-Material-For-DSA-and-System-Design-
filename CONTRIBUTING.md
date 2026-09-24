@@ -42,17 +42,32 @@ Every new system design case study must follow the 4-step blueprint:
 
 ---
 
-## 🧪 Local Pre-Commit Verification
+## 🧪 Local Pre-Commit Verification & Developer Suite
 
 Before submitting a Pull Request, run the local audit scripts from the repository root:
 
 ```bash
-# Run the complete test suite (both link audit and Mermaid validation):
+# Run the complete test suite (link audit, Mermaid validation, and CLI unit tests):
 npm test
 
 # Or run individual checks:
 python3 scripts/audit_integrity.py
 node scripts/validate_mermaid.mjs
+npm run test:scripts
+
+# Run Java 21 Playground concurrency and unit tests:
+cd code-samples && mvn test
 ```
 
 The test suite must exit with code `0` and report zero errors.
+
+---
+
+## 🛠️ Interactive Developer CLI Tools
+
+Contributors can leverage our built-in terminal productivity tools:
+
+- `npm run quiz` — Interactive active recall flashcard quiz across DSA, HLD, LLD, Java, and Leadership.
+- `npm run track` — Interactive study roadmap progress tracker supporting 30, 60, and 90-day sprints.
+- `npm run search <query>` — Sub-second fuzzy search across all 188+ Markdown curriculum guides.
+

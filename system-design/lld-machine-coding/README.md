@@ -37,6 +37,8 @@ graph TD
 | **05** | **Design a Movie Ticket Booking System (BookMyShow)** | State, Strategy, Facade | Optimistic / pessimistic seat locking, temporary TTL reservations, race-condition immunity | [05-design-a-movie-ticket-booking-system-bookmyshow.md](./05-design-a-movie-ticket-booking-system-bookmyshow.md) |
 | **06** | **Design a Concurrent In-Memory Cache** | Strategy, Observer, Factory | Generics `<K,V>`, ReadWriteLock, pluggable LRU/LFU/FIFO, active+passive TTL expiration | [06-design-a-concurrent-in-memory-cache-with-eviction-policies.md](./06-design-a-concurrent-in-memory-cache-with-eviction-policies.md) |
 | **07** | **Design a Food Delivery System (Swiggy/Zomato)** | Strategy, State, Observer | Atomic CAS rider assignment, dynamic surge fee calculation, nearest-partner geospatial dispatch | [07-design-a-food-delivery-system-swiggy-zomato.md](./07-design-a-food-delivery-system-swiggy-zomato.md) |
+| **08** | **Design a Distributed Task and Job Scheduler** | Strategy, State, Observer, Template Method | PriorityBlockingQueue / DelayQueue, Worker thread pool, exponential backoff jitter, atomic state CAS | [08-design-a-distributed-task-and-job-scheduler.md](./08-design-a-distributed-task-and-job-scheduler.md) |
+| **09** | **Design an In-Memory Rate Limiter Library** | Strategy, Factory, Decorator | AtomicLong CAS, Token Bucket, Sliding Window Counter, Leaky Bucket, nanosecond precision | [09-design-an-in-memory-rate-limiter-library.md](./09-design-an-in-memory-rate-limiter-library.md) |
 
 ---
 

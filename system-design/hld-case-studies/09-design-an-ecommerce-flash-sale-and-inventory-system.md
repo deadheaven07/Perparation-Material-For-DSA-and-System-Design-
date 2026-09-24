@@ -1,6 +1,6 @@
 # 09. Design an E-Commerce Flash Sale & Inventory System
 
-[← Back to Cloud Storage & Sync Engine](./08-design-a-distributed-cloud-storage-and-sync-google-drive-dropbox.md) | [Track Hub](./README.md) | [LLD & Machine Coding Hub →](../lld-machine-coding/README.md)
+[← Back to Cloud Storage & Sync Engine](./08-design-a-distributed-cloud-storage-and-sync-google-drive-dropbox.md) | [Track Hub](./README.md) | [Next: Design a Distributed Web Crawler →](./10-design-a-distributed-web-crawler-google-search.md)
 
 ---
 
@@ -208,7 +208,7 @@ Before the sale begins at 10:00:00 AM, the stock count (1,000) and product metad
 
 <div align="center">
 
-| [← Back to Cloud Storage & Sync Engine](./08-design-a-distributed-cloud-storage-and-sync-google-drive-dropbox.md) | [Track Hub: HLD](./README.md) | [LLD & Machine Coding Hub →](../lld-machine-coding/README.md) |
+| [← Back to Cloud Storage & Sync Engine](./08-design-a-distributed-cloud-storage-and-sync-google-drive-dropbox.md) | [Track Hub: HLD](./README.md) | [Next: Design a Distributed Web Crawler →](./10-design-a-distributed-web-crawler-google-search.md) |
 | :--- | :---: | ---: |
 
 </div>

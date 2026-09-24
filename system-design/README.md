@@ -42,6 +42,10 @@ Master end-to-end distributed system architectures, capacity estimation, data pa
 | **07** | Design a Real-Time Ride-Hailing System (Uber/Lyft) | Uber H3 Hexagonal indexing, driver ping ingestion (1M/s), Quadtrees | [07-design-a-real-time-ride-hailing-system-uber-lyft.md](hld-case-studies/07-design-a-real-time-ride-hailing-system-uber-lyft.md) |
 | **08** | Design Cloud Storage & Sync (Google Drive/Dropbox) | Content-defined chunking (Rabin fingerprints), Merkle trees, delta sync | [08-design-a-distributed-cloud-storage-and-sync-google-drive-dropbox.md](hld-case-studies/08-design-a-distributed-cloud-storage-and-sync-google-drive-dropbox.md) |
 | **09** | Design an E-Commerce Flash Sale & Inventory System | Redis Lua atomic decr, transactional outbox + CDC, zero overselling | [09-design-an-ecommerce-flash-sale-and-inventory-system.md](hld-case-studies/09-design-an-ecommerce-flash-sale-and-inventory-system.md) |
+| **10** | Design a Distributed Web Crawler (Google Search) | URL frontier politeness, MurmurHash3 de-duplication, distributed worker clusters | [10-design-a-distributed-web-crawler-google-search.md](hld-case-studies/10-design-a-distributed-web-crawler-google-search.md) |
+| **11** | Design a Distributed Metrics & Telemetry System (Datadog) | Gorilla floating-point XOR compression, M3DB/TimescaleDB chunking, Kafka ingestion | [11-design-a-distributed-metrics-and-telemetry-system-datadog.md](hld-case-studies/11-design-a-distributed-metrics-and-telemetry-system-datadog.md) |
+| **12** | Design a Real-Time Collaborative Document Editor (Google Docs) | Operational Transformation (OT) / CRDT (Yjs/Loro), WebSocket fan-out, undo/redo vectors | [12-design-a-collaborative-real-time-document-editor-google-docs.md](hld-case-studies/12-design-a-collaborative-real-time-document-editor-google-docs.md) |
+| **13** | Design a Proximity & Nearby Search Service (Yelp/Google Maps) | Geohash prefix tree, Google S2 / Uber H3 cell spatial hierarchies, two-tier cache | [13-design-a-proximity-and-nearby-search-service-yelp-maps.md](hld-case-studies/13-design-a-proximity-and-nearby-search-service-yelp-maps.md) |
 
 ---
 
@@ -49,7 +53,7 @@ Master end-to-end distributed system architectures, capacity estimation, data pa
 
 Master Object-Oriented Design (OOD), GoF design patterns, thread-safe concurrent systems, and 90-minute machine coding interview solutions written in modern Java:
 
-👉 **[LLD & Machine Coding Master Hub (Problems 01 to 07)](lld-machine-coding/README.md)**
+👉 **[LLD & Machine Coding Master Hub (Problems 01 to 09)](lld-machine-coding/README.md)**
 
 | Problem | Title | Primary Patterns & Highlights | Link |
 | :---: | :--- | :--- | :--- |
@@ -60,3 +64,5 @@ Master Object-Oriented Design (OOD), GoF design patterns, thread-safe concurrent
 | **05** | Design a Movie Ticket Booking System (BookMyShow) | State, Strategy, TTL Seat Locking | [05-design-a-movie-ticket-booking-system-bookmyshow.md](lld-machine-coding/05-design-a-movie-ticket-booking-system-bookmyshow.md) |
 | **06** | Design a Concurrent In-Memory Cache | Strategy, Observer, ReadWriteLock, LRU/LFU/FIFO | [06-design-a-concurrent-in-memory-cache-with-eviction-policies.md](lld-machine-coding/06-design-a-concurrent-in-memory-cache-with-eviction-policies.md) |
 | **07** | Design a Food Delivery System (Swiggy/Zomato) | Strategy, State, Atomic CAS rider assignment, surge pricing | [07-design-a-food-delivery-system-swiggy-zomato.md](lld-machine-coding/07-design-a-food-delivery-system-swiggy-zomato.md) |
+| **08** | Design a Distributed Task & Job Scheduler | Strategy, State, Observer, DelayQueue, Worker thread pool | [08-design-a-distributed-task-and-job-scheduler.md](lld-machine-coding/08-design-a-distributed-task-and-job-scheduler.md) |
+| **09** | Design an In-Memory Rate Limiter Library | Strategy, Factory, Token Bucket, Sliding Window, nanoTime CAS | [09-design-an-in-memory-rate-limiter-library.md](lld-machine-coding/09-design-an-in-memory-rate-limiter-library.md) |
