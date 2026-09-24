@@ -35,6 +35,8 @@ graph TD
 | **03** | **Design an In-Memory Key-Value Store** | Command, Memento, Chain of Responsibility | Read-write locking, TTL passive + active expiration, transactions (BEGIN/COMMIT/ROLLBACK) | [03-design-an-in-memory-key-value-store-with-ttl-and-transactions.md](./03-design-an-in-memory-key-value-store-with-ttl-and-transactions.md) |
 | **04** | **Design an Expense Sharing System (Splitwise)** | Strategy, Observer, Command | Exact/Percent/Equal splits, Min-Cash-Flow debt simplification algorithm | [04-design-an-expense-sharing-system-splitwise.md](./04-design-an-expense-sharing-system-splitwise.md) |
 | **05** | **Design a Movie Ticket Booking System (BookMyShow)** | State, Strategy, Facade | Optimistic / pessimistic seat locking, temporary TTL reservations, race-condition immunity | [05-design-a-movie-ticket-booking-system-bookmyshow.md](./05-design-a-movie-ticket-booking-system-bookmyshow.md) |
+| **06** | **Design a Concurrent In-Memory Cache** | Strategy, Observer, Factory | Generics `<K,V>`, ReadWriteLock, pluggable LRU/LFU/FIFO, active+passive TTL expiration | [06-design-a-concurrent-in-memory-cache-with-eviction-policies.md](./06-design-a-concurrent-in-memory-cache-with-eviction-policies.md) |
+| **07** | **Design a Food Delivery System (Swiggy/Zomato)** | Strategy, State, Observer | Atomic CAS rider assignment, dynamic surge fee calculation, nearest-partner geospatial dispatch | [07-design-a-food-delivery-system-swiggy-zomato.md](./07-design-a-food-delivery-system-swiggy-zomato.md) |
 
 ---
 

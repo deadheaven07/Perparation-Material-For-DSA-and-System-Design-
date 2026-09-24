@@ -1,6 +1,6 @@
 # 03. GoF Design Patterns & Java Concurrency Reference
 
-[← Back to System Design Numbers](./02-system-design-numbers-and-capacity-math.md) | [Cheatsheets Hub](./README.md) | [System Design Track Hub →](../system-design/README.md)
+[← Back to System Design Numbers](./02-system-design-numbers-and-capacity-math.md) | [Cheatsheets Hub](./README.md) | [Next: 200+ High-Yield Flashcards →](./04-200-high-yield-interview-flashcards.md)
 
 ---
 
@@ -89,7 +89,7 @@ graph TD
 
 <div align="center">
 
-| [← Back to System Design Numbers](./02-system-design-numbers-and-capacity-math.md) | [Cheatsheets Hub](./README.md) | [System Design Track Hub →](../system-design/README.md) |
+| [← Back to System Design Numbers](./02-system-design-numbers-and-capacity-math.md) | [Track Hub: Cheatsheets](./README.md) | [Next: 200+ High-Yield Flashcards →](./04-200-high-yield-interview-flashcards.md) |
 | :--- | :---: | ---: |
 
 </div>

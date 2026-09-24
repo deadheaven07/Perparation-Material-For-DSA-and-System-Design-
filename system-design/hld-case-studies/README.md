@@ -36,6 +36,9 @@ graph TD
 | **04** | **Design a Distributed Message Queue (Kafka Clone)** | Append-only Disk Segments, PageCache, KRaft | Zero-copy `sendfile`, partition consumer groups, ISR replication consensus | [04-design-a-distributed-message-queue-kafka-clone.md](./04-design-a-distributed-message-queue-kafka-clone.md) |
 | **05** | **Design a Video Streaming Platform (YouTube)** | Blob Storage (S3), CDN, Cassandra, Transcoders | Asynchronous transcoding DAG, Adaptive Bitrate Streaming (HLS/DASH), CDN edge caching | [05-design-a-video-streaming-platform-youtube-netflix.md](./05-design-a-video-streaming-platform-youtube-netflix.md) |
 | **06** | **Design a Distributed Key-Value Store (Dynamo-Style)** | Consistent Hashing, Virtual Nodes, Vector Clocks | Tunable quorum ($R + W > N$), sloppy quorums, hinted handoff, Merkle anti-entropy | [06-design-a-distributed-key-value-store-dynamo-style.md](./06-design-a-distributed-key-value-store-dynamo-style.md) |
+| **07** | **Design a Real-Time Ride-Hailing System (Uber / Lyft)** | Google S2, Geohash, WebSockets/gRPC, Kafka, Redis | 500k QPS location stream, spatial proximity dispatch, dynamic surge heatmaps | [07-design-a-real-time-ride-hailing-system-uber-lyft.md](./07-design-a-real-time-ride-hailing-system-uber-lyft.md) |
+| **08** | **Design a Cloud Storage & Sync Engine (Google Drive)** | Content-Defined Chunking (CDC), S3/GCS, CockroachDB | SHA-256 deduplication, differential sync, metadata sharding, offline conflicts | [08-design-a-distributed-cloud-storage-and-sync-google-drive-dropbox.md](./08-design-a-distributed-cloud-storage-and-sync-google-drive-dropbox.md) |
+| **09** | **Design an E-Commerce Flash Sale & Inventory System** | Redis Lua, Kafka, PostgreSQL, Saga Pattern | 1M QPS thundering herd, zero overselling, atomic inventory reservation, idempotency | [09-design-an-ecommerce-flash-sale-and-inventory-system.md](./09-design-an-ecommerce-flash-sale-and-inventory-system.md) |
 
 ---
 

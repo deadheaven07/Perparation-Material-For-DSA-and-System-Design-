@@ -39,6 +39,9 @@ Master end-to-end distributed system architectures, capacity estimation, data pa
 | **04** | Design a Distributed Message Queue (Kafka) | Sequential disk I/O, PageCache, Linux zero-copy `sendfile`, KRaft | [04-design-a-distributed-message-queue-kafka-clone.md](hld-case-studies/04-design-a-distributed-message-queue-kafka-clone.md) |
 | **05** | Design a Video Streaming Platform (YouTube) | Transcoding DAG, Adaptive Bitrate Streaming (HLS/DASH), CDN edge | [05-design-a-video-streaming-platform-youtube-netflix.md](hld-case-studies/05-design-a-video-streaming-platform-youtube-netflix.md) |
 | **06** | Design a Distributed Key-Value Store (Dynamo) | Consistent hashing, vnodes, vector clocks, tunable quorum ($R+W>N$) | [06-design-a-distributed-key-value-store-dynamo-style.md](hld-case-studies/06-design-a-distributed-key-value-store-dynamo-style.md) |
+| **07** | Design a Real-Time Ride-Hailing System (Uber/Lyft) | Uber H3 Hexagonal indexing, driver ping ingestion (1M/s), Quadtrees | [07-design-a-real-time-ride-hailing-system-uber-lyft.md](hld-case-studies/07-design-a-real-time-ride-hailing-system-uber-lyft.md) |
+| **08** | Design Cloud Storage & Sync (Google Drive/Dropbox) | Content-defined chunking (Rabin fingerprints), Merkle trees, delta sync | [08-design-a-distributed-cloud-storage-and-sync-google-drive-dropbox.md](hld-case-studies/08-design-a-distributed-cloud-storage-and-sync-google-drive-dropbox.md) |
+| **09** | Design an E-Commerce Flash Sale & Inventory System | Redis Lua atomic decr, transactional outbox + CDC, zero overselling | [09-design-an-ecommerce-flash-sale-and-inventory-system.md](hld-case-studies/09-design-an-ecommerce-flash-sale-and-inventory-system.md) |
 
 ---
 
@@ -46,7 +49,7 @@ Master end-to-end distributed system architectures, capacity estimation, data pa
 
 Master Object-Oriented Design (OOD), GoF design patterns, thread-safe concurrent systems, and 90-minute machine coding interview solutions written in modern Java:
 
-👉 **[LLD & Machine Coding Master Hub (Problems 01 to 05)](lld-machine-coding/README.md)**
+👉 **[LLD & Machine Coding Master Hub (Problems 01 to 07)](lld-machine-coding/README.md)**
 
 | Problem | Title | Primary Patterns & Highlights | Link |
 | :---: | :--- | :--- | :--- |
@@ -55,3 +58,5 @@ Master Object-Oriented Design (OOD), GoF design patterns, thread-safe concurrent
 | **03** | Design an In-Memory Key-Value Store | Command, Memento, ReadWriteLock, TTL | [03-design-an-in-memory-key-value-store-with-ttl-and-transactions.md](lld-machine-coding/03-design-an-in-memory-key-value-store-with-ttl-and-transactions.md) |
 | **04** | Design an Expense Sharing System (Splitwise) | Strategy, Min-Cash-Flow Algorithm | [04-design-an-expense-sharing-system-splitwise.md](lld-machine-coding/04-design-an-expense-sharing-system-splitwise.md) |
 | **05** | Design a Movie Ticket Booking System (BookMyShow) | State, Strategy, TTL Seat Locking | [05-design-a-movie-ticket-booking-system-bookmyshow.md](lld-machine-coding/05-design-a-movie-ticket-booking-system-bookmyshow.md) |
+| **06** | Design a Concurrent In-Memory Cache | Strategy, Observer, ReadWriteLock, LRU/LFU/FIFO | [06-design-a-concurrent-in-memory-cache-with-eviction-policies.md](lld-machine-coding/06-design-a-concurrent-in-memory-cache-with-eviction-policies.md) |
+| **07** | Design a Food Delivery System (Swiggy/Zomato) | Strategy, State, Atomic CAS rider assignment, surge pricing | [07-design-a-food-delivery-system-swiggy-zomato.md](lld-machine-coding/07-design-a-food-delivery-system-swiggy-zomato.md) |

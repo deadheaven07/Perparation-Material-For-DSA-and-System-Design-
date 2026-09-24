@@ -1,6 +1,6 @@
 # 05. Design a Movie Ticket Booking System (BookMyShow)
 
-[← Back to Expense Sharing System (Splitwise)](./04-design-an-expense-sharing-system-splitwise.md) | [Track Hub](./README.md) | [System Design Track Hub →](../README.md)
+[← Back to Expense Sharing System (Splitwise)](./04-design-an-expense-sharing-system-splitwise.md) | [Track Hub](./README.md) | [Next: Design a Concurrent In-Memory Cache →](./06-design-a-concurrent-in-memory-cache-with-eviction-policies.md)
 
 ---
 
@@ -389,7 +389,7 @@ public final class BookingService {
 
 <div align="center">
 
-| [← Back to Expense Sharing System (Splitwise)](./04-design-an-expense-sharing-system-splitwise.md) | [Track Hub: LLD & Machine Coding](./README.md) | [System Design Track Hub →](../README.md) |
+| [← Back to Expense Sharing System (Splitwise)](./04-design-an-expense-sharing-system-splitwise.md) | [Track Hub: LLD & Machine Coding](./README.md) | [Next: Design a Concurrent In-Memory Cache →](./06-design-a-concurrent-in-memory-cache-with-eviction-policies.md) |
 | :--- | :---: | ---: |
 
 </div>

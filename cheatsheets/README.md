@@ -11,6 +11,7 @@ High-density, rapid-lookup reference cards and formula sheets designed for the f
 | **01** | **DSA Formulas, Complexity Bounds & Invariants** | Best/Avg/Worst time & space bounds, Master Theorem, Bitwise math, Tree/Graph formulas, Invariants | [01-dsa-formulas-and-invariants-cheatsheet.md](./01-dsa-formulas-and-invariants-cheatsheet.md) |
 | **02** | **System Design Numbers & Capacity Estimations** | Latency numbers, powers of 2 shorthand, QPS math, SLA downtime tables, storage sizing rules | [02-system-design-numbers-and-capacity-math.md](./02-system-design-numbers-and-capacity-math.md) |
 | **03** | **GoF Design Patterns & Java Concurrency Reference** | 23 GoF patterns 1-line triggers, Thread safety checklist, Lock selection matrix, Memory barriers | [03-gof-patterns-and-concurrency-cheatsheet.md](./03-gof-patterns-and-concurrency-cheatsheet.md) |
+| **04** | **200+ High-Yield Interview Active Recall Flashcards** | 200+ interactive flashcards across DSA, Distributed HLD, Java Concurrency, Leadership, Storage | [04-200-high-yield-interview-flashcards.md](./04-200-high-yield-interview-flashcards.md) |
 
 ---
 

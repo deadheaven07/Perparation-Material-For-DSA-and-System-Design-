@@ -1,6 +1,6 @@
 # 06. Design a Distributed Key-Value Store (Dynamo-Style)
 
-[← Back to Video Streaming Platform](./05-design-a-video-streaming-platform-youtube-netflix.md) | [Track Hub](./README.md) | [LLD & Machine Coding Hub →](../lld-machine-coding/README.md)
+[← Back to Video Streaming Platform](./05-design-a-video-streaming-platform-youtube-netflix.md) | [Track Hub](./README.md) | [Next: Real-Time Ride Hailing (Uber/Lyft) →](./07-design-a-real-time-ride-hailing-system-uber-lyft.md)
 
 ---
 
@@ -132,7 +132,7 @@ graph LR
 
 <div align="center">
 
-| [← Back to Video Streaming Platform](./05-design-a-video-streaming-platform-youtube-netflix.md) | [Track Hub: HLD Case Studies](./README.md) | [LLD & Machine Coding Hub →](../lld-machine-coding/README.md) |
+| [← Back to Video Streaming Platform](./05-design-a-video-streaming-platform-youtube-netflix.md) | [Track Hub: HLD Case Studies](./README.md) | [Next: Real-Time Ride Hailing (Uber/Lyft) →](./07-design-a-real-time-ride-hailing-system-uber-lyft.md) |
 | :--- | :---: | ---: |
 
 </div>
