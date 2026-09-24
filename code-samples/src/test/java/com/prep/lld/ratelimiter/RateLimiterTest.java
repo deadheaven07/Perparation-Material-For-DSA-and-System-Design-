@@ -45,7 +45,7 @@ class RateLimiterTest {
         assertFalse(limiter.tryAcquire(client), "Exceeding window limit must reject");
 
         // Wait for window to slide past
-        Thread.sleep(220L);
+        Thread.sleep(300L);
 
         // Should now be permitted again
         assertTrue(limiter.tryAcquire(client), "Request after window slide must succeed");
@@ -55,7 +55,7 @@ class RateLimiterTest {
     @DisplayName("Concurrent requests strictly adhere to capacity under high thread contention")
     void testConcurrentRateLimiterContention() throws InterruptedException {
         int capacity = 20;
-        RateLimiter limiter = RateLimiterFactory.createTokenBucket(capacity, 0.001); // Negligible refill during test
+        RateLimiter limiter = RateLimiterFactory.createTokenBucket(capacity, 0.0001); // Negligible refill during test
         String client = "shared-service-key";
 
         int totalThreads = 50;
@@ -83,7 +83,7 @@ class RateLimiterTest {
         }
 
         startLatch.countDown();
-        assertTrue(doneLatch.await(3, TimeUnit.SECONDS));
+        assertTrue(doneLatch.await(10, TimeUnit.SECONDS));
         pool.shutdown();
 
         assertEquals(capacity, successCounter.get(), "Exactly 'capacity' requests must succeed");

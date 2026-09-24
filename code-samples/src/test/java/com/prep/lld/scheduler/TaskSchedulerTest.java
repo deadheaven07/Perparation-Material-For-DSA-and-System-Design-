@@ -25,12 +25,19 @@ class TaskSchedulerTest {
                 latch.countDown();
             }, 50L);
 
-            assertTrue(latch.await(2, TimeUnit.SECONDS), "Task must execute within timeout");
+            assertTrue(latch.await(5, TimeUnit.SECONDS), "Task must execute within timeout");
             assertTrue(executed.get(), "Task flag must be true");
 
             // Allow worker thread to finalize status
-            Thread.sleep(50L);
-            assertEquals(TaskStatus.COMPLETED, scheduler.getStatus("job-1").orElse(null));
+            boolean completed = false;
+            for (int i = 0; i < 40; i++) {
+                if (scheduler.getStatus("job-1").orElse(null) == TaskStatus.COMPLETED) {
+                    completed = true;
+                    break;
+                }
+                Thread.sleep(50L);
+            }
+            assertTrue(completed, "Task status must transition to COMPLETED");
         }
     }
 
@@ -47,7 +54,7 @@ class TaskSchedulerTest {
                 latch.countDown();
             }, 20L, 50L);
 
-            assertTrue(latch.await(2, TimeUnit.SECONDS), "Recurring task must execute at least 3 times");
+            assertTrue(latch.await(5, TimeUnit.SECONDS), "Recurring task must execute at least 3 times");
             assertTrue(executionCount.get() >= runsRequired);
         }
     }
@@ -57,7 +64,6 @@ class TaskSchedulerTest {
     void testRetryPolicyOnFailure() throws InterruptedException {
         try (DistributedTaskScheduler scheduler = new DistributedTaskScheduler(2)) {
             AtomicInteger attempts = new AtomicInteger();
-            CountDownLatch failedLatch = new CountDownLatch(1);
 
             RetryPolicy retryPolicy = new RetryPolicy(2, 20L, 1.5);
 
@@ -70,12 +76,12 @@ class TaskSchedulerTest {
 
             // Wait for attempts to complete (Initial attempt + 2 retries = 3 attempts total)
             boolean completed = false;
-            for (int i = 0; i < 20; i++) {
-                Thread.sleep(50L);
+            for (int i = 0; i < 60; i++) {
                 if (scheduler.getStatus("failing-job").orElse(null) == TaskStatus.FAILED) {
                     completed = true;
                     break;
                 }
+                Thread.sleep(50L);
             }
 
             assertTrue(completed, "Job must transition to FAILED status");

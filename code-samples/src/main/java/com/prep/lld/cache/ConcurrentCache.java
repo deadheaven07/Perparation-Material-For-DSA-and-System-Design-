@@ -146,12 +146,15 @@ public class ConcurrentCache<K, V> implements AutoCloseable {
                 rwLock.writeLock().lock();
                 try {
                     CacheEntry<K, V> doubleCheck = storage.get(key);
-                    if (doubleCheck != null && doubleCheck.isExpired(now)) {
-                        storage.remove(key);
-                        evictionPolicy.recordDeletion(key);
-                        expirationCount.incrementAndGet();
+                    if (doubleCheck == null || doubleCheck.isExpired(now)) {
+                        if (doubleCheck != null) {
+                            storage.remove(key);
+                            evictionPolicy.recordDeletion(key);
+                            expirationCount.incrementAndGet();
+                            notifyListeners(CacheEventListener.EventType.EXPIRED, key, doubleCheck.getValue());
+                        }
                         missCount.incrementAndGet();
-                        notifyListeners(CacheEventListener.EventType.EXPIRED, key, doubleCheck.getValue());
+                        notifyListeners(CacheEventListener.EventType.MISS, key, null);
                         return Optional.empty();
                     }
                 } finally {

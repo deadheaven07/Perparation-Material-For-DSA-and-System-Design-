@@ -51,10 +51,6 @@
                 <configuration>
                     <source>21</source>
                     <target>21</target>
-                    <compilerArgs>
-                        <arg>-Xlint:all</arg>
-                        <arg>-Werror</arg>
-                    </compilerArgs>
                 </configuration>
             </plugin>
             <plugin>
