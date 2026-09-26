@@ -166,7 +166,7 @@ Key implementations:
 
 <div align="center">
 
-### ☕ *Sip your coffee & enjoy the journey — more master engineering notes are brewing!* 🚀✨
+### ☕ *Sip your coffee & enjoy the journey — more master engineering notes are brewing!!* 🚀✨
 
 *Curated with precision for software engineers, backend developers, and system architects.* 💡🎯
 
