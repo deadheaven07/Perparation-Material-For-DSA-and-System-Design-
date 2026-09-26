@@ -31,10 +31,11 @@
 | Dimension | Standard Cheat Sheets / Blind 75 | Generic System Design Repos | 🚀 This Master Platform |
 | :--- | :--- | :--- | :--- |
 | **Language Depth** | Language-agnostic or generic Python | Abstract box diagrams only | **Modern Java 21** with JVM memory layouts (64B cache line, compressed OOPs, memory visibility) |
-| **HLD Coverage** | None (DSA only) | 4–6 shallow overviews | **13 Heavyweight Case Studies** with exact capacity math, storage partitioning, CDC, and failure triage |
-| **LLD & Machine Coding** | None | Simple class diagrams | **9 Enterprise Modules** with thread-safe concurrency (`ReentrantReadWriteLock`, atomic CAS, DelayQueue) |
-| **Runnable Code** | Theoretical snippets | Snippets with missing imports | **Production Maven Playground** ([`code-samples/`](code-samples/README.md)) with multi-threaded JUnit 5 test suites |
-| **Interactive Terminal Tools**| None | None | **Built-in Developer Suite**: active recall quiz CLI (`quiz`), progress tracker (`track`), fuzzy search (`search`) |
+| **HLD Coverage** | None (DSA only) | 4–6 shallow overviews | **17 Heavyweight Case Studies** with exact capacity math, storage partitioning, CDC, and failure triage |
+| **LLD & Machine Coding** | None | Simple class diagrams | **7 Production-Grade Systems** with thread-safe concurrency (`ReentrantReadWriteLock`, atomic CAS, DelayQueue, LOOK/SCAN) |
+| **Runnable Code** | Theoretical snippets | Snippets with missing imports | **Production Maven Playground** ([`code-samples/`](code-samples/README.md)) with 36 multi-threaded JUnit 5 tests |
+| **Interactive Terminal Tools**| None | None | **Built-in Developer Suite**: SuperMemo SM-2 flashcard quiz (`quiz`), progress tracker (`track`), streak heatmap (`heatmap`), fuzzy search (`search`), and 45-minute mock interview simulator (`mock`) |
+| **Cloud Environment** | Manual local configuration | None | **1-Click Dev Container** (`.devcontainer/`) for instant GitHub Codespaces / VS Code setup |
 | **Engineering Rigor** | Frequently broken links & typos | Inconsistent formatting | **Automated CI Integrity Engine**: 100% relative link audits, Mermaid syntax validation, and test suites |
 
 ---
@@ -44,17 +45,22 @@
 This repository features built-in developer CLI tools directly runnable from your terminal via `npm`:
 
 ```bash
-# 1. Active Recall Flashcard Quiz across DSA, Java, HLD, LLD, and Leadership
+# 1. Active Recall Flashcard Quiz with SuperMemo SM-2 Spaced Repetition (205 cards)
 npm run quiz                     # Interactive full quiz
-npm run quiz -- --category hld   # Filter by track (dsa | java | hld | lld | leadership)
+npm run quiz -- --category hld   # Filter by track (dsa | java | hld | lld | leadership | storage)
+npm run quiz -- --spaced         # SM-2 Spaced Repetition mode (prioritizes due cards)
+npm run quiz -- --stats          # View mastery levels and review intervals
 
-# 2. Interactive Study Roadmap Progress Tracker (supports 30, 60, and 90-day sprints)
+# 2. Interactive Study Roadmap Progress Tracker & Heatmap (supports 30, 60, and 90-day sprints)
 npm run track                    # View active progress and mark milestones complete
-npm run track -- --plan 30       # Switch to 30-Day FAANG Sprint
-npm run track -- --plan 60       # Switch to 60-Day Comprehensive SDE2 Roadmap
-npm run track -- --plan 90       # Switch to 90-Day Senior/Staff Architect Blueprint
+npm run track -- --plan 2        # Switch to 60-Day Comprehensive SDE2 Roadmap
+npm run heatmap                  # Render GitHub-style ASCII study streak activity heatmap
 
-# 3. Sub-Second Markdown Knowledge Base Fuzzy Search
+# 3. 45-Minute Timed Mock Interview Simulator with Dynamic Curveballs & Rubric Scoring
+npm run mock                     # Launch interactive mock interview session
+npm run mock -- --track 2        # Select track directly (1: DSA, 2: System Design, 3: Behavioral)
+
+# 4. Sub-Second Markdown Knowledge Base Fuzzy Search
 npm run search "Gorilla"         # Search TSDB Gorilla compression
 npm run search "SkipList"        # Find skip list data structures and implementations
 ```
@@ -63,17 +69,21 @@ npm run search "SkipList"        # Find skip list data structures and implementa
 
 ## ☕ Runnable Java 21 LLD Playground
 
-A fully compilable Maven project is located in [`code-samples/`](code-samples/README.md) featuring production-grade Low-Level Design implementations and multi-threaded JUnit 5 concurrency tests:
+A fully compilable Maven project is located in [`code-samples/`](code-samples/README.md) featuring 7 production-grade Low-Level Design implementations and 36 multi-threaded JUnit 5 concurrency tests:
 
 ```bash
 cd code-samples
-mvn test                         # Run all concurrent JUnit 5 test suites
+mvn test                         # Run all 36 concurrent JUnit 5 test suites
 ```
 
 Key implementations:
 - **Concurrent In-Memory Cache**: LRU, LFU, and FIFO pluggable eviction strategies with read/write lock striping and TTL purge.
-- **In-Memory Rate Limiter Library**: Token Bucket with nanosecond refill precision and Sliding Window Log with zero boundary burst.
+- **In-Memory Rate Limiter Library**: Token Bucket with nanosecond refill precision and Sliding Window Counter.
 - **Distributed Task Scheduler**: In-memory `DelayQueue` coordinator with a decoupled worker pool and exponential backoff retries.
+- **Multi-Floor Parking Lot**: Atomic spot reservation via per-spot `ReentrantLock`, nearest-spot allocation, and dynamic hourly pricing.
+- **Splitwise & Debt Simplifier**: Equal/Exact/Percent splits, cyclic debt elimination, and Min-Cash-Flow greedy graph settlement using dual Max-Heaps.
+- **Transactional Key-Value Store**: Nested ACID transactions (`BEGIN`/`COMMIT`/`ROLLBACK`), active/passive TTL expiration, and snapshot isolation.
+- **Elevator Controller System**: Multi-car bank coordination using LOOK / SCAN disk-scheduling sweep algorithm with bidirectional `TreeSet` stops.
 
 
 ---
@@ -110,7 +120,7 @@ Key implementations:
 ### 🏛️ [3. System Design Track (`system-design/`)](system-design/README.md)
 - [**`system-design-fundamentals/`**](system-design/system-design-fundamentals/README.md) — 10-page comprehensive guide covering High-Level Design (HLD), Low-Level Design (LLD), GoF design patterns in Java, thread pool engineering, connection pooling (HikariCP), caching strategies, Kafka event streaming, circuit breakers, and the 4-step interview blueprint.
 - [**`lld-machine-coding/`**](system-design/lld-machine-coding/README.md) — 10-page enterprise track on Object-Oriented Low-Level Design & Machine Coding in Java (Java 17/21) with runnable Maven playground ([`code-samples/`](code-samples/README.md)): 90-minute interview framework, Parking Lot System (Strategy, Factory, concurrent spot locking), Elevator Control System (State, LOOK/SCAN disk scheduling, multi-car bank), In-Memory Key-Value Store with TTL & Transactions (ReadWriteLock, passive/active cleanup, ACID rollback/commit), Expense Sharing System / Splitwise (Equal/Exact/Percent strategies, greedy Min-Cash-Flow debt simplification), Movie Ticket Booking System / BookMyShow (atomic seat locks with TTL, deadlock-free sorted lock hierarchy), Concurrent In-Memory Cache with Pluggable Eviction Policies (generics, ReadWriteLock, LRU/LFU/FIFO, active+passive TTL), Food Delivery System / Swiggy-Zomato (nearest-partner matching, atomic CAS assignment, surge pricing), Distributed Task & Job Scheduler (DelayQueue, worker pool, exponential backoff), and In-Memory Rate Limiter Library (Token Bucket, Sliding Window Log, nanoTime CAS).
-- [**`hld-case-studies/`**](system-design/hld-case-studies/README.md) — 14-page end-to-end High-Level Design (HLD) deep-dive case studies covering capacity estimation, data partitioning, and failure mode analysis:
+- [**`hld-case-studies/`**](system-design/hld-case-studies/README.md) — 18-page end-to-end High-Level Design (HLD) deep-dive case studies covering capacity estimation, data partitioning, and failure mode analysis:
   - [**`01-design-a-distributed-rate-limiter.md`**](system-design/hld-case-studies/01-design-a-distributed-rate-limiter.md): Sliding window counter, Redis cluster + Lua scripts, local token lease caching, clock drift.
   - [**`02-design-a-global-url-shortener-tinyurl.md`**](system-design/hld-case-studies/02-design-a-global-url-shortener-tinyurl.md): 100:1 read ratio, Base62 Key Generation Service (KGS), 301 vs 302 redirects, DB sharding.
   - [**`03-design-a-real-time-chat-system-whatsapp-slack.md`**](system-design/hld-case-studies/03-design-a-real-time-chat-system-whatsapp-slack.md): WebSockets, Cassandra LSM-Tree, per-chat monotonic sequencing, heartbeat presence.
@@ -124,6 +134,10 @@ Key implementations:
   - [**`11-design-a-distributed-metrics-and-telemetry-system-datadog.md`**](system-design/hld-case-studies/11-design-a-distributed-metrics-and-telemetry-system-datadog.md): Gorilla floating-point XOR compression, M3DB/TimescaleDB chunking, Kafka ingestion.
   - [**`12-design-a-collaborative-real-time-document-editor-google-docs.md`**](system-design/hld-case-studies/12-design-a-collaborative-real-time-document-editor-google-docs.md): Operational Transformation (OT) / CRDT (Yjs/Loro), WebSocket fan-out, undo/redo vectors.
   - [**`13-design-a-proximity-and-nearby-search-service-yelp-maps.md`**](system-design/hld-case-studies/13-design-a-proximity-and-nearby-search-service-yelp-maps.md): Geohash prefix tree, Google S2 / Uber H3 cell spatial hierarchies, two-tier cache.
+  - [**`14-design-a-distributed-vector-database-pinecone-milvus.md`**](system-design/hld-case-studies/14-design-a-distributed-vector-database-pinecone-milvus.md): HNSW multi-layer graph, IVF-PQ product quantization, single-stage bitset filtering, S3 immutable segments.
+  - [**`15-design-a-high-throughput-payment-gateway-and-ledger-stripe.md`**](system-design/hld-case-studies/15-design-a-high-throughput-payment-gateway-and-ledger-stripe.md): Immutable double-entry ledger, Redis atomic idempotency keys, zero-sum verification, daily bank reconciliation.
+  - [**`16-design-a-real-time-ad-click-event-aggregator-google-meta.md`**](system-design/hld-case-studies/16-design-a-real-time-ad-click-event-aggregator-google-meta.md): Apache Flink event-time watermarking, 1M clicks/sec ingestion, HyperLogLog unique reach, ClickHouse OLAP.
+  - [**`17-design-a-global-live-video-streaming-platform-twitch-youtube-live.md`**](system-design/hld-case-studies/17-design-a-global-live-video-streaming-platform-twitch-youtube-live.md): Low-Latency HLS (LL-HLS) chunked transfer, GPU transcoder fleet, CDN origin shielding, massive chat sampling.
 
 ### 🤖 [4. AI for Developers Track (`ai-for-developers/`)](ai-for-developers/README.md)
 - [**`ai-for-developers/`**](ai-for-developers/README.md) — 10-page comprehensive guide on using AI as a 10x engineering velocity multiplier and building AI applications: moving from typist to architect, 0-to-1 REST API scaffolding, instant stack trace triage, automated testing with Testcontainers, tool mastery (**Cursor**, **Claude Cowork & Projects**, **GitHub Copilot**, `.cursorrules`), accelerating in **500k+ LOC enterprise codebases**, System Design capacity math, **Autonomous Coding Agents & Model Context Protocol (MCP)**, building enterprise AI applications with **Spring AI & RAG (`pgvector`)**, and the **30+ Copy-Paste Developer Prompt Cheatsheet**.

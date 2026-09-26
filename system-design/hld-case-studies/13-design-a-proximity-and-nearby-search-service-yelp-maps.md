@@ -1,6 +1,6 @@
 # 13. Design a Proximity & Nearby Search Service (Yelp / Google Maps)
 
-[← Back to Collaborative Document Editor](./12-design-a-collaborative-real-time-document-editor-google-docs.md) | [Track Hub](./README.md) | [LLD & Machine Coding Hub →](../lld-machine-coding/README.md)
+[← Back to Collaborative Document Editor](./12-design-a-collaborative-real-time-document-editor-google-docs.md) | [Track Hub](./README.md) | [Next: Distributed Vector Database →](./14-design-a-distributed-vector-database-pinecone-milvus.md)
 
 ---
 
@@ -150,7 +150,7 @@ flowchart TD
 
 <div align="center">
 
-| [← Back to Collaborative Document Editor](./12-design-a-collaborative-real-time-document-editor-google-docs.md) | [Track Hub: HLD](./README.md) | [LLD & Machine Coding Hub →](../lld-machine-coding/README.md) |
+| [← Back to Collaborative Document Editor](./12-design-a-collaborative-real-time-document-editor-google-docs.md) | [Track Hub: HLD](./README.md) | [Next: Distributed Vector Database →](./14-design-a-distributed-vector-database-pinecone-milvus.md) |
 | :--- | :---: | ---: |
 
 </div>

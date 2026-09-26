@@ -20,3 +20,4 @@ code-samples/target/
 
 # Local User Data
 .progress.json
+.flashcards_progress.json

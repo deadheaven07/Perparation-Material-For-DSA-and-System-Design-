@@ -63,11 +63,22 @@ The test suite must exit with code `0` and report zero errors.
 
 ---
 
+## 🐳 1-Click Cloud Dev Container
+
+This repository includes a full-featured `.devcontainer/devcontainer.json` configuration:
+- Pre-configured with **Java 21**, **Maven 3.9**, **Node.js 20**, and **Python 3.11**.
+- Bundled with Java, Python, and Mermaid VS Code extensions.
+- Launch instantly via **GitHub Codespaces** or locally using **VS Code Remote - Containers**.
+
+---
+
 ## 🛠️ Interactive Developer CLI Tools
 
 Contributors can leverage our built-in terminal productivity tools:
 
-- `npm run quiz` — Interactive active recall flashcard quiz across DSA, HLD, LLD, Java, and Leadership.
+- `npm run quiz` — Interactive active recall flashcard quiz with SuperMemo SM-2 Spaced Repetition (205 cards across DSA, HLD, LLD, Java, Storage, and Leadership).
 - `npm run track` — Interactive study roadmap progress tracker supporting 30, 60, and 90-day sprints.
-- `npm run search <query>` — Sub-second fuzzy search across all 188+ Markdown curriculum guides.
+- `npm run heatmap` — Render GitHub-style ASCII study streak activity heatmap.
+- `npm run mock` — 45-Minute Timed Mock Interview Simulator with dynamic curveballs and 5-dimension rubric scorecard.
+- `npm run search <query>` — Sub-second fuzzy search across all 192+ Markdown curriculum guides.
 
